@@ -1,7 +1,6 @@
 "use client";
 import styles from "./page.module.css";
 import Map from "../komponente/Map";
-import FaultyTerminal from "../components/FaultyTerminal";
 import Stepper, { Step } from "../components/Stepper";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -9,107 +8,89 @@ import { MapPin, Shield, Clock } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className={styles.pageWrapper}>
-      {/* FaultyTerminal animacija pozadina */}
-      <FaultyTerminal
-        scale={1.5}
-        gridMul={[2, 1]}
-        digitSize={1.2}
-        timeScale={0.5}
-        pause={false}
-        scanlineIntensity={0.5}
-        glitchAmount={1}
-        flickerAmount={1}
-        noiseAmp={1}
-        chromaticAberration={0}
-        dither={0}
-        curvature={0.1}
-        tint="#ff0000"
-        mouseReact={true}
-        mouseStrength={0.5}
-        pageLoadAnimation={true}
-        brightness={0.6}
-        style={{
-          backgroundColor: "#000000",
-        }}
-      />
-
-      {/* Novi Hero Section */}
-      <section className="relative overflow-hidden h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-red-900 z-10">
-        <div className="container mx-auto px-4 py-20 lg:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight text-balance">
+    <div
+      className={styles.pageWrapper}
+      style={{
+        background:
+          "linear-gradient(to bottom right, #000000, #374151, #991b1b)",
+      }}
+    >
+      {/* Hero Section */}
+      <section className="relative overflow-hidden min-h-screen flex items-center">
+        <div className="container mx-auto px-6 py-16">
+          <div className="flex flex-col items-center text-center space-y-12">
+            {/* Main Content */}
+            <div className="max-w-4xl space-y-8">
+              <div className="space-y-6">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
                   Provjeri i vozi{" "}
                   <span className="text-red-500 relative">
                     sigurno
                     <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
                   </span>
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed text-pretty">
+                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
                   Pronađi najbliži profesionalni alkotester aparat u svom gradu.
                   Jednostavno, brzo i pouzdano.
                 </p>
               </div>
 
               {/* Features */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex flex-wrap justify-center gap-8 mt-12">
                 <div className="flex items-center space-x-3 text-white">
-                  <div className="p-2 bg-red-600/20 rounded-lg">
-                    <Shield className="w-5 h-5 text-red-400" />
+                  <div className="p-3 bg-red-600/20 rounded-xl">
+                    <Shield className="w-6 h-6 text-red-400" />
                   </div>
-                  <span className="text-sm font-medium">Profesionalno</span>
+                  <span className="text-lg font-medium">Profesionalno</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
-                  <div className="p-2 bg-red-600/20 rounded-lg">
-                    <Clock className="w-5 h-5 text-red-400" />
+                  <div className="p-3 bg-red-600/20 rounded-xl">
+                    <Clock className="w-6 h-6 text-red-400" />
                   </div>
-                  <span className="text-sm font-medium">Brzo</span>
+                  <span className="text-lg font-medium">Brzo</span>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
-                  <div className="p-2 bg-red-600/20 rounded-lg">
-                    <MapPin className="w-5 h-5 text-red-400" />
+                  <div className="p-3 bg-red-600/20 rounded-xl">
+                    <MapPin className="w-6 h-6 text-red-400" />
                   </div>
-                  <span className="text-sm font-medium">Pouzdano</span>
+                  <span className="text-lg font-medium">Pouzdano</span>
                 </div>
               </div>
 
               {/* CTA Button */}
-              <div className="pt-4">
+              <div className="pt-8">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-red-500/25 transition-all duration-300 transform hover:scale-105"
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-6 text-xl font-semibold rounded-xl shadow-2xl hover:shadow-red-500/25 transition-all duration-300 transform hover:scale-105"
                   onClick={() =>
                     document
                       .getElementById("lokacije")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  <MapPin className="w-5 h-5 mr-2" />
+                  <MapPin className="w-6 h-6 mr-3" />
                   Pronađi Lokacije
                 </Button>
               </div>
             </div>
 
-            {/* Right Content - Device Image */}
-            <div className="relative">
+            {/* Device Image - Below Content */}
+            <div className="relative mt-16">
               <div className="relative z-10">
-                <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-2xl border border-red-500/20">
+                <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-6 shadow-2xl border border-red-500/20 max-w-md mx-auto">
                   <Image
                     src="/assets/1.korak.png"
                     alt="Profesionalni alkotester aparat"
                     width={400}
                     height={400}
-                    className="w-full h-auto max-w-md mx-auto rounded-lg"
+                    className="w-full h-auto rounded-2xl"
                   />
                 </div>
               </div>
 
               {/* Background decorative elements */}
-              <div className="absolute -top-4 -right-4 w-72 h-72 bg-red-600/10 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-8 -right-8 w-64 h-64 bg-red-600/10 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-8 -left-8 w-56 h-56 bg-orange-500/10 rounded-full blur-3xl"></div>
             </div>
           </div>
         </div>
