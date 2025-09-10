@@ -4,93 +4,99 @@ import Map from "../komponente/Map";
 import Stepper, { Step } from "../components/Stepper";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { MapPin, Shield, Clock } from "lucide-react";
+import { FiShield, FiClock, FiMapPin } from "react-icons/fi";
 
 export default function Home() {
   return (
-    <div
-      className={styles.pageWrapper}
-      style={{
-        background:
-          "linear-gradient(to bottom right, #000000, #374151, #991b1b)",
-      }}
-    >
+    <div className="page-background">
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-screen flex items-center">
-        <div className="container mx-auto px-6 py-16">
-          <div className="flex flex-col items-center text-center space-y-12">
-            {/* Main Content */}
-            <div className="max-w-4xl space-y-8">
-              <div className="space-y-6">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                  Provjeri i vozi{" "}
-                  <span className="text-red-500 relative">
-                    sigurno
-                    <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
+
+      <section
+        className={`${styles.hero} hero-bg-home relative overflow-hidden min-h-screen`}
+      >
+        <div className="container mx-auto px-4 py-8 lg:py-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="text-left flex flex-col gap-8">
+              <div className="space-y-4">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-50 leading-tight">
+                  <span className="block lg:block">Provjeri</span>
+                  <span className="block lg:block">
+                    i vozi{" "}
+                    <span className="text-red-500 relative">
+                      sigurno
+                      <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
+                    </span>
                   </span>
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-xl md:text-2xl text-gray-50 leading-relaxed">
                   Pronađi najbliži profesionalni alkotester aparat u svom gradu.
                   Jednostavno, brzo i pouzdano.
                 </p>
               </div>
 
               {/* Features */}
-              <div className="flex flex-wrap justify-center gap-8 mt-12">
-                <div className="flex items-center space-x-3 text-white">
-                  <div className="p-3 bg-red-600/20 rounded-xl">
-                    <Shield className="w-6 h-6 text-red-400" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex items-center gap-x-3 text-gray-50">
+                  <div className="w-10 h-10 bg-red-600/30 rounded-lg flex items-center justify-center">
+                    <FiShield className="w-5 h-5 text-red-400" />
                   </div>
-                  <span className="text-lg font-medium">Profesionalno</span>
+                  <span className="text-sm font-medium ml-2">
+                    Profesionalno
+                  </span>
                 </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <div className="p-3 bg-red-600/20 rounded-xl">
-                    <Clock className="w-6 h-6 text-red-400" />
+
+                <div className="flex items-center gap-x-3 text-gray-50">
+                  <div className="w-10 h-10 bg-red-600/30 rounded-lg flex items-center justify-center">
+                    <FiClock className="w-5 h-5 text-red-400" />
                   </div>
-                  <span className="text-lg font-medium">Brzo</span>
+                  <span className="text-sm font-medium ml-2">Brzo</span>
                 </div>
-                <div className="flex items-center space-x-3 text-white">
-                  <div className="p-3 bg-red-600/20 rounded-xl">
-                    <MapPin className="w-6 h-6 text-red-400" />
+
+                <div className="flex items-center gap-x-3 text-gray-50">
+                  <div className="w-10 h-10 bg-red-600/30 rounded-lg flex items-center justify-center">
+                    <FiMapPin className="w-5 h-5 text-red-400" />
                   </div>
-                  <span className="text-lg font-medium">Pouzdano</span>
+                  <span className="text-sm font-medium ml-2">Pouzdano</span>
                 </div>
               </div>
 
               {/* CTA Button */}
-              <div className="pt-8">
+              <div className="ctaWrap pt-2 mt-3 md:mt-4 lg:mt-6 mb-8">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-6 text-xl font-semibold rounded-xl shadow-2xl hover:shadow-red-500/25 transition-all duration-300 transform hover:scale-105"
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-red-500/25 transition-all duration-300 transform hover:scale-105"
                   onClick={() =>
                     document
                       .getElementById("lokacije")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  <MapPin className="w-6 h-6 mr-3" />
+                  <FiMapPin className="w-5 h-5 mr-2" />
                   Pronađi Lokacije
                 </Button>
               </div>
             </div>
 
-            {/* Device Image - Below Content */}
-            <div className="relative mt-16">
+            {/* Right Content - Device Image */}
+            <div className="relative flex justify-center">
               <div className="relative z-10">
-                <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-6 shadow-2xl border border-red-500/20 max-w-md mx-auto">
+                <div
+                  className={`${styles.deviceImageContainer} bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl border border-red-500/20`}
+                >
                   <Image
                     src="/assets/1.korak.png"
                     alt="Profesionalni alkotester aparat"
-                    width={400}
-                    height={400}
-                    className="w-full h-auto rounded-2xl"
+                    width={300}
+                    height={300}
+                    className="w-3/4 h-3/4 object-contain rounded-lg"
                   />
                 </div>
               </div>
 
               {/* Background decorative elements */}
-              <div className="absolute -top-8 -right-8 w-64 h-64 bg-red-600/10 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-56 h-56 bg-orange-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-4 -right-4 w-72 h-72 bg-red-600/10 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
             </div>
           </div>
         </div>
@@ -100,7 +106,7 @@ export default function Home() {
       </section>
 
       {/* Sekcija 2: Mapa s Lokacijama */}
-      <section id="lokacije" className={styles.section}>
+      <section id="lokacije" className={`${styles.section} section-background`}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Naše Lokacije</h2>
           <div className={styles.mapContainer}>
@@ -110,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* Sekcija 3: Upute za korištenje */}
-      <section id="upute" className={styles.section}>
+      <section id="upute" className={`${styles.section} section-background`}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Upute Korištenja</h2>
           <div className={styles.uputeHighlights}>
@@ -156,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* Sekcija 4: Edukativni Sadržaj */}
-      <section id="savjeti" className={styles.section}>
+      <section id="savjeti" className={`${styles.section} section-background`}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>
             Vozi Odgovorno: Što Trebaš Znati
@@ -193,7 +199,7 @@ export default function Home() {
       </section>
 
       {/* Sekcija 5: Kontakt i Partnerstvo */}
-      <section id="kontakt" className={styles.section}>
+      <section id="kontakt" className={`${styles.section} section-background`}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>
             Kontaktirajte Nas ili Postanite Naš Partner

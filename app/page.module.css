@@ -8,9 +8,7 @@
   background-color: #000000;
 }
 
-.pageWrapper * {
-  box-sizing: border-box;
-}
+/* Uklonjen globalni reset za sve elemente - ovo je uzrokovalo probleme s marginima */
 
 .pageWrapper html {
   scroll-behavior: smooth;
@@ -31,7 +29,7 @@ html {
 }
 
 .pageWrapper body {
-  color: #333;
+  color: #ffffff; /* Bijela boja za tekst */
   background: #fff;
 }
 
@@ -124,12 +122,88 @@ Active stanje .navbarNavs > a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: transparent;
   color: white;
   text-align: center;
-  padding: 120px 20px 60px;
+  padding: 60px 20px 40px;
   position: relative;
   z-index: 10;
+}
+
+/* Dodatni stilovi za hero sekciju da osiguramo da razmaci rade */
+.hero h1 {
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  margin-bottom: 2rem;
+}
+
+/* Uklonjen .hero div stil da omogućimo Tailwind klase */
+
+/* Uklonjeni CSS stilovi za boje - koristimo Tailwind klase */
+
+/* Osiguravamo da crveni span ostane crven */
+.hero h1 span.text-red-500 {
+  color: #ef4444; /* Tailwind red-500 boja */
+}
+
+/* Uklonjeni CSS stilovi za space-y klase - koristimo Tailwind klase */
+
+/* CTA Button wrapper stilovi */
+.ctaWrap {
+  margin-top: 2rem !important;
+  padding-top: 2rem;
+}
+
+/* CTA Button stilovi */
+.ctaWrap button {
+  margin: 0 !important;
+  display: block;
+}
+
+/* Device image container stilovi */
+.deviceImageContainer {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.deviceImageContainer img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+/* Responsive stilovi za device image */
+@media (max-width: 640px) {
+  .deviceImageContainer {
+    width: 24rem;
+    height: 24rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .deviceImageContainer {
+    width: 36rem;
+    height: 36rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .deviceImageContainer {
+    width: 32rem;
+    height: 32rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .deviceImageContainer {
+    width: 40rem;
+    height: 40rem;
+  }
 }
 
 .heroContent {
@@ -140,17 +214,14 @@ Active stanje .navbarNavs > a.active {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   color: #ffffff;
 }
 
 .heroSubtitle {
   font-size: 1.3rem;
   margin-bottom: 2.5rem;
-  opacity: 0.95;
   line-height: 1.6;
   color: #ffffff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 .heroButton {
@@ -175,14 +246,9 @@ Active stanje .navbarNavs > a.active {
 /* Općenite sekcije */
 .section {
   padding: 80px 0;
-  background: rgba(0, 0, 0, 0.4);
   position: relative;
   z-index: 10;
   color: white;
-}
-
-.section:nth-child(even) {
-  background: rgba(0, 0, 0, 0.5);
 }
 
 .container {
