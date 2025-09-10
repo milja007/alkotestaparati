@@ -1,0 +1,16 @@
+.faulty-terminal-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.faulty-terminal-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
