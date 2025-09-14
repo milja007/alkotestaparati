@@ -173,13 +173,14 @@ export default function MapComponent() {
     if (map.current) return; // Inicijaliziraj mapu samo jednom
 
     if (mapContainer.current) {
+      // Postavi access token globalno
+      mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/mapbox/streets-v12",
         center: [15.9734885, 45.813173],
-
         zoom: 9,
-        accessToken: MAPBOX_ACCESS_TOKEN,
       });
 
       // Dodaj navigation kontrole
@@ -387,6 +388,8 @@ export default function MapComponent() {
           width: 100%;
           margin: 0 auto;
           box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
         }
 
         .map-wrapper {
@@ -404,9 +407,33 @@ export default function MapComponent() {
         /* Minijaturne lokacije grid ispod mape */
         .mini-locations-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          grid-template-columns: 1fr;
           gap: 15px;
           margin-top: 20px;
+        }
+
+        /* Na md ekranima - 2 kolone */
+        @media (min-width: 768px) {
+          .mini-locations-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+          }
+        }
+
+        /* Na lg ekranima - 3-4 kolone */
+        @media (min-width: 1024px) {
+          .mini-locations-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+          }
+        }
+
+        /* Na xl ekranima - 4 kolone */
+        @media (min-width: 1280px) {
+          .mini-locations-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+          }
         }
 
         .mini-location-card {

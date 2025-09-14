@@ -5,6 +5,9 @@ import Stepper, { Step } from "../components/Stepper";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { FiShield, FiClock, FiMapPin } from "react-icons/fi";
+import AlchotestKalkulator from "../komponente/AlchotestKalkulator";
+import { AlcoholInfoSection } from "../komponente/Alcohol-info-section";
+import PartnerFooter from "../komponente/PartnerFooter";
 
 export default function Home() {
   return (
@@ -20,8 +23,9 @@ export default function Home() {
             <div className="text-left flex flex-col gap-8">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-50 leading-tight">
-                  <span className="block lg:block">Provjeri</span>
-                  <span className="block lg:block">
+                  <span className="block md:inline">Provjeri</span>
+                  <span className="block md:inline">
+                    {" "}
                     i vozi{" "}
                     <span className="text-red-500 relative">
                       sigurno
@@ -62,7 +66,7 @@ export default function Home() {
               </div>
 
               {/* CTA Button */}
-              <div className="ctaWrap pt-2 mt-3 md:mt-4 lg:mt-6 mb-8">
+              <div className="cta-wrap pt-2 mt-3 md:mt-4 lg:mt-6 mb-8">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-2xl hover:shadow-red-500/25 transition-all duration-300 transform hover:scale-105"
@@ -79,24 +83,14 @@ export default function Home() {
             </div>
 
             {/* Right Content - Device Image */}
-            <div className="relative flex justify-center">
-              <div className="relative z-10">
-                <div
-                  className={`${styles.deviceImageContainer} bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl border border-red-500/20`}
-                >
-                  <Image
-                    src="/assets/1.korak.png"
-                    alt="Profesionalni alkotester aparat"
-                    width={300}
-                    height={300}
-                    className="w-3/4 h-3/4 object-contain rounded-lg"
-                  />
-                </div>
-              </div>
-
-              {/* Background decorative elements */}
-              <div className="absolute -top-4 -right-4 w-72 h-72 bg-red-600/10 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+            <div className="flex justify-center">
+              <Image
+                src="/assets/drunkyet.svg"
+                alt="Profesionalni alkotester aparat"
+                width={600}
+                height={700}
+                className="object-contain"
+              />
             </div>
           </div>
         </div>
@@ -105,11 +99,80 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent"></div>
       </section>
 
+      {/* O nama sekcija */}
+      <section className="py-16 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Tekst sadržaj */}
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-purple-400 mb-6">
+                  O nama
+                </h2>
+                <p className="text-lg text-white leading-relaxed">
+                  Naša misija je osigurati sigurnost na cestama kroz dostupnost
+                  profesionalnih alkotester aparata. Vjerujemo da svatko
+                  zaslužuje jednostavan i pouzdan način provjere prije vožnje.
+                </p>
+                <p className="text-lg text-white leading-relaxed">
+                  Naši aparati su profesionalno kalibrirani i održavani,
+                  pružajući točne rezultate koji vam pomažu donijeti odgovornu
+                  odluku o vožnji. Sigurnost je naš prioritet.
+                </p>
+                <p className="text-lg text-white leading-relaxed">
+                  Imate lokal ili restoran i razmišljate da i vi postavite naš
+                  aparat? Kliknite na gumb i{" "}
+                  <Button
+                    onClick={() =>
+                      document
+                        .getElementById("partner-section")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="inline bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+                  >
+                    Postanite naš Partner
+                  </Button>
+                </p>
+                <div className="flex items-center gap-4 pt-4">
+                  <div className="w-12 h-12 bg-purple-400 rounded-full flex items-center justify-center">
+                    <FiShield className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-purple-400">
+                      Profesionalno
+                    </h3>
+                    <p className="text-white">Kalibrirani aparati</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Slika aparata */}
+              <div>
+                <Image
+                  src="/assets/dimenzije.svg"
+                  alt="Profesionalni alkotester aparat"
+                  width={400}
+                  height={400}
+                  className="w-full h-auto object-contain"
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "none",
+                    outline: "none",
+                    boxShadow: "none",
+                    filter: "brightness(0.8) contrast(1.2)",
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Sekcija 2: Mapa s Lokacijama */}
       <section id="lokacije" className={`${styles.section} section-background`}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Naše Lokacije</h2>
-          <div className={styles.mapContainer}>
+        <div className="container">
+          <h2 className="section-title">Naše Lokacije</h2>
+          <div className="map-container">
             <Map />
           </div>
         </div>
@@ -117,26 +180,14 @@ export default function Home() {
 
       {/* Sekcija 3: Upute za korištenje */}
       <section id="upute" className={`${styles.section} section-background`}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Upute Korištenja</h2>
-          <div className={styles.uputeHighlights}>
-            <div className={styles.highlightChip}>
-              <span className={styles.highlightIcon}>✨</span>
-              Brzo i intuitivno
-            </div>
-            <div className={styles.highlightChip}>
-              <span className={styles.highlightIcon}>🧪</span>7 vizualnih koraka
-            </div>
-            <div className={styles.highlightChip}>
-              <span className={styles.highlightIcon}>✅</span>
-              Bez teksta — samo slike
-            </div>
-          </div>
+        <div className="container">
+          <h2 className="section-title">Kako Koristiti naš Aparat?</h2>
+          <div className="upute-highlights"></div>
 
-          <div className={styles.uputeStepper}>
+          <div className="upute-stepper">
             <Stepper
               initialStep={1}
-              contentClassName={styles.stepperContent}
+              contentClassName="stepper-content"
               aria-label="Upute koraci"
               finalContent={
                 <div className="step-image-container">
@@ -145,7 +196,7 @@ export default function Home() {
                     height={780}
                     src="/assets/completeKorak.png"
                     alt="Final"
-                    className={styles.stepperImage}
+                    className="stepper-image"
                   />
                 </div>
               }
@@ -161,81 +212,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sekcija 4: Edukativni Sadržaj */}
-      <section id="savjeti" className={`${styles.section} section-background`}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>
-            Vozi Odgovorno: Što Trebaš Znati
-          </h2>
-          <div className={styles.adviceContainer}>
-            <div className={styles.adviceCard}>
-              <div className={styles.adviceIcon}>✅</div>
-              <h3>Do 0.5‰</h3>
-              <p>
-                Zakonski dozvoljeno, ali oprez je i dalje nužan. Svaki organizam
-                je drugačiji.
-              </p>
-            </div>
+      {/* Sekcija 4: Informacije o alkoholu i kalkulator */}
+      <section className="py-16 bg-black">
+        <AlcoholInfoSection />
+        <AlchotestKalkulator />
+      </section>
 
-            <div className={styles.adviceCard}>
-              <div className={styles.adviceIcon}>⚠️</div>
-              <h3>Iznad 0.5‰</h3>
-              <p>
-                Ne sjedajte za volan. Pozovite taksi ili prijatelja. Sigurnost
-                je na prvom mjestu.
-              </p>
-            </div>
+      {/* Sekcija 5: Sigurnost je prioritet - Fun Fact */}
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-4xl mx-auto px-4 py-12">
+          <div className="bg-gradient-to-r from-green-600 to-emerald-600 p-8 rounded-2xl shadow-2xl border-2 border-green-500/20">
+            <div className="text-center space-y-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
+                <span className="text-3xl">😎</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                Kako Nadmudriti Aparat??
+              </h2>
+              <div className="max-w-3xl mx-auto space-y-4">
+                <p className="text-lg text-green-100 leading-relaxed">
+                  Osim što se nakon konzumacije alkohola preporučuje dobar obrok
+                  i bezalkoholna pića, istraživanjem,korištenjem aparata i
+                  slušanjem na satima kemije došao sam do otkrića. Ključni
+                  element je – mast. Nije važno koje je porijeklo masti ili
+                  ulja, kemijski gledano, mast na sebe veže alkohol. Ako
+                  pojedete nešto masnije, dio alkohola iz usne šupljine neće
+                  dospjeti do pluća, već će završiti u želucu. Isto tako, ako
+                  imate maslinovo ulje, pa čak i melem ili labelo, možete to
+                  protresti u ustima i dobit ćete niži rezultat. Iako nećete
+                  postići 0.0 promila, rezultat će se značajno smanjiti. No,
+                  važno je napomenuti da vas ovo neće otrijezniti, već samo
+                  utjecati na mjerenje.
+                </p>
 
-            <div className={styles.adviceCard}>
-              <div className={styles.adviceIcon}>💡</div>
-              <h3>Važna Napomena</h3>
-              <p>
-                Aparat je tu kao pomoć, a ne kao zakonska osnova. Uvijek
-                koristite zdrav razum.
-              </p>
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                  <p className="text-sm text-green-100 font-medium">
+                    💡 Za pravo snižavanje promila u krvi i glavi, ključni su
+                    hrana, voda i, najvažnije od svega – vrijeme.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sekcija 5: Kontakt i Partnerstvo */}
-      <section id="kontakt" className={`${styles.section} section-background`}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>
-            Kontaktirajte Nas ili Postanite Naš Partner
-          </h2>
-          <div className={styles.contactContainer}>
-            <div className={styles.contactInfo}>
-              <h3>Kontakt</h3>
-              <p>📧 info@vasafirma.hr</p>
-              <p>📱 +385 1 234 567</p>
-
-              <h3>Društvene Mreže</h3>
-              <div className={styles.socialIcons}>
-                <a href="#" className={styles.socialIcon}>
-                  📱 Instagram
-                </a>
-                <a href="#" className={styles.socialIcon}>
-                  🎵 TikTok
-                </a>
-                <a href="#" className={styles.socialIcon}>
-                  📘 Facebook
-                </a>
-              </div>
-            </div>
-
-            <div className={styles.partnershipInfo}>
-              <h3>Postanite Naš Partner</h3>
-              <p>
-                Imate kafić ili restoran? Postanite naš partner i postavite
-                alkotest aparat u vašem lokalu!
-              </p>
-              <button className={styles.partnershipButton}>
-                Kontaktirajte Nas
-              </button>
-            </div>
-          </div>
-        </div>
+      {/* Sekcija 6: Kontakt i Partnerstvo */}
+      <section
+        id="partner-section"
+        className="py-16 bg-gradient-to-b from-gray-50 to-white"
+      >
+        <PartnerFooter />
       </section>
     </div>
   );

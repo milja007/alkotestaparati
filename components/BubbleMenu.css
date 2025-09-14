@@ -9,6 +9,7 @@
   padding: 0 2em;
   pointer-events: none;
   z-index: 99;
+  position: relative;
 }
 
 .bubble-menu.fixed {
@@ -40,10 +41,16 @@
 .bubble-menu .logo-bubble {
   width: auto;
   min-height: var(--bubble-size);
-  height: var(--bubble-size);
+  height: calc(var(--bubble-size) * 2 - 43px);
   padding: 0 16px;
   border-radius: calc(var(--bubble-size) / 2);
   gap: 8px;
+}
+
+.bubble-menu .logo-placeholder {
+  width: 0;
+  height: var(--bubble-size);
+  flex-shrink: 0;
 }
 
 .bubble-menu .toggle-bubble {
@@ -59,24 +66,28 @@
 }
 
 .bubble-menu .logo-content {
-  --logo-max-height: 60%;
+  --logo-max-height: 100%;
   --logo-max-width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
+  width: 100%;
   height: 100%;
   font-size: 14px;
   font-weight: 600;
   color: #ffffff;
   text-align: center;
+  overflow: hidden;
+  border-radius: inherit;
 }
 
 .bubble-menu .logo-content > .bubble-logo,
 .bubble-menu .logo-content > img,
 .bubble-menu .logo-content > svg {
-  max-height: var(--logo-max-height);
-  max-width: var(--logo-max-width);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .bubble-menu .menu-btn {
