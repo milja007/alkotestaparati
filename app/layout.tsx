@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import BubbleMenu from "../components/BubbleMenu";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Alko Testić",
@@ -20,23 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hr">
-      <body>
-        <BubbleMenu
-          logo={
-            <Image
-              src="/assets/alkotesticLogo.jpeg"
-              alt="Alkotestic Logo"
-              width={400}
-              height={200}
-              className="w-full h-full object-cover"
-            />
-          }
-          useFixedPosition={true}
-          menuBg="#000000"
-          menuContentColor="#ffffff"
-        />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

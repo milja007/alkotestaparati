@@ -1,8 +1,8 @@
 "use client";
-
 import type { CSSProperties, ReactNode } from "react";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 import "./BubbleMenu.css";
 
@@ -18,7 +18,7 @@ type MenuItem = {
 };
 
 export type BubbleMenuProps = {
-  logo: ReactNode | string;
+  logo?: ReactNode | string;
   onMenuClick?: (open: boolean) => void;
   className?: string;
   style?: CSSProperties;
@@ -34,43 +34,50 @@ export type BubbleMenuProps = {
 
 const DEFAULT_ITEMS: MenuItem[] = [
   {
-    label: "Lokacije",
-    href: "#lokacije",
-    ariaLabel: "Lokacije alkotest aparata",
+    label: "home",
+    href: "#",
+    ariaLabel: "Home",
     rotation: -8,
     hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
   },
   {
-    label: "Kako Koristiti",
-    href: "#upute",
-    ariaLabel: "Upute za korištenje",
+    label: "about",
+    href: "#",
+    ariaLabel: "About",
     rotation: 8,
     hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
   },
   {
-    label: "Vozi Odgovorno",
-    href: "#savjeti",
-    ariaLabel: "Savjeti za odgovornu vožnju",
+    label: "projects",
+    href: "#",
+    ariaLabel: "Documentation",
     rotation: 8,
     hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
   },
   {
-    label: "Kontakt",
-    href: "#kontakt",
-    ariaLabel: "Kontakt informacije",
-    rotation: -8,
+    label: "blog",
+    href: "#",
+    ariaLabel: "Blog",
+    rotation: 8,
     hoverStyles: { bgColor: "#ef4444", textColor: "#ffffff" },
+  },
+  {
+    label: "contact",
+    href: "#",
+    ariaLabel: "Contact",
+    rotation: -8,
+    hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
   },
 ];
 
 export default function BubbleMenu({
-  logo,
+  logo = "/assets/dimenzije.svg",
   onMenuClick,
   className,
   style,
   menuAriaLabel = "Toggle menu",
   menuBg = "#fff",
-  menuContentColor = "#111",
+  menuContentColor = "#000",
   useFixedPosition = false,
   items,
   animationEase = "back.out(1.5)",
@@ -79,11 +86,9 @@ export default function BubbleMenu({
 }: BubbleMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
-  const isScrollingProgrammatically = useRef(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const overlayRef = useRef<HTMLDivElement>(null);
-  const bubblesRef = useRef<HTMLButtonElement[]>([]);
+  const bubblesRef = useRef<HTMLAnchorElement[]>([]);
   const labelRefs = useRef<HTMLSpanElement[]>([]);
 
   const menuItems = items?.length ? items : DEFAULT_ITEMS;
@@ -94,30 +99,6 @@ export default function BubbleMenu({
   ]
     .filter(Boolean)
     .join(" ");
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Očisti postojeći timeout ako postoji
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-
-      // Postavi flag da se scroll događa programski
-      isScrollingProgrammatically.current = true;
-
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-
-      // Resetiraj flag nakon što se scroll završi i provjeri poziciju
-      scrollTimeoutRef.current = setTimeout(() => {
-        isScrollingProgrammatically.current = false;
-        scrollTimeoutRef.current = null;
-      }, 1000);
-    }
-  };
 
   const handleToggle = () => {
     const nextState = !isMenuOpen;
@@ -201,38 +182,6 @@ export default function BubbleMenu({
     return () => window.removeEventListener("resize", handleResize);
   }, [isMenuOpen, menuItems]);
 
-  // Scroll handling useEffect
-  useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout;
-
-    const handleScroll = () => {
-      // Clear existing timeout
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-
-      // Set new timeout to detect when scrolling stops
-      scrollTimeout = setTimeout(() => {
-        // Ako se scroll događa programski, ne mijenjaj aktivnu sekciju
-        if (isScrollingProgrammatically.current) {
-          return;
-        }
-      }, 0); // Kratka pauza za brzu responsivnost
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      // Očisti i programski scroll timeout
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-    };
-  }, []);
-
   return (
     <>
       <nav
@@ -246,11 +195,19 @@ export default function BubbleMenu({
           style={{ background: menuBg }}
         >
           <span className="logo-content">
-            {typeof logo === "string" ? logo : logo}
+            {typeof logo === "string" ? (
+              <Image
+                src={logo}
+                alt="Logo"
+                className="bubble-logo"
+                width={50}
+                height={50}
+              />
+            ) : (
+              logo
+            )}
           </span>
         </div>
-
-        <div className="logo-placeholder"></div>
 
         <button
           type="button"
@@ -283,14 +240,9 @@ export default function BubbleMenu({
           <ul className="pill-list" role="menu" aria-label="Menu links">
             {menuItems.map((item, idx) => (
               <li key={idx} role="none" className="pill-col">
-                <button
+                <a
                   role="menuitem"
-                  onClick={() => {
-                    const sectionId = item.href.replace("#", "");
-                    scrollToSection(sectionId);
-                    setIsMenuOpen(false);
-                    setShowOverlay(false);
-                  }}
+                  href={item.href}
                   aria-label={item.ariaLabel || item.label}
                   className="pill-link"
                   style={
@@ -315,7 +267,7 @@ export default function BubbleMenu({
                   >
                     {item.label}
                   </span>
-                </button>
+                </a>
               </li>
             ))}
           </ul>

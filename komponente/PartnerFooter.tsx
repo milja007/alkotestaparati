@@ -1,150 +1,302 @@
-import { Mail, Phone, Facebook, Instagram } from "lucide-react";
+"use client";
+
+import {
+  Mail,
+  Phone,
+  Building2,
+  Handshake,
+  Shield,
+  TrendingUp,
+  Clock,
+  CheckCircle,
+} from "lucide-react";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 
 export default function PartnerFooter() {
   return (
-    <footer className="bg-gray-900 text-white py-16">
-      <div className="container mx-auto px-4 max-w-6xl">
-        {/* Main Title */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Postanite Naš Partner!
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full opacity-30">
+          <div className="absolute top-20 left-20 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-fade-scale"></div>
+          <div
+            className="absolute top-40 right-32 w-24 h-24 bg-accent/20 rounded-full blur-lg animate-fade-scale"
+            style={{ animationDelay: "0.5s" }}
+          ></div>
+          <div
+            className="absolute bottom-32 left-1/3 w-40 h-40 bg-secondary/20 rounded-full blur-2xl animate-fade-scale"
+            style={{ animationDelay: "1s" }}
+          ></div>
+          <div
+            className="absolute bottom-20 right-20 w-28 h-28 bg-primary/20 rounded-full blur-lg animate-fade-scale"
+            style={{ animationDelay: "1.5s" }}
+          ></div>
+        </div>
+      </div>
+
+      <div className="relative container mx-auto px-4 max-w-7xl py-16">
+        <div className="text-center mb-20 animate-slide-up">
+          <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20">
+            <Building2 className="w-6 h-6 text-primary" />
+            <span className="text-primary font-semibold">Partner Program</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black text-primary mb-6 leading-tight">
+            Postanite Naš Partner
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Imate <strong>kafić</strong> ili <strong>restoran</strong>?
-            Postanite naš partner i postavite
-            <strong> alkotest aparat</strong> u vašem lokalu!
+          <p className="text-xl md:text-2xl text-foreground max-w-4xl mx-auto leading-relaxed">
+            Imate <span className="font-bold text-primary">kafić</span> ili{" "}
+            <span className="font-bold text-primary">restoran</span>? Postanite
+            naš partner i postavite
+            <span className="font-bold text-accent"> alkotest aparat</span> u
+            vašem lokalu!
           </p>
         </div>
 
-        <div className="space-y-12">
-          {/* Information Section */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-3xl font-bold text-balance text-white mb-4">
-                Što nudimo?
-              </h2>
-              <p className="text-gray-300 leading-relaxed">
-                Ako vam se naša ideja sviđa, imate mjesta na zidu i želite vašem
-                lokalu dodati <strong>zanimljivost</strong> i novi razlog
-                dolaska, nakon razgovora i dogovora nudimo vama i vašem lokalu
-                naš <strong>alkotest aparat</strong> i po uvjetima ambijenta{" "}
-                <strong>personalizirani neonski znak</strong>.
-              </p>
-            </div>
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          {[
+            {
+              icon: Shield,
+              title: "Sigurnost Prvo",
+              desc: "Povećajte sigurnost vaših gostiju s profesionalnim aparatima",
+              gradient: "from-blue-500 to-cyan-500",
+            },
+            {
+              icon: TrendingUp,
+              title: "Dodatni Prihod",
+              desc: "Zarađujte bez rizika - dijelimo profit po dogovoru",
+              gradient: "from-emerald-500 to-teal-500",
+            },
+            {
+              icon: Handshake,
+              title: "Pouzdano Partnerstvo",
+              desc: "Transparentno poslovanje s redovitim izvještajima",
+              gradient: "from-orange-500 to-amber-500",
+            },
+          ].map((benefit, index) => (
+            <Card
+              key={index}
+              className="group bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-scale"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <CardContent className="p-8 text-center">
+                <div
+                  className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${benefit.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <benefit.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-card-foreground mb-4">
+                  {benefit.title}
+                </h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  {benefit.desc}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">
-                Kolika je cijena?
-              </h2>
-              <p className="text-gray-300 leading-relaxed">
-                Cijena postavljanja i sami aparat su <strong>besplatni</strong>,
-                a novac koji aparat proizvede ćemo podijeliti po postotku tako
-                da nema rizika za obje strane. Naš model poslovanja je zasnovan
-                na
-                <strong> zajedničkom uspjehu</strong> - što više korisnika
-                imate, to više zarađujemo oboje.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">
-                Održavanje?
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6 items-center">
-                <div>
-                  <p className="text-gray-300 leading-relaxed">
-                    Što se tiče vašeg dijela, samo nam osigurajte mjesto na
-                    zidu, a redovan servis i vađenje kovanica održavamo jednom
-                    mjesečno. Trebamo samo nadodati slamke, mijenjati senzore,
-                    kablove, baterije, računalo i očistiti ga. To sve traje
-                    maksimalno sat vremena mjesečno (uglavnom zadnji dan u
-                    mjesecu).
+        <div className="space-y-16 mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
+                      <CheckCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <h2 className="text-3xl font-bold text-primary">
+                      Što nudimo?
+                    </h2>
+                  </div>
+                  <p className="text-foreground leading-relaxed text-lg">
+                    Ako vam se naša ideja sviđa, imate mjesta na zidu i želite
+                    vašem lokalu dodati{" "}
+                    <span className="font-bold text-accent">zanimljivost</span>{" "}
+                    i novi razlog dolaska, nakon razgovora i dogovora nudimo
+                    vama i vašem lokalu naš{" "}
+                    <span className="font-bold text-primary">
+                      alkotest aparat
+                    </span>{" "}
+                    i po uvjetima ambijenta{" "}
+                    <span className="font-bold text-accent">
+                      personalizirani neonski znak
+                    </span>
+                    .
                   </p>
-                </div>
-                <div className="flex justify-center">
-                  <Image
-                    src="/assets/dimenzije.svg"
-                    alt="Alkotest aparat dimenzije"
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                    style={{
-                      backgroundColor: "transparent",
-                      border: "none",
-                      outline: "none",
-                      boxShadow: "none",
-                      filter: "brightness(0.8) contrast(1.2)",
-                    }}
-                  />
-                </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
+                    <h2 className="text-3xl font-bold text-primary">
+                      Kolika je cijena?
+                    </h2>
+                  </div>
+                  <p className="text-foreground leading-relaxed text-lg">
+                    Cijena postavljanja i sami aparat su{" "}
+                    <span className="font-bold text-emerald-600">
+                      besplatni
+                    </span>
+                    , a novac koji aparat proizvede ćemo podijeliti po postotku
+                    tako da nema rizika za obje strane. Naš model poslovanja je
+                    zasnovan na{" "}
+                    <span className="font-bold text-accent">
+                      zajedničkom uspjehu
+                    </span>
+                    .
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl"></div>
+                <Image
+                  src="/assets/dimenzije.svg"
+                  alt="Alkotest aparat dimenzije"
+                  width={300}
+                  height={300}
+                  className="relative object-contain bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl"
+                />
               </div>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">
-                Kako da znate da smo pošteni?
-              </h2>
-              <p className="text-gray-300 leading-relaxed">
-                Svako korištenje aparata evidentirano je brojkom koju pokazujemo
-                fotografijom ili videom na kraju mjeseca da nema zabune o
-                brojnom stanju. Transparentnost je ključ našeg partnerstva.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">
-                Zašto baš mi?
-              </h2>
-              <p className="text-gray-300 leading-relaxed">
-                Naši aparati su <strong>profesionalno kalibrirani</strong> i
-                održavani, pružajući točne rezultate. Imamo iskustvo u
-                <strong> gastroindustriji</strong> i razumijemo potrebe vaših
-                gostiju. Naš tim je dostupan 24/7 za podršku.
-              </p>
             </div>
           </div>
 
-          {/* Contact & Social Section - Bottom */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-6">Kontakt</h2>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 group">
-                  <div className="p-3 bg-blue-600 rounded-lg group-hover:bg-blue-500 transition-colors">
-                    <Mail className="w-5 h-5" />
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-white" />
                   </div>
-                  <a
-                    href="mailto:alkotestaparat@gmail.com"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    alkotestaparat@gmail.com
-                  </a>
+                  <h2 className="text-2xl font-bold text-primary">
+                    Održavanje?
+                  </h2>
                 </div>
-                <div className="flex items-center gap-3 group">
-                  <div className="p-3 bg-blue-600 rounded-lg group-hover:bg-blue-500 transition-colors">
-                    <Phone className="w-5 h-5" />
+                <p className="text-foreground leading-relaxed text-lg">
+                  Što se tiče vašeg dijela, samo nam osigurajte mjesto na zidu,
+                  a redovan servis i vađenje kovanica održavamo jednom mjesečno.
+                  Trebamo samo nadodati slamke, mijenjati senzore, kablove,
+                  baterije, računalo i očistiti ga. To sve traje maksimalno sat
+                  vremena mjesečno.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-white" />
                   </div>
-                  <a
-                    href="tel:+385994171467"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    +385 99 4171 467
-                  </a>
+                  <h2 className="text-2xl font-bold text-primary">
+                    Kako da znate da smo pošteni?
+                  </h2>
+                </div>
+                <p className="text-foreground leading-relaxed text-lg">
+                  Svako korištenje aparata evidentirano je brojkom koju
+                  pokazujemo fotografijom ili videom na kraju mjeseca da nema
+                  zabune o brojnom stanju. Transparentnost je ključ našeg
+                  partnerstva.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-0 shadow-2xl">
+            <CardContent className="p-10">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Phone className="w-8 h-8 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold text-primary mb-2">
+                  Kontaktirajte Nas
+                </h2>
+                <p className="text-muted-foreground text-lg">
+                  Spremni smo odgovoriti na sva vaša pitanja
+                </p>
+              </div>
+
+              <div className="space-y-6 mb-8">
+                <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl hover:bg-white transition-colors group cursor-pointer">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground font-medium">
+                      Email
+                    </p>
+                    <a
+                      href="mailto:alkotestaparat@gmail.com"
+                      className="text-lg font-bold text-primary hover:text-accent transition-colors"
+                    >
+                      alkotestaparat@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 p-4 bg-white/80 rounded-2xl hover:bg-white transition-colors group cursor-pointer">
+                  <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Phone className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground font-medium">
+                      Telefon
+                    </p>
+                    <a
+                      href="tel:+385994171467"
+                      className="text-lg font-bold text-primary hover:text-accent transition-colors"
+                    >
+                      +385 99 4171 467
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-4">
-                Pratite nas na društvenim mrežama
-              </h3>
-              <div className="flex gap-4 mb-6">
+              <Button
+                size="lg"
+                className="w-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Pozovite Odmah!
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gradient-to-br from-accent/5 to-primary/5 border-0 shadow-2xl">
+            <CardContent className="p-10">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-primary mb-2">
+                  Pratite Nas
+                </h2>
+                <p className="text-muted-foreground text-lg">
+                  Budite u toku s najnovijim vijestima
+                </p>
+              </div>
+
+              <div className="flex justify-center gap-6 mb-8">
                 <Button
                   variant="outline"
                   size="lg"
-                  className="bg-transparent border-gray-600 hover:bg-blue-600 hover:border-blue-600 text-blue-500 hover:text-white p-4 group"
+                  className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 border-0 hover:from-blue-600 hover:to-blue-700 text-white hover:text-white group hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl rounded-2xl"
                   asChild
                 >
                   <a
@@ -152,15 +304,16 @@ export default function PartnerFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"
+                    className="!text-white"
                   >
-                    <Facebook className="w-6 h-6 text-blue-500 group-hover:text-white group-hover:scale-110 transition-all" />
+                    <FaFacebook className="w-10 h-10 !text-white group-hover:scale-110 transition-transform [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] relative z-50" />
                   </a>
                 </Button>
 
                 <Button
                   variant="outline"
                   size="lg"
-                  className="bg-transparent border-gray-600 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 hover:border-pink-600 text-pink-500 hover:text-white p-4 group"
+                  className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 border-0 hover:from-red-500 hover:to-orange-500 text-white hover:text-white group hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl rounded-2xl"
                   asChild
                 >
                   <a
@@ -168,15 +321,16 @@ export default function PartnerFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
+                    className="!text-white"
                   >
-                    <Instagram className="w-6 h-6 text-pink-500 group-hover:text-white group-hover:scale-110 transition-all" />
+                    <FaInstagram className="w-10 h-10 !text-white group-hover:scale-110 transition-transform [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] relative z-50" />
                   </a>
                 </Button>
 
                 <Button
                   variant="outline"
                   size="lg"
-                  className="bg-transparent border-gray-600 hover:bg-black hover:border-gray-400 text-gray-300 hover:text-white p-4 group"
+                  className="w-16 h-16 bg-gradient-to-br from-gray-800 to-black border-0 hover:from-black hover:to-gray-800 text-white hover:text-white group hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl rounded-2xl"
                   asChild
                 >
                   <a
@@ -184,26 +338,33 @@ export default function PartnerFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="TikTok"
+                    className="!text-white"
                   >
-                    <svg
-                      className="w-6 h-6 text-gray-300 group-hover:text-white group-hover:scale-110 transition-all"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-.88-.05A6.33 6.33 0 0 0 5.76 20.5a6.34 6.34 0 0 0 10.86-4.43V7.83a8.2 8.2 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.8-.26z" />
-                    </svg>
+                    <FaTiktok className="w-10 h-10 !text-white group-hover:scale-110 transition-transform [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.4))] relative z-50" />
                   </a>
                 </Button>
               </div>
-            </div>
-          </div>
+
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full border-2 border-accent text-accent hover:bg-accent hover:text-white font-bold py-4 px-8 rounded-2xl hover:scale-105 transition-all duration-300 bg-white/80"
+              >
+                Pridružite Se Zajednici
+              </Button>
+            </CardContent>
+          </Card>
         </div>
 
-        {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
-          <p>&copy; 2025 Alkotest Partner Program. Sva prava zadržana.</p>
+        <div className="mt-20 pt-8 border-t border-primary/20 text-center">
+          <p className="text-muted-foreground font-medium text-lg">
+            &copy; 2025 Alkotest Partner Program. Sva prava zadržana.
+          </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            Zajedno gradimo sigurniju budućnost
+          </p>
         </div>
       </div>
-    </footer>
+    </section>
   );
 }

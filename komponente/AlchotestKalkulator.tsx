@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import styles from "./AlchotestKalkulator.module.css";
 
 /**
  * BAC (promile) kalkulator — Next.js + TypeScript + Tailwind
@@ -135,297 +136,490 @@ export default function AlchotestKalkulator() {
     timeSinceFirstDrinkH >= 0;
 
   return (
-    <div className="mx-auto max-w-3xl p-6">
-      <h1 className="text-3xl font-bold mb-1">Kalkulator promila (procjena)</h1>
-
-      {/* 1) Spol */}
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-3">1) Spol</h2>
-        <div className="grid grid-cols-2 gap-4">
-          <button
-            type="button"
-            onClick={() => setGender("male")}
-            className={`rounded-2xl border p-4 transition hover:shadow ${
-              gender === "male"
-                ? "border-blue-500 ring-2 ring-blue-500"
-                : "border-gray-700"
-            }`}
-            aria-pressed={gender === "male"}
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-3xl">👨</span>
-              <div>
-                <div className="font-medium">Muškarac</div>
-              </div>
-            </div>
-          </button>
-          <button
-            type="button"
-            onClick={() => setGender("female")}
-            className={`rounded-2xl border p-4 transition hover:shadow ${
-              gender === "female"
-                ? "border-pink-500 ring-2 ring-pink-500"
-                : "border-gray-700"
-            }`}
-            aria-pressed={gender === "female"}
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-3xl">👩</span>
-              <div>
-                <div className="font-medium">Žena</div>
-              </div>
-            </div>
-          </button>
-        </div>
-      </section>
-
-      {/* 2) Težina */}
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-3">2) Težina</h2>
-        <div className="flex items-end gap-3">
-          <div className="flex-1">
-            <label
-              className="block text-sm text-gray-300 mb-1"
-              htmlFor="weightKg"
-            >
-              Težina (kg)
-            </label>
-            <input
-              id="weightKg"
-              type="number"
-              min={1}
-              inputMode="decimal"
-              className="w-full rounded-xl border border-gray-700 bg-black/30 p-3 outline-none focus:border-gray-500"
-              placeholder="npr. 75"
-              value={weightKg}
-              onChange={(e) =>
-                setWeightKg(e.target.value === "" ? "" : Number(e.target.value))
-              }
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 3) Pića */}
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">3) Pića</h2>
-        <p className="text-xs text-gray-400 mb-3">
-          Kliknite +/− za broj pića. Volumen i jačinu možete prilagoditi u
-          &ldquo;Napredne postavke&rdquo;.
-        </p>
-        <div className="grid gap-3">
-          <DrinkRow
-            emoji="🍺"
-            title={`Pivo (${beerMl} mL  ${beerPercent}% )`}
-            gramsEach={gramsOfAlcohol(beerMl, beerPercent)}
-            count={beerCount}
-            setCount={setBeerCount}
-          />
-          <DrinkRow
-            emoji="🍷"
-            title={`Vino (${wineMl} mL  ${winePercent}% )`}
-            gramsEach={gramsOfAlcohol(wineMl, winePercent)}
-            count={wineCount}
-            setCount={setWineCount}
-          />
-          <DrinkRow
-            emoji="🥃"
-            title={`Jako piće (${spiritMl} mL  ${spiritPercent}% )`}
-            gramsEach={gramsOfAlcohol(spiritMl, spiritPercent)}
-            count={spiritCount}
-            setCount={setSpiritCount}
-          />
-        </div>
-
-        {/* Napredne postavke */}
-        <div className="mt-4">
-          <button
-            type="button"
-            onClick={() => setAdvancedOpen((v) => !v)}
-            className="text-sm underline text-gray-300 hover:text-white"
-          >
-            {advancedOpen
-              ? "Sakrij napredne postavke"
-              : "Prikaži napredne postavke"}
-          </button>
-          {advancedOpen && (
-            <div className="mt-3 grid gap-4 rounded-2xl border border-gray-800 p-4">
-              <VolumePercentRow
-                label="Pivo"
-                ml={beerMl}
-                setMl={setBeerMl}
-                percent={beerPercent}
-                setPercent={setBeerPercent}
-                quickMl={[300, 500, 1000]}
-              />
-              <VolumePercentRow
-                label="Vino"
-                ml={wineMl}
-                setMl={setWineMl}
-                percent={winePercent}
-                setPercent={setWinePercent}
-                quickMl={[100, 150, 200]}
-              />
-              <VolumePercentRow
-                label="Jako piće"
-                ml={spiritMl}
-                setMl={setSpiritMl}
-                percent={spiritPercent}
-                setPercent={setSpiritPercent}
-                quickMl={[20, 30, 100]}
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Sažetak grama + kalorije */}
-        <div className="mt-4 text-sm text-gray-300 space-y-0.5">
-          <div>
-            Ukupno procijenjenih grama alkohola (7 kcal/g za fitness fanatike):{" "}
-            <span className="font-semibold"> {totalGrams.toFixed(1)} g</span>
-          </div>
-          <div>
-            ≈ Kalorije iz čistog alkohola:
-            <span className="font-semibold"> {Math.round(totalKcal)} kcal</span>
-          </div>
-        </div>
-      </section>
-
-      {/* 4) Vrijeme */}
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-3">4) Vrijeme</h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <label
-              className="block text-sm text-gray-300 mb-1"
-              htmlFor="elapsedH"
-            >
-              Vrijeme od prvog pića (h)
-            </label>
-            <input
-              id="elapsedH"
-              type="number"
-              min={0}
-              step={0.25}
-              className="w-full rounded-xl border border-gray-700 bg-black/30 p-3 outline-none focus:border-gray-500"
-              placeholder="npr. 2.5"
-              value={timeSinceFirstDrinkH}
-              onChange={(e) =>
-                setTimeSinceFirstDrinkH(
-                  e.target.value === "" ? "" : Number(e.target.value)
-                )
-              }
-            />
-          </div>
-        </div>
-
-        <div className="mt-4">
-          <label className="block text-sm text-gray-300 mb-1" htmlFor="elim">
-            Brzina razgradnje (‰/h)
-          </label>
-          <div className="flex items-center gap-2">
-            <select
-              id="elim"
-              className="rounded-xl border border-gray-700 bg-black/30 p-2"
-              value={elimRate}
-              onChange={(e) => setElimRate(Number(e.target.value))}
-            >
-              <option value={0.1}>0.10 ‰/h (sporije)</option>
-              <option value={0.2}>0.20 ‰/h (brže)</option>
-            </select>
-          </div>
-          <p className="mt-2 text-xs text-gray-400">
-            Napomena: Mjerenje unutar 15 minuta od zadnjeg pića je nepouzdano i
-            često pokazuje više vrijednosti.
+    <div className={styles.container}>
+      <div className={styles.maxWidth}>
+        {/* Hero Section */}
+        <div className={styles.heroSection}>
+          <h1 className={styles.heroTitle}>Kalkulator Promila</h1>
+          <p className={styles.heroSubtitle}>
+            Moderna procjena razine alkohola u krvi pomoću Widmarkove jednadžbe
           </p>
+          <div className={styles.heroWarning}>
+            <p>⚠️ Samo za procjenu • Ne koristiti za vožnju</p>
+          </div>
         </div>
-      </section>
 
-      {/* 5) Submit */}
-      <section className="mb-6">
-        <div className="flex gap-3">
-          <button
-            type="button"
-            onClick={() => setSubmitted(true)}
-            disabled={!formValid}
-            className="rounded-xl bg-white/10 px-5 py-3 font-semibold backdrop-blur transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            Izračunaj
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setGender(null);
-              setWeightKg("");
-              setBeerCount(0);
-              setWineCount(0);
-              setSpiritCount(0);
-              setTimeSinceFirstDrinkH("");
-              setElimRate(0.1);
-              setAdvancedOpen(false);
-              setSubmitted(false);
-              setBeerMl(DEFAULTS.beerMl);
-              setBeerPercent(DEFAULTS.beerPercent);
-              setWineMl(DEFAULTS.wineMl);
-              setWinePercent(DEFAULTS.winePercent);
-              setSpiritMl(DEFAULTS.spiritMl);
-              setSpiritPercent(DEFAULTS.spiritPercent);
-            }}
-            className="rounded-xl border border-gray-700 px-5 py-3 font-semibold text-gray-200 hover:bg-white/5"
-          >
-            Reset
-          </button>
-        </div>
-      </section>
+        <div className={styles.mainGrid}>
+          {/* Main Form */}
+          <div className={styles.formSection}>
+            {/* 1) Spol */}
+            <section className={styles.glassCard}>
+              <h2 className={styles.sectionTitle}>
+                <span className={styles.stepNumber}>1</span>
+                Spol
+              </h2>
+              <div className={styles.genderGrid}>
+                <button
+                  type="button"
+                  onClick={() => setGender("male")}
+                  className={`${styles.genderButton} ${
+                    gender === "male" ? styles.selected : ""
+                  }`}
+                  aria-pressed={gender === "male"}
+                >
+                  <div className={styles.genderContent}>
+                    <span className={styles.genderEmoji}>👨</span>
+                    <div className={styles.genderText}>
+                      <div className={styles.genderTitle}>Muškarac</div>
+                      <div className={styles.genderSubtitle}>Faktor: 0.68</div>
+                    </div>
+                  </div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setGender("female")}
+                  className={`${styles.genderButton} ${
+                    gender === "female" ? styles.selected : ""
+                  }`}
+                  aria-pressed={gender === "female"}
+                >
+                  <div className={styles.genderContent}>
+                    <span className={styles.genderEmoji}>👩</span>
+                    <div className={styles.genderText}>
+                      <div className={styles.genderTitle}>Žena</div>
+                      <div className={styles.genderSubtitle}>Faktor: 0.55</div>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </section>
 
-      {/* Rezultat */}
-      {submitted && (
-        <section className="mb-10">
-          <h2 className="text-xl font-semibold mb-3">Rezultat</h2>
+            {/* 2) Težina */}
+            <section className={styles.glassCard}>
+              <h2 className={styles.sectionTitle}>
+                <span className={styles.stepNumber}>2</span>
+                Težina
+              </h2>
+              <div className={styles.inputGroup}>
+                <label className={styles.inputLabel} htmlFor="weightKg">
+                  Tjelesna težina
+                </label>
+                <div className={styles.inputWrapper}>
+                  <input
+                    id="weightKg"
+                    type="number"
+                    min={1}
+                    inputMode="decimal"
+                    className={styles.input}
+                    placeholder="75"
+                    value={weightKg}
+                    onChange={(e) =>
+                      setWeightKg(
+                        e.target.value === "" ? "" : Number(e.target.value)
+                      )
+                    }
+                  />
+                  <span className={styles.inputUnit}>kg</span>
+                </div>
+              </div>
+            </section>
 
-          <div className="grid gap-4 md:grid-cols-3">
-            <StatCard
-              label="Procjena sada (‰)"
-              value={afterElimPermille.toFixed(2)}
-              highlight
-            />
-            <StatCard
-              label="Početno (‰)"
-              value={initialBACpermille.toFixed(2)}
-            />
-            <StatCard label="Do 0.0‰" value={formatHoursToZero(hoursToZero)} />
+            {/* 3) Pića */}
+            <section className={styles.glassCard}>
+              <h2 className={styles.sectionTitle}>
+                <span className={styles.stepNumber}>3</span>
+                Konzumirana pića
+              </h2>
+              <p className={styles.inputLabel}>
+                Odaberite broj pića koje ste konzumirali. Možete prilagoditi
+                volumen i jačinu u naprednim postavkama.
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                }}
+              >
+                <DrinkRow
+                  emoji="🍺"
+                  title={`Pivo (${beerMl} mL • ${beerPercent}%)`}
+                  gramsEach={gramsOfAlcohol(beerMl, beerPercent)}
+                  count={beerCount}
+                  setCount={setBeerCount}
+                />
+                <DrinkRow
+                  emoji="🍷"
+                  title={`Vino (${wineMl} mL • ${winePercent}%)`}
+                  gramsEach={gramsOfAlcohol(wineMl, winePercent)}
+                  count={wineCount}
+                  setCount={setWineCount}
+                />
+                <DrinkRow
+                  emoji="🥃"
+                  title={`Žestoko piće (${spiritMl} mL • ${spiritPercent}%)`}
+                  gramsEach={gramsOfAlcohol(spiritMl, spiritPercent)}
+                  count={spiritCount}
+                  setCount={setSpiritCount}
+                />
+              </div>
+
+              {/* Napredne postavke */}
+              <div style={{ marginTop: "2rem" }}>
+                <button
+                  type="button"
+                  onClick={() => setAdvancedOpen((v) => !v)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    color: "var(--color-primary)",
+                    fontWeight: "500",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "color 0.3s ease",
+                  }}
+                >
+                  <svg
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      transition: "transform 0.3s ease",
+                      transform: advancedOpen
+                        ? "rotate(180deg)"
+                        : "rotate(0deg)",
+                    }}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                  {advancedOpen
+                    ? "Sakrij napredne postavke"
+                    : "Prikaži napredne postavke"}
+                </button>
+                {advancedOpen && (
+                  <div
+                    style={{
+                      marginTop: "1.5rem",
+                      padding: "1.5rem",
+                      background: "rgba(255, 255, 255, 0.4)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(148, 163, 184, 0.2)",
+                      borderRadius: "1rem",
+                    }}
+                  >
+                    <VolumePercentRow
+                      label="Pivo"
+                      ml={beerMl}
+                      setMl={setBeerMl}
+                      percent={beerPercent}
+                      setPercent={setBeerPercent}
+                      quickMl={[300, 500, 1000]}
+                    />
+                    <VolumePercentRow
+                      label="Vino"
+                      ml={wineMl}
+                      setMl={setWineMl}
+                      percent={winePercent}
+                      setPercent={setWinePercent}
+                      quickMl={[100, 150, 200]}
+                    />
+                    <VolumePercentRow
+                      label="Žestoko piće"
+                      ml={spiritMl}
+                      setMl={setSpiritMl}
+                      percent={spiritPercent}
+                      setPercent={setSpiritPercent}
+                      quickMl={[20, 30, 100]}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Sažetak */}
+              {totalGrams > 0 && (
+                <div
+                  style={{
+                    marginTop: "1.5rem",
+                    background: "rgba(255, 255, 255, 0.4)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(148, 163, 184, 0.2)",
+                    borderRadius: "1rem",
+                    padding: "1rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "1rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    <div>
+                      <div
+                        style={{
+                          fontSize: "1.5rem",
+                          fontWeight: "bold",
+                          color: "var(--color-primary)",
+                        }}
+                      >
+                        {totalGrams.toFixed(1)}g
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "0.875rem",
+                          color: "var(--color-muted-foreground)",
+                        }}
+                      >
+                        Ukupno alkohola
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontSize: "1.5rem",
+                          fontWeight: "bold",
+                          color: "var(--color-secondary)",
+                        }}
+                      >
+                        {Math.round(totalKcal)}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "0.875rem",
+                          color: "var(--color-muted-foreground)",
+                        }}
+                      >
+                        Kalorije
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </section>
+
+            {/* 4) Vrijeme */}
+            <section className={styles.glassCard}>
+              <h2 className={styles.sectionTitle}>
+                <span className={styles.stepNumber}>4</span>
+                Vremenski okvir
+              </h2>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr",
+                  gap: "1.5rem",
+                }}
+              >
+                <div className={styles.inputGroup}>
+                  <label className={styles.inputLabel} htmlFor="elapsedH">
+                    Vrijeme od prvog pića
+                  </label>
+                  <div className={styles.inputWrapper}>
+                    <input
+                      id="elapsedH"
+                      type="number"
+                      min={0}
+                      step={0.25}
+                      className={styles.input}
+                      placeholder="2.5"
+                      value={timeSinceFirstDrinkH}
+                      onChange={(e) =>
+                        setTimeSinceFirstDrinkH(
+                          e.target.value === "" ? "" : Number(e.target.value)
+                        )
+                      }
+                    />
+                    <span className={styles.inputUnit}>h</span>
+                  </div>
+                </div>
+
+                <div className={styles.inputGroup}>
+                  <label className={styles.inputLabel} htmlFor="elim">
+                    Brzina razgradnje
+                  </label>
+                  <select
+                    id="elim"
+                    className={styles.input}
+                    value={elimRate}
+                    onChange={(e) => setElimRate(Number(e.target.value))}
+                  >
+                    <option value={0.1}>0.10 ‰/h (sporije)</option>
+                    <option value={0.2}>0.20 ‰/h (brže)</option>
+                  </select>
+                </div>
+              </div>
+              <div
+                style={{
+                  marginTop: "1rem",
+                  background: "rgba(255, 255, 255, 0.4)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(148, 163, 184, 0.2)",
+                  borderRadius: "0.75rem",
+                  padding: "1rem",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "0.875rem",
+                    color: "var(--color-muted-foreground)",
+                  }}
+                >
+                  💡 Mjerenje unutar 15 minuta od zadnjeg pića može biti
+                  nepouzdano i često pokazuje više vrijednosti.
+                </p>
+              </div>
+            </section>
+
+            {/* 5) Submit */}
+            <section className={styles.buttonGroup}>
+              <button
+                type="button"
+                onClick={() => setSubmitted(true)}
+                disabled={!formValid}
+                className={styles.primaryButton}
+              >
+                🧮 Izračunaj promile
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setGender(null);
+                  setWeightKg("");
+                  setBeerCount(0);
+                  setWineCount(0);
+                  setSpiritCount(0);
+                  setTimeSinceFirstDrinkH("");
+                  setElimRate(0.1);
+                  setAdvancedOpen(false);
+                  setSubmitted(false);
+                  setBeerMl(DEFAULTS.beerMl);
+                  setBeerPercent(DEFAULTS.beerPercent);
+                  setWineMl(DEFAULTS.wineMl);
+                  setWinePercent(DEFAULTS.winePercent);
+                  setSpiritMl(DEFAULTS.spiritMl);
+                  setSpiritPercent(DEFAULTS.spiritPercent);
+                }}
+                className={styles.secondaryButton}
+              >
+                🔄 Reset
+              </button>
+            </section>
           </div>
 
-          <ul className="mt-4 space-y-1 text-sm text-gray-300">
-            <li>
-              • Eliminacija računa: {elimRate.toFixed(2)} ‰/h ×{" "}
-              {elapsedH.toFixed(2)} h
-            </li>
-            <li>
-              • Ukupno alkohola: {totalGrams.toFixed(1)} g (
-              {Math.round(totalKcal)} kcal)
-            </li>
-            <li>
-              • Faktor raspodjele (r):{" "}
-              {gender ? R_VALUES[gender].toFixed(2) : "—"}
-            </li>
-          </ul>
+          {/* Results Sidebar */}
+          <div>
+            {submitted && (
+              <div className={styles.resultsSticky}>
+                <div className={styles.resultsCard}>
+                  <h2 className={styles.resultsTitle}>📊 Rezultat</h2>
 
-          <div className="mt-4 rounded-2xl border border-gray-800 p-4 text-sm text-gray-300">
-            <p className="mb-2 font-semibold">Važno:</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>
-                Ovo je procjena i može odstupati (hrana, zdravlje, lijekovi,
-                tempo konzumacije).
-              </li>
-              <li>
-                Za pouzdanije mjerenje pričekajte barem 15 minuta nakon zadnjeg
-                pića.
-              </li>
-            </ul>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1.5rem",
+                    }}
+                  >
+                    <div className={styles.mainResult}>
+                      <div className={styles.mainResultValue}>
+                        {afterElimPermille.toFixed(2)}
+                      </div>
+                      <div className={styles.mainResultLabel}>‰ trenutno</div>
+                    </div>
+
+                    <div className={styles.statsGrid}>
+                      <StatCard
+                        label="Do 0.0‰"
+                        value={formatHoursToZero(hoursToZero)}
+                        icon="⏰"
+                      />
+                      <StatCard
+                        label="Ukupno"
+                        value={`${totalGrams.toFixed(1)} g`}
+                        icon="🧮"
+                      />
+                    </div>
+
+                    <div className={styles.detailsCard}>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "0.5rem",
+                          fontSize: "0.875rem",
+                        }}
+                      >
+                        <div className={styles.detailRow}>
+                          <span className={styles.detailLabel}>
+                            Eliminacija:
+                          </span>
+                          <span className={styles.detailValue}>
+                            {elimRate.toFixed(2)} ‰/h × {elapsedH.toFixed(2)} h
+                          </span>
+                        </div>
+                        <div className={styles.detailRow}>
+                          <span className={styles.detailLabel}>
+                            Ukupno alkohola:
+                          </span>
+                          <span className={styles.detailValue}>
+                            {totalGrams.toFixed(1)} g
+                          </span>
+                        </div>
+                        <div className={styles.detailRow}>
+                          <span className={styles.detailLabel}>Kalorije:</span>
+                          <span className={styles.detailValue}>
+                            {Math.round(totalKcal)} kcal
+                          </span>
+                        </div>
+                        <div className={styles.detailRow}>
+                          <span className={styles.detailLabel}>
+                            Faktor (r):
+                          </span>
+                          <span className={styles.detailValue}>
+                            {gender ? R_VALUES[gender].toFixed(2) : "—"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={styles.warningCard}>
+                      <div className={styles.warningContent}>
+                        <span className={styles.warningIcon}>⚠️</span>
+                        <div className={styles.warningText}>
+                          <p className={styles.warningTitle}>Važne napomene:</p>
+                          <ul className={styles.warningList}>
+                            <li>
+                              • Procjena može odstupati ovisno o hrani, zdravlju
+                              i lijekovima
+                            </li>
+                            <li>
+                              • Pričekajte 15+ minuta nakon zadnjeg pića za
+                              pouzdanije mjerenje
+                            </li>
+                            <li>
+                              • Nikad ne vozite nakon konzumacije alkohola
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-        </section>
-      )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -446,34 +640,36 @@ function DrinkRow({
   setCount: (n: number) => void;
 }) {
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-gray-800 p-3">
-      <div className="flex items-center gap-3">
-        <span className="text-2xl">{emoji}</span>
-        <div>
-          <div className="font-medium">{title}</div>
-          <div className="text-xs text-gray-400">
-            ≈ {gramsEach.toFixed(1)} g po piću
+    <div className={styles.drinkRow}>
+      <div className={styles.drinkContent}>
+        <div className={styles.drinkInfo}>
+          <span className={styles.drinkEmoji}>{emoji}</span>
+          <div>
+            <div className={styles.drinkTitle}>{title}</div>
+            <div className={styles.drinkSubtitle}>
+              ≈ {gramsEach.toFixed(1)} g po piću
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={() => setCount(Math.max(0, count - 1))}
-          className="h-9 w-9 rounded-lg border border-gray-700 text-xl leading-none hover:bg-white/5"
-          aria-label="Smanji"
-        >
-          −
-        </button>
-        <div className="min-w-[2.5rem] text-center font-semibold">{count}</div>
-        <button
-          type="button"
-          onClick={() => setCount(count + 1)}
-          className="h-9 w-9 rounded-lg border border-gray-700 text-xl leading-none hover:bg-white/5"
-          aria-label="Povećaj"
-        >
-          +
-        </button>
+        <div className={styles.drinkControls}>
+          <button
+            type="button"
+            onClick={() => setCount(Math.max(0, count - 1))}
+            className={styles.drinkButton}
+            aria-label="Smanji"
+          >
+            −
+          </button>
+          <div className={styles.drinkCount}>{count}</div>
+          <button
+            type="button"
+            onClick={() => setCount(count + 1)}
+            className={styles.drinkButton}
+            aria-label="Povećaj"
+          >
+            +
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -495,43 +691,105 @@ function VolumePercentRow({
   quickMl?: number[];
 }) {
   return (
-    <div className="grid md:grid-cols-2 gap-3">
-      <div>
-        <label className="block text-sm text-gray-300 mb-1">
-          {label} — volumen (mL)
-        </label>
-        <div className="flex gap-2">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        marginBottom: "1.5rem",
+      }}
+    >
+      <h4 style={{ fontWeight: "600", fontSize: "1.125rem" }}>{label}</h4>
+      <div
+        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}
+      >
+        <div>
+          <label
+            style={{
+              display: "block",
+              fontSize: "0.875rem",
+              fontWeight: "500",
+              color: "var(--color-muted-foreground)",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Volumen (mL)
+          </label>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+          >
+            <input
+              type="number"
+              min={1}
+              style={{
+                width: "100%",
+                borderRadius: "0.75rem",
+                background: "rgba(255, 255, 255, 0.4)",
+                backdropFilter: "blur(10px)",
+                border: "2px solid transparent",
+                padding: "0.75rem",
+                fontWeight: "600",
+                outline: "none",
+                transition: "all 0.3s ease",
+              }}
+              value={ml}
+              onChange={(e) => setMl(Number(e.target.value))}
+            />
+            <div style={{ display: "flex", gap: "0.5rem" }}>
+              {quickMl.map((q) => (
+                <button
+                  key={q}
+                  type="button"
+                  onClick={() => setMl(q)}
+                  style={{
+                    padding: "0.25rem 0.75rem",
+                    borderRadius: "0.5rem",
+                    background: "rgba(255, 255, 255, 0.4)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid transparent",
+                    fontSize: "0.875rem",
+                    fontWeight: "500",
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                  }}
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div>
+          <label
+            style={{
+              display: "block",
+              fontSize: "0.875rem",
+              fontWeight: "500",
+              color: "var(--color-muted-foreground)",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Jačina (%)
+          </label>
           <input
             type="number"
-            min={1}
-            className="w-full rounded-xl border border-gray-700 bg-black/30 p-2 outline-none focus:border-gray-500"
-            value={ml}
-            onChange={(e) => setMl(Number(e.target.value))}
+            min={0}
+            step={0.1}
+            style={{
+              width: "100%",
+              borderRadius: "0.75rem",
+              background: "rgba(255, 255, 255, 0.4)",
+              backdropFilter: "blur(10px)",
+              border: "2px solid transparent",
+              padding: "0.75rem",
+              fontWeight: "600",
+              outline: "none",
+              transition: "all 0.3s ease",
+            }}
+            value={percent}
+            onChange={(e) => setPercent(Number(e.target.value))}
           />
-          {quickMl.map((q) => (
-            <button
-              key={q}
-              type="button"
-              onClick={() => setMl(q)}
-              className="rounded-lg border border-gray-700 px-3 text-sm hover:bg-white/5"
-            >
-              {q}
-            </button>
-          ))}
         </div>
-      </div>
-      <div>
-        <label className="block text-sm text-gray-300 mb-1">
-          {label} — jačina (%)
-        </label>
-        <input
-          type="number"
-          min={0}
-          step={0.1}
-          className="w-full rounded-xl border border-gray-700 bg-black/30 p-2 outline-none focus:border-gray-500"
-          value={percent}
-          onChange={(e) => setPercent(Number(e.target.value))}
-        />
       </div>
     </div>
   );
@@ -540,20 +798,17 @@ function VolumePercentRow({
 function StatCard({
   label,
   value,
-  highlight = false,
+  icon,
 }: {
   label: string;
   value: string;
-  highlight?: boolean;
+  icon: string;
 }) {
   return (
-    <div
-      className={`rounded-2xl border p-4 ${
-        highlight ? "border-emerald-500" : "border-gray-800"
-      }`}
-    >
-      <div className="text-sm text-gray-400">{label}</div>
-      <div className="mt-2 text-3xl font-bold">{value}</div>
+    <div className={styles.statCard}>
+      <div className={styles.statIcon}>{icon}</div>
+      <div className={styles.statLabel}>{label}</div>
+      <div className={styles.statValue}>{value}</div>
     </div>
   );
 }
