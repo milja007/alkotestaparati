@@ -34,39 +34,46 @@ export type BubbleMenuProps = {
 
 const DEFAULT_ITEMS: MenuItem[] = [
   {
-    label: "home",
-    href: "#",
-    ariaLabel: "Home",
+    label: "O nama",
+    href: "#ONama",
+    ariaLabel: "O nama",
     rotation: -8,
     hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
   },
   {
-    label: "about",
-    href: "#",
-    ariaLabel: "About",
+    label: "Naše lokacije",
+    href: "#NašeLokacije",
+    ariaLabel: "Naše lokacije",
     rotation: 8,
     hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
   },
   {
-    label: "projects",
-    href: "#",
-    ariaLabel: "Documentation",
+    label: "Upute korištenja",
+    href: "#UputeKorištenja",
+    ariaLabel: "Upute korištenja",
     rotation: 8,
     hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
   },
   {
-    label: "blog",
-    href: "#",
-    ariaLabel: "Blog",
+    label: "Informacije",
+    href: "#Informacije",
+    ariaLabel: "Informacije",
     rotation: 8,
     hoverStyles: { bgColor: "#ef4444", textColor: "#ffffff" },
   },
   {
-    label: "contact",
-    href: "#",
-    ariaLabel: "Contact",
+    label: "Online kalkulator",
+    href: "#OnlineKalkulator",
+    ariaLabel: "Online kalkulator",
     rotation: -8,
     hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+  },
+  {
+    label: "Postani partner",
+    href: "#PostaniPartner",
+    ariaLabel: "Postani partner",
+    rotation: -8,
+    hoverStyles: { bgColor: "#06b6d4", textColor: "#ffffff" },
   },
 ];
 
@@ -105,6 +112,24 @@ export default function BubbleMenu({
     if (nextState) setShowOverlay(true);
     setIsMenuOpen(nextState);
     onMenuClick?.(nextState);
+  };
+
+  const handleMenuItemClick = (href: string) => {
+    // Zatvori menu
+    setIsMenuOpen(false);
+    onMenuClick?.(false);
+
+    // Smooth scroll do sekcije
+    if (href.startsWith("#")) {
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -245,6 +270,10 @@ export default function BubbleMenu({
                   href={item.href}
                   aria-label={item.ariaLabel || item.label}
                   className="pill-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleMenuItemClick(item.href);
+                  }}
                   style={
                     {
                       "--item-rot": `${item.rotation ?? 0}deg`,

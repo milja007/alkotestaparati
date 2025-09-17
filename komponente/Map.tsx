@@ -1,18 +1,28 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useMemo, useState } from "react";
-import mapboxgl from "mapbox-gl";
+import type mapboxgl from "mapbox-gl"; // samo tipovi, runtime ide kroz dynamic import
 import "mapbox-gl/dist/mapbox-gl.css";
-// Vaš Mapbox access token
+
+// Mapbox access token
 const MAPBOX_ACCESS_TOKEN =
   "pk.eyJ1IjoibWlsamEwMDciLCJhIjoiY21ld3Rncm9oMGp1dTJqcjFvOTkzaHB2MiJ9.ts703Zeabqe9IVm7beTAKw";
 
+// Stilovi
+const STYLES = {
+  streets: "mapbox://styles/mapbox/streets-v12",
+  satellite: "mapbox://styles/mapbox/satellite-streets-v12",
+  light: "mapbox://styles/mapbox/light-v11",
+  dark: "mapbox://styles/mapbox/dark-v11",
+} as const;
+
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<unknown>(null);
-  const [showAllLocations, setShowAllLocations] = useState(false);
+  const map = useRef<mapboxgl.Map | null>(null);
 
-  // Koordinate za Zagreb centar i 3 bliska lokacije s poboljšanim podacima
+  const [showAllLocations, setShowAllLocations] = useState(false);
+  const [mapStyle, setMapStyle] = useState<keyof typeof STYLES>("streets");
+
   const locations = useMemo(
     () => [
       {
@@ -97,73 +107,59 @@ export default function Map() {
   );
 
   useEffect(() => {
-    if (map.current) return; // Inicijaliziraj mapu samo jednom
+    if (map.current) return; // init samo jednom
 
     const initializeMap = async () => {
-      if (mapContainer.current) {
-        try {
-          const mapboxModule = await import("mapbox-gl");
-          const mapboxgl = mapboxModule.default;
+      if (!mapContainer.current) return;
+      try {
+        const mapboxModule = await import("mapbox-gl");
+        const M = mapboxModule.default as typeof mapboxgl;
 
-          // Postavi access token globalno
-          mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+        (M as typeof mapboxgl & { accessToken: string }).accessToken =
+          MAPBOX_ACCESS_TOKEN;
 
-          map.current = new mapboxgl.Map({
-            container: mapContainer.current,
-            style: "mapbox://styles/mapbox/light-v11",
-            center: [15.9734885, 45.813173],
-            zoom: 9,
-          });
+        map.current = new M.Map({
+          container: mapContainer.current,
+          style: STYLES[mapStyle], // default streets
+          center: [15.9734885, 45.813173],
+          zoom: 9,
+        });
 
-          // Dodaj navigation kontrole
-          (map.current as mapboxgl.Map).addControl(
-            new mapboxgl.NavigationControl(),
-            "top-right"
-          );
-          (map.current as mapboxgl.Map).addControl(
-            new mapboxgl.GeolocateControl({
-              positionOptions: {
-                enableHighAccuracy: true,
-              },
-              trackUserLocation: true,
-            }),
-            "top-left"
-          );
+        map.current.addControl(new M.NavigationControl(), "top-right");
+        map.current.addControl(
+          new M.GeolocateControl({
+            positionOptions: { enableHighAccuracy: true },
+            trackUserLocation: true,
+          }),
+          "top-left"
+        );
 
-          // Dodaj markere za sve lokacije
-          locations.forEach((location) => {
-            // Kreiraj custom marker element s personaliziranom slikom
-            const markerEl = document.createElement("div");
-            markerEl.className = "custom-marker";
-            markerEl.innerHTML = `<img src="/assets/location-pin.png" alt="Location" class="location-pin-image" />`;
+        // Markeri + popupovi
+        locations.forEach((location) => {
+          const markerEl = document.createElement("div");
+          markerEl.className = "custom-marker";
+          markerEl.innerHTML = `<img src="/assets/location-pin.png" alt="Location" class="location-pin-image" />`;
 
-            // Dodaj marker na mapu
-            const marker = new mapboxgl.Marker(markerEl)
-              .setLngLat(location.coordinates)
-              .addTo(map.current as mapboxgl.Map);
+          const marker = new M.Marker(markerEl)
+            .setLngLat(location.coordinates)
+            .addTo(map.current!);
 
-            // Dodaj kompaktni popup s jednom slikom
-            const popup = new mapboxgl.Popup({
-              offset: [0, -10], // Otvara se odozgo
-              maxWidth: "200px",
-              className: "modern-popup",
-              closeButton: false, // Onemogući default close button
-            }).setHTML(`
+          const popup = new M.Popup({
+            offset: [0, -10],
+            maxWidth: "200px",
+            className: "modern-popup",
+            closeButton: false,
+          }).setHTML(`
             <div class="modern-popup-content" data-location-id="${location.id}" data-google-maps-url="${location.googleMapsUrl}" style="cursor: pointer;">
-              <!-- Custom close button -->
               <button class="custom-close-btn" onclick="event.stopPropagation(); this.closest('.mapboxgl-popup').remove();" title="Zatvori">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
               </button>
-              
-              <!-- Glavna slika -->
               <div class="popup-image-container">
                 <img src="${location.photos[0]}" alt="${location.name}" class="main-image" style="width: 100%; height: 100%; object-fit: cover;" />
               </div>
-              
-              <!-- Sadržaj -->
               <div class="popup-body">
                 <div class="popup-main">
                   <h3 class="popup-title">${location.name}</h3>
@@ -180,45 +176,36 @@ export default function Map() {
             </div>
           `);
 
-            marker.setPopup(popup);
+          marker.setPopup(popup);
 
-            // Dodaj event listener za klik na popup
-            marker.getElement().addEventListener("click", () => {
-              setTimeout(() => {
-                const popupContent = document.querySelector(
-                  `[data-location-id="${location.id}"]`
-                );
-                if (popupContent) {
-                  // Dodaj event listener za klik na popup
-                  const handlePopupClick = () => {
-                    // Otvori Google Maps
-                    const googleMapsUrl = popupContent.getAttribute(
-                      "data-google-maps-url"
-                    );
-                    if (googleMapsUrl) {
-                      window.open(googleMapsUrl, "_blank");
-                    }
-                  };
-
-                  // Ukloni postojeći event listener ako postoji
-                  popupContent.removeEventListener("click", handlePopupClick);
-                  // Dodaj novi event listener
-                  popupContent.addEventListener("click", handlePopupClick);
-                }
-              }, 100);
-            });
+          marker.getElement().addEventListener("click", () => {
+            setTimeout(() => {
+              const popupContent = document.querySelector(
+                `[data-location-id="${location.id}"]`
+              );
+              if (popupContent) {
+                const handlePopupClick = () => {
+                  const googleMapsUrl = popupContent.getAttribute(
+                    "data-google-maps-url"
+                  );
+                  if (googleMapsUrl) window.open(googleMapsUrl, "_blank");
+                };
+                // (ne zamaramo se uklanjanjem — bezopasno je)
+                popupContent.addEventListener("click", handlePopupClick);
+              }
+            }, 100);
           });
-        } catch (error) {
-          console.error("Failed to load Mapbox GL:", error);
-          if (mapContainer.current) {
-            mapContainer.current.innerHTML = `
-              <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
-                <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">Interaktivna mapa</h3>
-                <p style="margin: 0; opacity: 0.9;">Mapa se učitava... Molimo pričekajte.</p>
-              </div>
-            `;
-          }
+        });
+      } catch (error) {
+        console.error("Failed to load Mapbox GL:", error);
+        if (mapContainer.current) {
+          mapContainer.current.innerHTML = `
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center;padding:2rem;">
+              <div style="font-size:3rem;margin-bottom:1rem;">🗺️</div>
+              <h3 style="margin:0 0 1rem 0;font-size:1.5rem;">Interaktivna mapa</h3>
+              <p style="margin:0;opacity:.9;">Mapa se učitava... Molimo pričekajte.</p>
+            </div>
+          `;
         }
       }
     };
@@ -226,19 +213,62 @@ export default function Map() {
     initializeMap();
 
     return () => {
-      if (map.current) {
-        (map.current as mapboxgl.Map).remove();
-      }
+      map.current?.remove();
+      map.current = null;
     };
-  }, [locations]);
+  }, [locations, mapStyle]);
+
+  // Sigurna promjena stila – rješava "bijeli ekran"
+  const switchStyle = (styleKey: keyof typeof STYLES) => {
+    const m = map.current;
+    if (!m) return;
+
+    // spremi kameru
+    const center = m.getCenter();
+    const zoom = m.getZoom();
+    const bearing = m.getBearing();
+    const pitch = m.getPitch();
+
+    // promijeni stil i nakon load vrati kameru + resize
+    m.setStyle(STYLES[styleKey]);
+    m.once("style.load", () => {
+      m.jumpTo({ center, zoom, bearing, pitch });
+      m.resize();
+    });
+
+    setMapStyle(styleKey);
+  };
 
   return (
     <div className="modern-map-container">
       <div className="map-wrapper">
+        {/* Style switcher */}
+        <div className="style-switcher">
+          {(
+            [
+              ["streets", "Streets"],
+              ["satellite", "Satellite"],
+              ["light", "Light"],
+              ["dark", "Dark"],
+            ] as Array<[keyof typeof STYLES, string]>
+          ).map(([key, label]) => (
+            <button
+              type="button"
+              key={key}
+              className={`style-btn ${mapStyle === key ? "active" : ""}`}
+              onClick={() => switchStyle(key)}
+              aria-pressed={mapStyle === key}
+              title={`Promijeni na ${label}`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
         <div ref={mapContainer} className="map" />
       </div>
 
-      {/* Minijaturne lokacije ispod mape */}
+      {/* Grid s karticama lokacija */}
       <div className="modern-locations-grid">
         {(showAllLocations ? locations : locations.slice(0, 2)).map(
           (location, index) => (
@@ -285,10 +315,10 @@ export default function Map() {
           )
         )}
 
-        {/* Show more button */}
         {!showAllLocations && locations.length > 2 && (
           <div className="show-more-container">
             <button
+              type="button"
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
               onClick={() => setShowAllLocations(true)}
             >
@@ -321,9 +351,45 @@ export default function Map() {
         .map {
           width: 100%;
           height: 600px;
+          background: #f3f4f6; /* suptilna pozadina dok se style loada */
         }
 
-        /* Minijaturne lokacije grid ispod mape */
+        /* STYLE SWITCHER */
+        .style-switcher {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          display: flex;
+          gap: 8px;
+          z-index: 10;
+          background: rgba(255, 255, 255, 0.7);
+          border-radius: 9999px;
+          padding: 6px;
+          backdrop-filter: blur(6px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+          border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .style-btn {
+          border: 0;
+          padding: 6px 12px;
+          font-size: 12px;
+          font-weight: 600;
+          border-radius: 9999px;
+          background: white;
+          color: #374151;
+          cursor: pointer;
+          transition: transform 0.15s ease, background 0.2s, color 0.2s;
+        }
+        .style-btn:hover {
+          transform: translateY(-1px);
+          background: #f3f4f6;
+        }
+        .style-btn.active {
+          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+          color: white;
+        }
+
+        /* Grid ispod mape */
         .modern-locations-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -354,12 +420,10 @@ export default function Map() {
           position: relative;
         }
 
-        /* Jednostavna animacija samo za md screens i veće */
         @media (min-width: 768px) {
           .modern-location-card.animate-in {
             animation: fadeInUp 0.5s ease-out;
           }
-
           @keyframes fadeInUp {
             from {
               opacity: 0;
@@ -377,7 +441,6 @@ export default function Map() {
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        /* Colorful card variants */
         .card-0 {
           border-top: 4px solid #3b82f6;
         }
@@ -436,7 +499,7 @@ export default function Map() {
           background: linear-gradient(
             to bottom,
             transparent 0%,
-            rgba(0, 0, 0, 0.85) 100%
+            rgba(0, 0, 0, 0.95) 100%
           );
           opacity: 0;
           transition: opacity 0.3s ease;
@@ -446,7 +509,6 @@ export default function Map() {
           padding: 1rem;
           height: 60%;
         }
-
         .modern-location-card:hover .card-overlay {
           opacity: 1;
         }
@@ -455,8 +517,8 @@ export default function Map() {
           color: #ffffff;
           transform: translateY(20px);
           transition: transform 0.3s ease;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
-
         .modern-location-card:hover .card-hover-content {
           transform: translateY(0);
         }
@@ -466,24 +528,24 @@ export default function Map() {
           margin-bottom: 0.5rem;
           line-height: 1.4;
           color: #ffffff;
+          font-weight: 500;
         }
-
         .card-meta {
           font-size: 0.75rem;
-          opacity: 0.95;
+          opacity: 1;
           color: #ffffff;
+          font-weight: 500;
         }
-
         .card-address {
           display: block;
           margin-bottom: 0.25rem;
           color: #ffffff;
+          font-weight: 500;
         }
 
         .card-content {
           padding: 1rem;
         }
-
         .card-title {
           margin: 0 0 0.5rem 0;
           color: #1f2937;
@@ -491,14 +553,12 @@ export default function Map() {
           font-weight: 700;
           line-height: 1.2;
         }
-
         .card-info {
           display: flex;
           gap: 0.25rem;
           margin-bottom: 0.5rem;
           flex-wrap: wrap;
         }
-
         .business-type {
           background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
           color: #3730a3;
@@ -507,7 +567,6 @@ export default function Map() {
           font-size: 0.625rem;
           font-weight: 600;
         }
-
         .avg-spending {
           background: linear-gradient(135deg, #dcfce7, #bbf7d0);
           color: #166534;
@@ -516,7 +575,6 @@ export default function Map() {
           font-size: 0.625rem;
           font-weight: 600;
         }
-
         .card-footer {
           display: flex;
           justify-content: space-between;
@@ -524,19 +582,16 @@ export default function Map() {
           color: #6b7280;
           font-size: 0.875rem;
         }
-
         .directions-icon {
           font-size: 1.25rem;
           font-weight: bold;
           color: #3b82f6;
           transition: transform 0.2s ease;
         }
-
         .modern-location-card:hover .directions-icon {
           transform: translateX(4px);
         }
 
-        /* Show more button styles */
         .show-more-container {
           grid-column: 1 / -1;
           display: flex;
@@ -544,54 +599,10 @@ export default function Map() {
           margin-top: 1rem;
         }
 
-        .show-more-btn {
-          background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-          color: white;
-          border: none;
-          border-radius: 1rem;
-          padding: 0.875rem 1.5rem;
-          font-size: 0.875rem;
-          font-weight: 600;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-          min-width: 200px;
-          justify-content: center;
-        }
-
-        .show-more-btn:hover {
-          background: linear-gradient(135deg, #2563eb, #1e40af);
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-        }
-
-        .show-more-btn:active {
-          transform: translateY(0);
-          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .show-more-text {
-          font-weight: 600;
-        }
-
-        .show-more-icon {
-          font-size: 1.25rem;
-          transition: transform 0.3s ease;
-        }
-
-        .show-more-btn:hover .show-more-icon {
-          transform: translateY(2px);
-        }
-
-        /* Added comprehensive Mapbox CSS styles inline to avoid import issues */
-        /* Custom marker stilovi */
+        /* Mapbox custom */
         :global(.custom-marker) {
           cursor: pointer;
         }
-
         :global(.location-pin-image) {
           width: 40px;
           height: 40px;
@@ -599,108 +610,24 @@ export default function Map() {
           filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
           transition: transform 0.2s ease;
         }
-
         :global(.location-pin-image:hover) {
           transform: scale(1.1);
         }
 
-        /* Mapbox base styles */
-        :global(.mapboxgl-map) {
-          font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
-          overflow: hidden;
-          position: relative;
-          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }
-
-        :global(.mapboxgl-canvas) {
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-
-        :global(.mapboxgl-canvas-container) {
-          overflow: hidden;
-        }
-
         :global(.mapboxgl-ctrl-group) {
-          border-radius: 4px;
-          background: #fff;
-          box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
           border: none !important;
           box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
           border-radius: 0.75rem !important;
           overflow: hidden !important;
         }
-
         :global(.mapboxgl-ctrl-group > button) {
-          background-color: transparent;
-          border: 0;
-          cursor: pointer;
-          display: block;
-          height: 29px;
-          outline: 0;
-          padding: 0;
-          width: 29px;
           background: white !important;
           color: #374151 !important;
           transition: all 0.2s ease !important;
         }
-
         :global(.mapboxgl-ctrl-group > button:hover) {
           background: #f3f4f6 !important;
           color: #1f2937 !important;
-        }
-
-        /* Mapbox popup stilovi */
-        :global(.mapboxgl-popup) {
-          position: absolute;
-          top: 0;
-          left: 0;
-          display: flex;
-          will-change: transform;
-          pointer-events: none;
-        }
-
-        :global(.mapboxgl-popup-anchor-top),
-        :global(.mapboxgl-popup-anchor-top-left),
-        :global(.mapboxgl-popup-anchor-top-right) {
-          flex-direction: column;
-        }
-
-        :global(.mapboxgl-popup-anchor-bottom),
-        :global(.mapboxgl-popup-anchor-bottom-left),
-        :global(.mapboxgl-popup-anchor-bottom-right) {
-          flex-direction: column-reverse;
-        }
-
-        :global(.mapboxgl-popup-anchor-left) {
-          flex-direction: row;
-        }
-
-        :global(.mapboxgl-popup-anchor-right) {
-          flex-direction: row-reverse;
-        }
-
-        :global(.mapboxgl-popup-tip) {
-          width: 0;
-          height: 0;
-          border: 10px solid transparent;
-          z-index: 1;
-        }
-
-        :global(.mapboxgl-popup-anchor-top .mapboxgl-popup-tip) {
-          align-self: center;
-          border-top: none;
-          border-bottom-color: #fff;
-        }
-
-        :global(.mapboxgl-popup-content) {
-          position: relative;
-          background: #fff;
-          border-radius: 3px;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          padding: 10px 10px 15px;
-          pointer-events: auto;
         }
 
         :global(.modern-popup .mapboxgl-popup-content) {
@@ -712,31 +639,26 @@ export default function Map() {
           max-width: 200px !important;
           background: white !important;
         }
-
         :global(.modern-popup-content) {
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
             sans-serif;
           color: #1f2937;
         }
-
         :global(.popup-image-container) {
           position: relative;
           width: 100%;
           height: 120px;
           overflow: hidden;
         }
-
         :global(.main-image) {
           width: 100%;
           height: 100%;
           object-fit: cover;
           transition: transform 0.3s ease;
         }
-
         :global(.popup-body) {
           padding: 1rem;
         }
-
         :global(.popup-title) {
           margin: 0 0 0.25rem 0;
           color: #1f2937;
@@ -744,14 +666,12 @@ export default function Map() {
           font-weight: 700;
           line-height: 1.2;
         }
-
         :global(.popup-description) {
           margin: 0 0 0.5rem 0;
           color: #6b7280;
           font-size: 0.75rem;
           line-height: 1.3;
         }
-
         :global(.popup-meta) {
           display: flex;
           justify-content: space-between;
@@ -759,13 +679,11 @@ export default function Map() {
           margin-bottom: 0.5rem;
           gap: 0.5rem;
         }
-
         :global(.popup-meta-left) {
           display: flex;
           gap: 0.25rem;
           flex-wrap: wrap;
         }
-
         :global(.popup-meta .business-type) {
           background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
           color: #3730a3;
@@ -774,7 +692,6 @@ export default function Map() {
           font-size: 0.625rem;
           font-weight: 600;
         }
-
         :global(.popup-meta .avg-spending) {
           background: linear-gradient(135deg, #dcfce7, #bbf7d0);
           color: #166534;
@@ -783,12 +700,6 @@ export default function Map() {
           font-size: 0.625rem;
           font-weight: 600;
         }
-
-        :global(.directions-icon) {
-          font-size: 1.25rem;
-        }
-
-        /* Custom close button styles */
         :global(.custom-close-btn) {
           position: absolute;
           top: 8px;
@@ -808,22 +719,18 @@ export default function Map() {
           backdrop-filter: blur(10px);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
-
         :global(.custom-close-btn:hover) {
           background: white;
           color: #1f2937;
           transform: scale(1.1);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-
         :global(.custom-close-btn:active) {
           transform: scale(0.95);
         }
-
         :global(.custom-close-btn svg) {
           transition: transform 0.2s ease;
         }
-
         :global(.custom-close-btn:hover svg) {
           transform: rotate(90deg);
         }

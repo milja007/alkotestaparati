@@ -120,6 +120,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -175,3 +178,12 @@
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
+
+/* .social-icon {
+  fill: white !important;
+  stroke: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 9999 !important;
+  position: relative !important;
+} */

@@ -57,12 +57,15 @@ export default function AlchotestKalkulator() {
   const [wineCount, setWineCount] = useState(0);
   const [spiritCount, setSpiritCount] = useState(0);
 
-  const [timeSinceFirstDrinkH, setTimeSinceFirstDrinkH] = useState<number | "">(
-    ""
-  );
+  const [timeSinceFirstDrinkHours, setTimeSinceFirstDrinkHours] = useState<
+    number | ""
+  >("");
+  const [timeSinceFirstDrinkMinutes, setTimeSinceFirstDrinkMinutes] = useState<
+    number | ""
+  >("");
 
-  // Razgradnja alkohola (‰/h) — samo 0.10 (sporije) i 0.20 (brže)
-  const [elimRate, setElimRate] = useState(0.1);
+  // Fiksna brzina razgradnje alkohola
+  const elimRate = 0.2; // ‰/h
 
   // Napredne postavke volumena/postotka (prilagodivo)
   const [beerMl, setBeerMl] = useState(DEFAULTS.beerMl);
@@ -102,8 +105,17 @@ export default function AlchotestKalkulator() {
     return totalGrams / (r * (weightKg as number));
   }, [gender, weightKg, totalGrams]);
 
-  const elapsedH =
-    typeof timeSinceFirstDrinkH === "number" ? timeSinceFirstDrinkH : 0;
+  const elapsedH = useMemo(() => {
+    const hours =
+      typeof timeSinceFirstDrinkHours === "number"
+        ? timeSinceFirstDrinkHours
+        : 0;
+    const minutes =
+      typeof timeSinceFirstDrinkMinutes === "number"
+        ? timeSinceFirstDrinkMinutes
+        : 0;
+    return hours + minutes / 60;
+  }, [timeSinceFirstDrinkHours, timeSinceFirstDrinkMinutes]);
   const afterElimPermille = clamp(initialBACpermille - elimRate * elapsedH, 0);
 
   const hoursToZero = afterElimPermille > 0 ? afterElimPermille / elimRate : 0;
@@ -132,17 +144,20 @@ export default function AlchotestKalkulator() {
     typeof weightKg === "number" &&
     weightKg > 0 &&
     beerCount + wineCount + spiritCount > 0 &&
-    typeof timeSinceFirstDrinkH === "number" &&
-    timeSinceFirstDrinkH >= 0;
+    ((typeof timeSinceFirstDrinkHours === "number" &&
+      timeSinceFirstDrinkHours >= 0) ||
+      (typeof timeSinceFirstDrinkMinutes === "number" &&
+        timeSinceFirstDrinkMinutes >= 0));
 
   return (
     <div className={styles.container}>
       <div className={styles.maxWidth}>
         {/* Hero Section */}
         <div className={styles.heroSection}>
-          <h1 className={styles.heroTitle}>Kalkulator Promila</h1>
+          <h1 className={styles.heroTitle}>Naš Online Alkotest Kalkulator</h1>
           <p className={styles.heroSubtitle}>
             Moderna procjena razine alkohola u krvi pomoću Widmarkove jednadžbe
+            za usporedbu sa našim aparatom.
           </p>
           <div className={styles.heroWarning}>
             <p>⚠️ Samo za procjenu • Ne koristiti za vožnju</p>
@@ -399,7 +414,7 @@ export default function AlchotestKalkulator() {
                           color: "var(--color-muted-foreground)",
                         }}
                       >
-                        Kalorije
+                        Kalorije čistog alkohola(7kcal/g)
                       </div>
                     </div>
                   </div>
@@ -421,41 +436,48 @@ export default function AlchotestKalkulator() {
                 }}
               >
                 <div className={styles.inputGroup}>
-                  <label className={styles.inputLabel} htmlFor="elapsedH">
+                  <label className={styles.inputLabel}>
                     Vrijeme od prvog pića
                   </label>
-                  <div className={styles.inputWrapper}>
-                    <input
-                      id="elapsedH"
-                      type="number"
-                      min={0}
-                      step={0.25}
-                      className={styles.input}
-                      placeholder="2.5"
-                      value={timeSinceFirstDrinkH}
-                      onChange={(e) =>
-                        setTimeSinceFirstDrinkH(
-                          e.target.value === "" ? "" : Number(e.target.value)
-                        )
-                      }
-                    />
-                    <span className={styles.inputUnit}>h</span>
-                  </div>
-                </div>
-
-                <div className={styles.inputGroup}>
-                  <label className={styles.inputLabel} htmlFor="elim">
-                    Brzina razgradnje
-                  </label>
-                  <select
-                    id="elim"
-                    className={styles.input}
-                    value={elimRate}
-                    onChange={(e) => setElimRate(Number(e.target.value))}
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "1rem",
+                    }}
                   >
-                    <option value={0.1}>0.10 ‰/h (sporije)</option>
-                    <option value={0.2}>0.20 ‰/h (brže)</option>
-                  </select>
+                    <div className={styles.inputWrapper}>
+                      <input
+                        type="number"
+                        min={0}
+                        className={styles.input}
+                        placeholder="2"
+                        value={timeSinceFirstDrinkHours}
+                        onChange={(e) =>
+                          setTimeSinceFirstDrinkHours(
+                            e.target.value === "" ? "" : Number(e.target.value)
+                          )
+                        }
+                      />
+                      <span className={styles.inputUnit}>h</span>
+                    </div>
+                    <div className={styles.inputWrapper}>
+                      <input
+                        type="number"
+                        min={0}
+                        max={59}
+                        className={styles.input}
+                        placeholder="30"
+                        value={timeSinceFirstDrinkMinutes}
+                        onChange={(e) =>
+                          setTimeSinceFirstDrinkMinutes(
+                            e.target.value === "" ? "" : Number(e.target.value)
+                          )
+                        }
+                      />
+                      <span className={styles.inputUnit}>min</span>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div
@@ -475,7 +497,8 @@ export default function AlchotestKalkulator() {
                   }}
                 >
                   💡 Mjerenje unutar 15 minuta od zadnjeg pića može biti
-                  nepouzdano i često pokazuje više vrijednosti.
+                  nepouzdano i često pokazuje više vrijednosti zbog zadržavanja
+                  alkohola u ustima(isto je i sa policijskim dregerom).
                 </p>
               </div>
             </section>
@@ -498,8 +521,8 @@ export default function AlchotestKalkulator() {
                   setBeerCount(0);
                   setWineCount(0);
                   setSpiritCount(0);
-                  setTimeSinceFirstDrinkH("");
-                  setElimRate(0.1);
+                  setTimeSinceFirstDrinkHours("");
+                  setTimeSinceFirstDrinkMinutes("");
                   setAdvancedOpen(false);
                   setSubmitted(false);
                   setBeerMl(DEFAULTS.beerMl);
@@ -576,7 +599,9 @@ export default function AlchotestKalkulator() {
                           </span>
                         </div>
                         <div className={styles.detailRow}>
-                          <span className={styles.detailLabel}>Kalorije:</span>
+                          <span className={styles.detailLabel}>
+                            Kalorije čistog alkohola:
+                          </span>
                           <span className={styles.detailValue}>
                             {Math.round(totalKcal)} kcal
                           </span>
@@ -604,7 +629,7 @@ export default function AlchotestKalkulator() {
                             </li>
                             <li>
                               • Pričekajte 15+ minuta nakon zadnjeg pića za
-                              pouzdanije mjerenje
+                              precizno mjerenje sa našim aparatom.
                             </li>
                             <li>
                               • Nikad ne vozite nakon konzumacije alkohola

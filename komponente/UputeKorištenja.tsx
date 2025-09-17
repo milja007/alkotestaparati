@@ -9,7 +9,7 @@ interface UsageInstructionsProps {
 
 export function UsageInstructions({}: UsageInstructionsProps) {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-amber-100 via-amber-150 to-amber-50">
+    <section className="py-24 px-4 bg-gradient-to-br from-background via-card to-muted/50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 md:mb-32 lg:mb-32">
           <div className="inline-block">

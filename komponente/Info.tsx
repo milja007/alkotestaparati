@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
-import { Button } from "../components/ui/button";
+
 import {
   AlertTriangle,
   Scale,
@@ -60,7 +60,7 @@ export function Info() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-card to-muted">
+    <div className="min-h-screen py-24 px-4 bg-gradient-to-br from-muted/30 via-card to-background">
       <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
         <div
           className="relative overflow-hidden rounded-3xl p-12 text-center space-y-6"
@@ -79,7 +79,7 @@ export function Info() {
               <Scale className="w-16 h-16 text-white/90" />
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-bold text-white text-balance mb-4">
-              Promili alkohola u krvi
+              Informacije o promilima ,alkoholu i kaznama
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto text-pretty leading-relaxed">
               Razumijevanje razine alkohola u krvi ključno je za sigurnu vožnju.
@@ -405,12 +405,6 @@ export function Info() {
               savjet je: ako pijete, ne vozite. Koristite javni prijevoz ili
               pozovite taksi.
             </p>
-            <Button
-              size="lg"
-              className="bg-white text-primary hover:bg-white/90 font-bold px-8 py-4 text-lg shadow-lg"
-            >
-              Saznajte više o alkotest aparatima
-            </Button>
           </div>
         </div>
       </div>

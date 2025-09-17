@@ -49,9 +49,9 @@ export default function Mapa() {
             </h1>
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-pretty leading-relaxed">
-              Otkrijte najbolje barove i klubove u Zagrebu i okolici. Svaka
-              lokacija nudi jedinstveno iskustvo s odličnim pićem, atmosferom i
-              zabavom.
+              Otkrijte naše partnere u Zagrebu i okolici. Svaka lokacija nudi
+              jedinstveno iskustvo s odličnim pićem, zabavom i naravno našim
+              alkotest aparatom.
             </p>
 
             {/* Stats */}

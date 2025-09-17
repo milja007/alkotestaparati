@@ -2,6 +2,15 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function ONamaPage() {
+  const scrollToSection = (sectionId: string) => {
+    const targetElement = document.getElementById(sectionId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-muted">
       <section className="container mx-auto px-4 py-16 lg:py-24">
@@ -26,6 +35,7 @@ export default function ONamaPage() {
                 <Button
                   size="sm"
                   className="ml-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={() => scrollToSection("NašeLokacije")}
                 >
                   Naše lokacije
                 </Button>
@@ -52,6 +62,7 @@ export default function ONamaPage() {
                   size="sm"
                   variant="outline"
                   className="ml-2 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-transparent"
+                  onClick={() => scrollToSection("PostaniPartner")}
                 >
                   Postanite naš partner
                 </Button>{" "}

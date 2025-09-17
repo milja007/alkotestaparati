@@ -13,22 +13,24 @@ export default function Home() {
     <div>
       <BubbleMenu />
       <HeaderSection />
-      <ONama />
-      <Mapa />
-      <UsageInstructions />
-
-      {/* Sekcija 4: Informacije o alkoholu i kalkulator */}
-
-      <Info />
-      <AlchotestKalkulator />
-
-      {/* Sekcija 6: Kontakt i Partnerstvo */}
-      <section
-        id="partner-section"
-        className="py-16 bg-gradient-to-b from-gray-50 to-white"
-      >
+      <div id="ONama">
+        <ONama />
+      </div>
+      <div id="NašeLokacije">
+        <Mapa />
+      </div>
+      <div id="UputeKorištenja">
+        <UsageInstructions />
+      </div>
+      <div id="Informacije">
+        <Info />
+      </div>
+      <div id="OnlineKalkulator">
+        <AlchotestKalkulator />
+      </div>
+      <div id="PostaniPartner">
         <PartnerFooter />
-      </section>
+      </div>
     </div>
   );
 }
