@@ -18,8 +18,12 @@ import {
   Brain,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { TajniKomponent } from "./TajniKomponent";
 
 export function Info() {
+  const [showTajniKomponent, setShowTajniKomponent] = useState(false);
+
   const alcoholLevels = [
     {
       level: "0.2-0.3 ‰",
@@ -368,7 +372,12 @@ export function Info() {
               ].map((factor, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:shadow-lg transition-all duration-300"
+                  className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  onClick={() => {
+                    if (factor.title === "Hrana i tempo") {
+                      setShowTajniKomponent(!showTajniKomponent);
+                    }
+                  }}
                 >
                   <div
                     className={`p-3 rounded-full bg-muted/50 mb-4 ${factor.color}`}
@@ -408,6 +417,10 @@ export function Info() {
           </div>
         </div>
       </div>
+
+      {showTajniKomponent && (
+        <TajniKomponent onClose={() => setShowTajniKomponent(false)} />
+      )}
     </div>
   );
 }

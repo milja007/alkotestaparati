@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Alko Testić",
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hr">
-      <body>{children}</body>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

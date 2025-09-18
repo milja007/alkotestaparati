@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Calculator, Euro, Clock, Shield } from "lucide-react";
+import { ThemeToggleCompact } from "../components/ThemeToggle";
 import styles from "./HeaderSection.module.css";
 
 export default function HomePage() {
@@ -14,6 +15,9 @@ export default function HomePage() {
   };
   return (
     <div className={styles.hero}>
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeToggleCompact />
+      </div>
       <main className={styles.container}>
         <div className={styles.content}>
           <div className={styles.titleContainer}>
