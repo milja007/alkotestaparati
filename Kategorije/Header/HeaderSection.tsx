@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Calculator, Euro, Clock, Shield } from "lucide-react";
-import { ThemeToggleCompact } from "../components/ThemeToggle";
+import { ThemeToggleCompact } from "../../components/ThemeToggle";
 import styles from "./HeaderSection.module.css";
 
 export default function HomePage() {

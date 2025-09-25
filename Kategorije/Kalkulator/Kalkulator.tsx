@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import styles from "./AlchotestKalkulator.module.css";
+import styles from "./Kalkulator.module.css";
 
 /**
  * BAC (promile) kalkulator — Next.js + TypeScript + Tailwind
@@ -150,7 +150,7 @@ export default function AlchotestKalkulator() {
         timeSinceFirstDrinkMinutes >= 0));
 
   return (
-    <div className={styles.container}>
+    <div id="OnlineKalkulator" className={styles.container}>
       <div className={styles.maxWidth}>
         {/* Hero Section */}
         <div className={styles.heroSection}>

@@ -1,8 +1,11 @@
-import MapComponent from "../komponente/Map";
+import MapComponent from "./Map";
 
 export default function Mapa() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+    <main
+      id="NašeLokacije"
+      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50"
+    >
       {/* Hero Section with Locations */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 opacity-30">

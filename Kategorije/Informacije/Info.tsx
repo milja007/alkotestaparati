@@ -4,8 +4,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
+} from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
 
 import {
   AlertTriangle,
@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { TajniKomponent } from "./TajniKomponent";
+import { TajniKomponent } from "../../components/TajniKomponent";
 
 export function Info() {
   const [showTajniKomponent, setShowTajniKomponent] = useState(false);
@@ -64,7 +64,10 @@ export function Info() {
   ];
 
   return (
-    <div className="min-h-screen py-24 px-4 bg-gradient-to-br from-muted/30 via-card to-background">
+    <div
+      id="Informacije"
+      className="min-h-screen py-24 px-4 bg-gradient-to-br from-muted/30 via-card to-background"
+    >
       <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
         <div
           className="relative overflow-hidden rounded-3xl p-12 text-center space-y-6"

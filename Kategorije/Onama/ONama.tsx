@@ -12,7 +12,10 @@ export default function ONamaPage() {
     }
   };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-card to-muted">
+    <div
+      id="ONama"
+      className="min-h-screen bg-gradient-to-br from-background via-card to-muted"
+    >
       <section className="container mx-auto px-4 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content Column */}

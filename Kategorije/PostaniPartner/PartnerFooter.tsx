@@ -16,7 +16,10 @@ import Image from "next/image";
 
 export default function PartnerFooter() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 overflow-hidden">
+    <section
+      id="PostaniPartner"
+      className="relative min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 overflow-hidden"
+    >
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-30">
           <div className="absolute top-20 left-20 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-fade-scale"></div>
