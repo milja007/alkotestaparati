@@ -5,8 +5,7 @@ import type mapboxgl from "mapbox-gl"; // samo tipovi, runtime ide kroz dynamic 
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Mapbox access token
-const MAPBOX_ACCESS_TOKEN =
-  "pk.eyJ1IjoibWlsamEwMDciLCJhIjoiY21ld3Rncm9oMGp1dTJqcjFvOTkzaHB2MiJ9.ts703Zeabqe9IVm7beTAKw";
+const MAPBOX_ACCESS_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 // Stilovi
 const STYLES = {
@@ -110,7 +109,7 @@ export default function Map() {
     if (map.current) return; // init samo jednom
 
     const initializeMap = async () => {
-      if (!mapContainer.current) return;
+      if (!mapContainer.current || !MAPBOX_ACCESS_TOKEN) return;
       try {
         const mapboxModule = await import("mapbox-gl");
         const M = mapboxModule.default as typeof mapboxgl;

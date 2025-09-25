@@ -28,8 +28,8 @@ export default function HomePage() {
 
           <p className={styles.subtitle}>
             Ubaci kovanicu, puhni kao na dregeru i rezultat usporedi s našim
-            online kalkulatorom. Bez nagađanja — samo brojke koje pomažu da
-            doneseš pametnu odluku.
+            online kalkulatorom. Bez nagađanja — samo brojke koje pomažu
+            donijeti pametnu odluku.
           </p>
 
           <div className={styles.ctaContainer}>

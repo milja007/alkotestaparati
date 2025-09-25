@@ -31,7 +31,8 @@ export default function ONamaPage() {
                 <span className="font-semibold text-primary">
                   Mi smo ekipa koja čini noćni život odgovornijim.
                 </span>{" "}
-                Postavljamo aparate u lokale diljem Hrvatske — pogledajte
+                Postavljamo aparate u ugostiteljske objekte diljem Hrvatske —
+                pogledajte
                 <Button
                   size="sm"
                   className="ml-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"

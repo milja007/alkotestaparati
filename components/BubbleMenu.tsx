@@ -78,7 +78,7 @@ const DEFAULT_ITEMS: MenuItem[] = [
 ];
 
 export default function BubbleMenu({
-  logo = "/assets/dimenzije.svg",
+  logo = "/assets/LogoBenko.png",
   onMenuClick,
   className,
   style,
