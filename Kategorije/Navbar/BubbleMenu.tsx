@@ -227,6 +227,8 @@ export default function BubbleMenu({
                 className="bubble-logo"
                 width={160}
                 height={90}
+                style={{ width: "auto", height: "auto" }}
+                priority
               />
             ) : (
               logo
