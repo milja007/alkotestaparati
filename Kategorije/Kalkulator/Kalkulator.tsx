@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import styles from "./Kalkulator.module.css";
+import Image from "next/image";
 
 /**
  * BAC (promile) kalkulator — Next.js + TypeScript + Tailwind
@@ -161,6 +162,21 @@ export default function AlchotestKalkulator() {
           </p>
           <div className={styles.heroWarning}>
             <p>⚠️ Samo za procjenu • Ne koristiti za vožnju</p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "1.25rem",
+            }}
+          >
+            <Image
+              src="/assets/DrPromilSvg.png"
+              alt="DrPromil"
+              width={160}
+              height={160}
+              style={{ width: 160, height: 160 }}
+            />
           </div>
         </div>
 

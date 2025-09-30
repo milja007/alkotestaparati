@@ -3,12 +3,12 @@ import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Alko Testić",
+  title: "Dr Promil",
   description: "Aplikacija za upravljanje alkotest aparatima",
   icons: {
-    icon: "/assets/location-pin.png",
-    shortcut: "/assets/location-pin.png",
-    apple: "/assets/location-pin.png",
+    icon: "/assets/DrPromilSvg.png",
+    shortcut: "/assets/DrPromilSvg.png",
+    apple: "/assets/DrPromilSvg.png",
   },
 };
 

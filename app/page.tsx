@@ -8,6 +8,7 @@ import BubbleMenu from "../Kategorije/Navbar/BubbleMenu";
 import ONama from "../Kategorije/Onama/ONama";
 import Mapa from "../Kategorije/NašeLokacije/Mapa";
 import { UsageInstructions } from "../Kategorije/UputeKorištenja/UputeKorištenja";
+
 export default function Home() {
   return (
     <div>
