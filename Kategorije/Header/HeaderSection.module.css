@@ -6,12 +6,18 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 1rem;
+  padding: 8rem 1rem 4rem 1rem;
+}
+
+@media (max-width: 763px) {
+  .container {
+    padding: 12rem 1rem 4rem 1rem;
+  }
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding: 6rem 1rem;
+    padding: 6rem 1rem 6rem 1rem;
   }
 }
 
