@@ -238,6 +238,7 @@ export default function AlchotestKalkulator() {
                 <div className={styles.inputWrapper}>
                   <input
                     id="weightKg"
+                    name="weightKg"
                     type="number"
                     min={1}
                     inputMode="decimal"
@@ -249,6 +250,7 @@ export default function AlchotestKalkulator() {
                         e.target.value === "" ? "" : Number(e.target.value)
                       )
                     }
+                    autoComplete="off"
                   />
                   <span className={styles.inputUnit}>kg</span>
                 </div>
@@ -452,48 +454,60 @@ export default function AlchotestKalkulator() {
                 }}
               >
                 <div className={styles.inputGroup}>
-                  <label className={styles.inputLabel}>
-                    Vrijeme od prvog pića
-                  </label>
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
-                      gap: "1rem",
-                    }}
-                  >
-                    <div className={styles.inputWrapper}>
-                      <input
-                        type="number"
-                        min={0}
-                        className={styles.input}
-                        placeholder="2"
-                        value={timeSinceFirstDrinkHours}
-                        onChange={(e) =>
-                          setTimeSinceFirstDrinkHours(
-                            e.target.value === "" ? "" : Number(e.target.value)
-                          )
-                        }
-                      />
-                      <span className={styles.inputUnit}>h</span>
+                  <fieldset>
+                    <legend className={styles.inputLabel}>
+                      Vrijeme od prvog pića
+                    </legend>
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "1rem",
+                      }}
+                    >
+                      <div className={styles.inputWrapper}>
+                        <input
+                          id="timeHours"
+                          name="timeHours"
+                          type="number"
+                          min={0}
+                          className={styles.input}
+                          placeholder="2"
+                          value={timeSinceFirstDrinkHours}
+                          onChange={(e) =>
+                            setTimeSinceFirstDrinkHours(
+                              e.target.value === ""
+                                ? ""
+                                : Number(e.target.value)
+                            )
+                          }
+                          autoComplete="off"
+                        />
+                        <span className={styles.inputUnit}>h</span>
+                      </div>
+                      <div className={styles.inputWrapper}>
+                        <input
+                          id="timeMinutes"
+                          name="timeMinutes"
+                          type="number"
+                          min={0}
+                          max={59}
+                          className={styles.input}
+                          placeholder="30"
+                          value={timeSinceFirstDrinkMinutes}
+                          onChange={(e) =>
+                            setTimeSinceFirstDrinkMinutes(
+                              e.target.value === ""
+                                ? ""
+                                : Number(e.target.value)
+                            )
+                          }
+                          autoComplete="off"
+                        />
+                        <span className={styles.inputUnit}>min</span>
+                      </div>
                     </div>
-                    <div className={styles.inputWrapper}>
-                      <input
-                        type="number"
-                        min={0}
-                        max={59}
-                        className={styles.input}
-                        placeholder="30"
-                        value={timeSinceFirstDrinkMinutes}
-                        onChange={(e) =>
-                          setTimeSinceFirstDrinkMinutes(
-                            e.target.value === "" ? "" : Number(e.target.value)
-                          )
-                        }
-                      />
-                      <span className={styles.inputUnit}>min</span>
-                    </div>
-                  </div>
+                  </fieldset>
                 </div>
               </div>
               <div
@@ -746,6 +760,7 @@ function VolumePercentRow({
       >
         <div>
           <label
+            htmlFor={`${label.toLowerCase().replace(/\s+/g, "-")}-volume`}
             style={{
               display: "block",
               fontSize: "0.875rem",
@@ -760,6 +775,8 @@ function VolumePercentRow({
             style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
           >
             <input
+              id={`${label.toLowerCase().replace(/\s+/g, "-")}-volume`}
+              name={`${label.toLowerCase().replace(/\s+/g, "-")}-volume`}
               type="number"
               min={1}
               style={{
@@ -775,6 +792,7 @@ function VolumePercentRow({
               }}
               value={ml}
               onChange={(e) => setMl(Number(e.target.value))}
+              autoComplete="off"
             />
             <div style={{ display: "flex", gap: "0.5rem" }}>
               {quickMl.map((q) => (
@@ -802,6 +820,7 @@ function VolumePercentRow({
         </div>
         <div>
           <label
+            htmlFor={`${label.toLowerCase().replace(/\s+/g, "-")}-percent`}
             style={{
               display: "block",
               fontSize: "0.875rem",
@@ -813,6 +832,8 @@ function VolumePercentRow({
             Jačina (%)
           </label>
           <input
+            id={`${label.toLowerCase().replace(/\s+/g, "-")}-percent`}
+            name={`${label.toLowerCase().replace(/\s+/g, "-")}-percent`}
             type="number"
             min={0}
             step={0.1}
@@ -829,6 +850,7 @@ function VolumePercentRow({
             }}
             value={percent}
             onChange={(e) => setPercent(Number(e.target.value))}
+            autoComplete="off"
           />
         </div>
       </div>
