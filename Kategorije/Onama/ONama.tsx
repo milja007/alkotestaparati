@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Sova from "@/components/Sova";
 
 export default function ONamaPage() {
   const scrollToSection = (sectionId: string) => {
@@ -29,12 +30,7 @@ export default function ONamaPage() {
 
                 <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
               </div>
-              <Image
-                src="/assets/DrOmeni.png"
-                alt="Dr. Promil"
-                width={180}
-                height={180}
-              />
+              <Sova imageName="DrOmeni.png" />
             </div>
 
             {/* Main Content */}

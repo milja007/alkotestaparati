@@ -1,5 +1,6 @@
 import MapComponent from "./Map";
 import Image from "next/image";
+import Sova from "../../components/Sova";
 export default function Mapa() {
   return (
     <main
@@ -60,12 +61,7 @@ export default function Mapa() {
             {/* Stats */}
             <div className="flex flex-wrap justify-center gap-8 mt-12">
               <div className="text-center">
-                <Image
-                  src="/assets/DrKarta.png"
-                  alt="alkotestaparati"
-                  width={200}
-                  height={200}
-                />
+                <Sova imageName="DrKarta.png" />
               </div>
               <div className="text-center mt-18">
                 <div className="text-3xl font-bold text-blue-600">4+</div>

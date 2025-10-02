@@ -7,6 +7,7 @@ import {
 } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import Image from "next/image";
+import Sova from "../../components/Sova";
 import {
   AlertTriangle,
   Scale,
@@ -86,7 +87,9 @@ export function Info() {
               <Scale className="w-16 h-16 text-white/90" />
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-bold text-white text-balance mb-4">
-              Informacije o promilima ,alkoholu i kaznama
+              Informacije o promilima,
+              <br />
+              alkoholu i kaznama
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto text-pretty leading-relaxed">
               Razumijevanje razine alkohola u krvi ključno je za sigurnu vožnju.
@@ -175,12 +178,7 @@ export function Info() {
               </div>
               <div className="  p-4 rounded-xl">
                 <div className="flex items-start gap-3">
-                  <Image
-                    src="/assets/DrPijani.png"
-                    alt="Dr. Promil"
-                    width={250}
-                    height={250}
-                  />
+                  <Sova imageName="DrPijani.png" />
                 </div>
               </div>
               <div className="bg-gradient-to-r from-destructive/10 to-destructive/5 border border-destructive/20 p-4 rounded-xl">
@@ -325,12 +323,7 @@ export function Info() {
                 </div>
               ))}
               <div className="flex justify-between items-center p-6 rounded-xl  h-auto">
-                <Image
-                  src="/assets/DrTuzni.png"
-                  alt="Dr. Promil"
-                  width={250}
-                  height={250}
-                />
+                <Sova imageName="DrTuzni.png" />
               </div>
             </div>
             <div className="mt-6 p-4 bg-muted/50 rounded-xl border border-border">

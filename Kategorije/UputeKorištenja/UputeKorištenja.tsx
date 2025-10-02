@@ -2,6 +2,7 @@
 
 import Stepper, { Step } from "./Stepper";
 import Image from "next/image";
+import Sova from "../../components/Sova";
 
 interface UsageInstructionsProps {
   productName?: string;
@@ -58,14 +59,9 @@ export function UsageInstructions({}: UsageInstructionsProps) {
             aria-label="Maskota sekcije"
           >
             <div className="w-full max-w-sm">
-              <Image
-                src="/assets/DrUpute.png"
-                alt="Dr. Promil"
-                width={500}
-                height={500}
+              <Sova
+                imageName="DrUpute.png"
                 className="w-full h-auto drop-shadow-xl rounded-2xl"
-                sizes="(max-width: 1024px) 70vw, (max-width: 1536px) 30vw, 480px"
-                priority={false}
               />
             </div>
           </aside>

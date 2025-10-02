@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import styles from "./Kalkulator.module.css";
-import Image from "next/image";
+import Sova from "@/components/Sova";
 
 /**
  * BAC (promile) kalkulator — Next.js + TypeScript + Tailwind
@@ -155,10 +155,13 @@ export default function AlchotestKalkulator() {
       <div className={styles.maxWidth}>
         {/* Hero Section */}
         <div className={styles.heroSection}>
-          <h1 className={styles.heroTitle}>Naš Online Alkotest Kalkulator</h1>
+          <h1 className={styles.heroTitle}>
+            Dr. Promil Online Alkotest Kalkulator
+          </h1>
+          <Sova imageName="DrKalkulator.png" className="mx-auto" />
           <p className={styles.heroSubtitle}>
             Moderna procjena razine alkohola u krvi pomoću Widmarkove jednadžbe
-            za usporedbu sa našim aparatom.
+            za usporedbu sa mojim aparatom.
           </p>
           <div className={styles.heroWarning}>
             <p>⚠️ Samo za procjenu • Ne koristiti za vožnju</p>
@@ -169,15 +172,7 @@ export default function AlchotestKalkulator() {
               justifyContent: "center",
               marginTop: "1.25rem",
             }}
-          >
-            <Image
-              src="/assets/DrPromilSvg.png"
-              alt="DrPromil"
-              width={160}
-              height={160}
-              style={{ width: 160, height: 160 }}
-            />
-          </div>
+          ></div>
         </div>
 
         <div className={styles.mainGrid}>
@@ -584,6 +579,7 @@ export default function AlchotestKalkulator() {
                     }}
                   >
                     <div className={styles.mainResult}>
+                      <Sova imageName="DrSurprised.png" className="mx-auto" />
                       <div className={styles.mainResultValue}>
                         {afterElimPermille.toFixed(2)}
                       </div>
@@ -784,7 +780,7 @@ function VolumePercentRow({
                 borderRadius: "0.75rem",
                 background: "rgba(255, 255, 255, 0.4)",
                 backdropFilter: "blur(10px)",
-                border: "2px solid transparent",
+                border: "1px solid rgba(148, 163, 184, 0.3)",
                 padding: "0.75rem",
                 fontWeight: "600",
                 outline: "none",
@@ -805,7 +801,7 @@ function VolumePercentRow({
                     borderRadius: "0.5rem",
                     background: "rgba(255, 255, 255, 0.4)",
                     backdropFilter: "blur(10px)",
-                    border: "1px solid transparent",
+                    border: "1px solid rgba(148, 163, 184, 0.2)",
                     fontSize: "0.875rem",
                     fontWeight: "500",
                     transition: "all 0.3s ease",
@@ -842,7 +838,7 @@ function VolumePercentRow({
               borderRadius: "0.75rem",
               background: "rgba(255, 255, 255, 0.4)",
               backdropFilter: "blur(10px)",
-              border: "2px solid transparent",
+              border: "1px solid rgba(148, 163, 184, 0.3)",
               padding: "0.75rem",
               fontWeight: "600",
               outline: "none",

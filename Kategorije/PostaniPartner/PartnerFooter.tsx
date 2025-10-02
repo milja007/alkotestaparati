@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import Sova from "@/components/Sova";
 
 export default function PartnerFooter() {
   return (
@@ -45,14 +46,14 @@ export default function PartnerFooter() {
             <span className="text-primary font-semibold">Partner Program</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-primary mb-6 leading-tight">
-            Postanite Naš Partner
+            Postanite Moj Partner
           </h1>
           <p className="text-xl md:text-2xl text-foreground max-w-4xl mx-auto leading-relaxed">
             Imate <span className="font-bold text-primary">pub</span> ,
             <span className="font-bold text-primary">klub</span>,
             <span className="font-bold text-primary">kafić</span> ili{" "}
             <span className="font-bold text-primary">restoran</span> u kojem se
-            pije? Postanite naš partner i postavite
+            pije? Postanite moj partner i postavite
             <span className="font-bold text-accent"> alkotest aparat</span> u
             vašem lokalu!
           </p>
@@ -104,6 +105,7 @@ export default function PartnerFooter() {
         <div className="space-y-16 mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
+              <Sova imageName="DrUgovor.png" className="mx-auto" />
               <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
@@ -111,19 +113,19 @@ export default function PartnerFooter() {
                       <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <h2 className="text-3xl font-bold text-primary">
-                      Što nudimo?
+                      Što nudim?
                     </h2>
                   </div>
                   <p className="text-foreground leading-relaxed text-lg">
-                    Ako vam se naša ideja sviđa i imate mjesta na zidu. Dodajte
+                    Ako vam se moja ideja sviđa i imate mjesta na zidu. Dodajte
                     vašem lokalu{" "}
                     <span className="font-bold text-accent">zanimljivost</span>{" "}
-                    i novi razlog dolaska. Nakon razgovora i dogovora nudimo
-                    vama i vašem lokalu naš{" "}
+                    i novi razlog dolaska. Nakon razgovora i dogovora mozda
+                    ponudim vama i vašem lokalu moj{" "}
                     <span className="font-bold text-primary">
                       alkotest aparat.
                     </span>{" "}
-                    Po uvjetima ambijenta dodajemo vam i{" "}
+                    Po uvjetima ambijenta dodajem vam i{" "}
                     <span className="font-bold text-accent">
                       personalizirani neonski znak
                     </span>
@@ -185,9 +187,9 @@ export default function PartnerFooter() {
                   </h2>
                 </div>
                 <p className="text-foreground leading-relaxed text-lg">
-                  Što se tiče vašeg dijela, samo nam osigurajte mjesto na zidu,
-                  a redovan servis i vađenje kovanica održavamo jednom mjesečno.
-                  Trebamo samo nadodati slamke, mijenjati senzore, kablove,
+                  Što se tiče vašeg dijela, samo mi osigurajte mjesto na zidu, a
+                  redovan servis i vađenje kovanica održavam jednom mjesečno.
+                  Trebam samo nadodati slamke, mijenjati senzore, kablove,
                   baterije, računalo i očistiti ga. To sve traje maksimalno sat
                   vremena mjesečno.
                 </p>
@@ -201,14 +203,15 @@ export default function PartnerFooter() {
                     <Shield className="w-6 h-6 text-white" />
                   </div>
                   <h2 className="text-2xl font-bold text-primary">
-                    Kako da znate da smo pošteni?
+                    Kako da znate da sam pošten?
                   </h2>
                 </div>
                 <p className="text-foreground leading-relaxed text-lg">
-                  Svako korištenje aparata evidentirano je brojkom koju
-                  pokazujemo fotografijom ili videom na kraju mjeseca da nema
-                  zabune o brojnom stanju. Transparentnost je ključ našeg
-                  partnerstva.
+                  Ni sove ni doktori ne muljaju u biznisu — a ja sam i sova i
+                  doktor, pa nema greške. Uz to svako korištenje uređaja
+                  evidentiram brojčano te na kraju mjeseca dostavljam
+                  fotografiju ili video stanja, kako ne bi bilo nikakve zabune.
+                  Transparentnost je ključ našeg partnerstva.
                 </p>
               </CardContent>
             </Card>
@@ -226,7 +229,7 @@ export default function PartnerFooter() {
                   Kontaktirajte Nas
                 </h2>
                 <p className="text-muted-foreground text-lg">
-                  Spremni smo odgovoriti na sva vaša pitanja
+                  Spremnan sam odgovoriti na sva vaša pitanja
                 </p>
               </div>
 
@@ -271,14 +274,14 @@ export default function PartnerFooter() {
                 className="w-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Pozovite Odmah!
+                Nazovite Odmah!
               </Button>
             </CardContent>
           </Card>
 
           <Card className="bg-gradient-to-br from-accent/5 to-primary/5 border-0 shadow-2xl">
             <CardContent className="p-10">
-              <div className="text-center mb-8">
+              <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <svg
                     className="w-8 h-8 text-white"
@@ -289,11 +292,14 @@ export default function PartnerFooter() {
                   </svg>
                 </div>
                 <h2 className="text-3xl font-bold text-primary mb-2">
-                  Pratite Nas
+                  Pratite Me
                 </h2>
                 <p className="text-muted-foreground text-lg">
                   Budite u toku s najnovijim vijestima
                 </p>
+              </div>
+              <div className="text-center ">
+                <Sova imageName="DrSocials.png" className="mx-auto" />
               </div>
 
               {/* Social media buttons with custom icons */}
