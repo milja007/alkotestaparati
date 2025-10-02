@@ -53,18 +53,12 @@ export default function Mapa() {
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-pretty leading-relaxed">
               Otkrijte moje partnere u Zagrebu i okolici. Svaka lokacija nudi
-              jedinstveno iskustvo s odličnim pićem, zabavom i naravno našim
+              jedinstveno iskustvo s odličnim pićem, zabavom i naravno mojim
               alkotest aparatom.
             </p>
 
             {/* Stats */}
             <div className="flex flex-wrap justify-center gap-8 mt-12">
-              <div className="text-center mt-18">
-                <div className="text-3xl font-bold text-blue-600">4+</div>
-                <div className="text-sm text-gray-500 uppercase tracking-wide">
-                  Lokacije
-                </div>
-              </div>
               <div className="text-center">
                 <Image
                   src="/assets/DrKarta.png"
@@ -72,6 +66,12 @@ export default function Mapa() {
                   width={200}
                   height={200}
                 />
+              </div>
+              <div className="text-center mt-18">
+                <div className="text-3xl font-bold text-blue-600">4+</div>
+                <div className="text-sm text-gray-500 uppercase tracking-wide">
+                  Lokacije
+                </div>
               </div>
             </div>
           </div>

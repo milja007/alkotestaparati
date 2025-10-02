@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
-
+import Image from "next/image";
 import {
   AlertTriangle,
   Scale,
@@ -173,6 +173,16 @@ export function Info() {
                   </span>
                 </div>
               </div>
+              <div className="  p-4 rounded-xl">
+                <div className="flex items-start gap-3">
+                  <Image
+                    src="/assets/DrPijani.png"
+                    alt="Dr. Promil"
+                    width={250}
+                    height={250}
+                  />
+                </div>
+              </div>
               <div className="bg-gradient-to-r from-destructive/10 to-destructive/5 border border-destructive/20 p-4 rounded-xl">
                 <div className="flex items-start gap-3">
                   <Shield className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
@@ -314,6 +324,14 @@ export function Info() {
                   </span>
                 </div>
               ))}
+              <div className="flex justify-between items-center p-6 rounded-xl  h-auto">
+                <Image
+                  src="/assets/DrTuzni.png"
+                  alt="Dr. Promil"
+                  width={250}
+                  height={250}
+                />
+              </div>
             </div>
             <div className="mt-6 p-4 bg-muted/50 rounded-xl border border-border">
               <p className="text-sm text-muted-foreground">

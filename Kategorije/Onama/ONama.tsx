@@ -44,8 +44,8 @@ export default function ONamaPage() {
                   Ja sam dr. Promil i sova sam koja čini noćni život
                   odgovornijim.
                 </span>{" "}
-                Postavljam aparate u ugostiteljske objekte diljem Hrvatske —
-                pogledajte
+                Postavljam svoje alkotest aparate u ugostiteljske objekte diljem
+                Hrvatske — pogledajte
                 <Button
                   size="sm"
                   className="ml-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
