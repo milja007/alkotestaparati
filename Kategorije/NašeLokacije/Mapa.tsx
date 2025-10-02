@@ -1,5 +1,5 @@
 import MapComponent from "./Map";
-
+import Image from "next/image";
 export default function Mapa() {
   return (
     <main
@@ -22,7 +22,7 @@ export default function Mapa() {
 
         <div className="relative max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className=" mb-16 flex flex-col items-center justify-center">
             <div className="inline-flex items-center justify-center p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6">
               <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full">
                 <svg
@@ -48,22 +48,30 @@ export default function Mapa() {
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-6 text-balance">
-              Naše Lokacije
+              Moje Lokacije
             </h1>
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-pretty leading-relaxed">
-              Otkrijte naše partnere u Zagrebu i okolici. Svaka lokacija nudi
+              Otkrijte moje partnere u Zagrebu i okolici. Svaka lokacija nudi
               jedinstveno iskustvo s odličnim pićem, zabavom i naravno našim
               alkotest aparatom.
             </p>
 
             {/* Stats */}
             <div className="flex flex-wrap justify-center gap-8 mt-12">
-              <div className="text-center">
+              <div className="text-center mt-18">
                 <div className="text-3xl font-bold text-blue-600">4+</div>
                 <div className="text-sm text-gray-500 uppercase tracking-wide">
                   Lokacije
                 </div>
+              </div>
+              <div className="text-center">
+                <Image
+                  src="/assets/DrKarta.png"
+                  alt="alkotestaparati"
+                  width={200}
+                  height={200}
+                />
               </div>
             </div>
           </div>

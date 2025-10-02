@@ -21,34 +21,44 @@ export default function ONamaPage() {
           {/* Content Column */}
           <div className="space-y-8">
             {/* Title */}
-            <div className="space-y-4">
-              <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
-                O nama
-              </h1>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+            <div className="flex items-center gap-20">
+              <div className="space-y-4 ">
+                <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+                  O meni
+                </h1>
+
+                <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+              </div>
+              <Image
+                src="/assets/DrMapa.png"
+                alt="Dr. Promil"
+                width={180}
+                height={180}
+              />
             </div>
 
             {/* Main Content */}
             <div className="space-y-6">
               <p className="text-lg lg:text-xl text-foreground leading-relaxed">
                 <span className="font-semibold text-primary">
-                  Mi smo ekipa koja čini noćni život odgovornijim.
+                  Ja sam dr. Promil i sova sam koja čini noćni život
+                  odgovornijim.
                 </span>{" "}
-                Postavljamo aparate u ugostiteljske objekte diljem Hrvatske —
+                Postavljam aparate u ugostiteljske objekte diljem Hrvatske —
                 pogledajte
                 <Button
                   size="sm"
                   className="ml-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                   onClick={() => scrollToSection("NašeLokacije")}
                 >
-                  Naše lokacije
+                  Moje lokacije
                 </Button>
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Dovoljan je jedan aparat u vašem lokalu da gosti u trenu donesu
-                pravu odluku. Aparat je uvijek spreman i jednostavan, a rezultat
-                je pouzdan jer sve kalibriramo i servisiramo po planu.
+                pravu odluku. Aparat je uvijek spreman i jednostavan, a redovno
+                servisiran i kalibriran.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -68,9 +78,9 @@ export default function ONamaPage() {
                   className="ml-2 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-transparent"
                   onClick={() => scrollToSection("PostaniPartner")}
                 >
-                  Postanite naš partner
+                  Postanite moj partner
                 </Button>{" "}
-                i kontaktirajte nas.
+                i kontaktirajte me.
               </p>
             </div>
           </div>
@@ -93,23 +103,19 @@ export default function ONamaPage() {
                 />
 
                 <div className="absolute -top-3 -right-3 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                  Pouzdan rezultat
+                  Kalibriran
                 </div>
               </div>
 
               {/* Feature highlights */}
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl font-bold text-primary">24/7</div>
-                  <div className="text-sm text-muted-foreground">
-                    Dostupnost
-                  </div>
+                  <div className="text-2xl font-bold text-primary">100%</div>
+                  <div className="text-sm text-muted-foreground">Korisno</div>
                 </div>
                 <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl font-bold text-secondary">100%</div>
-                  <div className="text-sm text-muted-foreground">
-                    Preciznost
-                  </div>
+                  <div className="text-2xl font-bold text-secondary">200%</div>
+                  <div className="text-sm text-muted-foreground">Zabavno</div>
                 </div>
               </div>
             </div>
