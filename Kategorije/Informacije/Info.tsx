@@ -152,26 +152,28 @@ export function Info() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="space-y-4">
-                <div className="flex justify-between items-center p-4 bg-gradient-to-r from-emerald-50 to-emerald-100 rounded-xl border border-emerald-200">
-                  <span className="font-bold text-emerald-800 text-lg">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center p-3 sm:p-4 bg-gradient-to-r from-emerald-50 to-emerald-100 rounded-xl border border-emerald-200 gap-2 sm:gap-0">
+                  <span className="font-bold text-emerald-800 text-base sm:text-lg text-center sm:text-left">
                     0,5 ‰
                   </span>
-                  <span className="text-emerald-700 font-medium">
+                  <span className="text-emerald-700 font-medium text-sm sm:text-base text-center sm:text-right">
                     1-1,5 piva ili 1 čaša vina
                   </span>
                 </div>
-                <div className="flex justify-between items-center p-4 bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-xl border border-yellow-200">
-                  <span className="font-bold text-yellow-800 text-lg">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center p-3 sm:p-4 bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-xl border border-yellow-200 gap-2 sm:gap-0">
+                  <span className="font-bold text-yellow-800 text-base sm:text-lg text-center sm:text-left">
                     1,0 ‰
                   </span>
-                  <span className="text-yellow-700 font-medium">
+                  <span className="text-yellow-700 font-medium text-sm sm:text-base text-center sm:text-right">
                     2 čaše vina ili ~1L piva
                   </span>
                 </div>
-                <div className="flex justify-between items-center p-4 bg-gradient-to-r from-red-50 to-red-100 rounded-xl border border-red-200">
-                  <span className="font-bold text-red-800 text-lg">2,0 ‰</span>
-                  <span className="text-red-700 font-medium">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center p-3 sm:p-4 bg-gradient-to-r from-red-50 to-red-100 rounded-xl border border-red-200 gap-2 sm:gap-0">
+                  <span className="font-bold text-red-800 text-base sm:text-lg text-center sm:text-left">
+                    2,0 ‰
+                  </span>
+                  <span className="text-red-700 font-medium text-sm sm:text-base text-center sm:text-right">
                     1L vina ili 3-4 čaše jakog pića
                   </span>
                 </div>
@@ -251,28 +253,28 @@ export function Info() {
               Kako različite razine alkohola utječu na organizam
             </CardDescription>
           </CardHeader>
-          <CardContent className="p-8">
-            <div className="grid gap-4">
+          <CardContent className="p-4 sm:p-6 lg:p-8">
+            <div className="grid gap-3 sm:gap-4">
               {alcoholLevels.map((level, index) => (
                 <div
                   key={index}
-                  className={`level-indicator flex items-center justify-between p-6 rounded-xl border-2 ${level.color} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg`}
+                  className={`level-indicator flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 sm:p-6 rounded-xl border-2 ${level.color} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg gap-3 sm:gap-4`}
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                     <Badge
-                      className="text-lg px-4 py-2 font-bold"
+                      className="text-sm sm:text-lg px-3 sm:px-4 py-2 font-bold w-fit"
                       variant="secondary"
                     >
                       {level.level}
                     </Badge>
-                    <div className="w-32 bg-white/30 rounded-full h-2">
+                    <div className="w-full sm:w-32 bg-white/30 rounded-full h-2">
                       <div
                         className="bg-current h-2 rounded-full transition-all duration-1000"
                         style={{ width: level.intensity }}
                       ></div>
                     </div>
                   </div>
-                  <span className="text-base font-medium flex-1 ml-6">
+                  <span className="text-sm sm:text-base font-medium flex-1 sm:ml-6 text-center sm:text-left">
                     {level.effect}
                   </span>
                 </div>
@@ -293,12 +295,12 @@ export function Info() {
               Trenutno važeći propisi - informativno
             </CardDescription>
           </CardHeader>
-          <CardContent className="p-8">
-            <div className="grid gap-4">
+          <CardContent className="p-4 sm:p-6 lg:p-8">
+            <div className="grid gap-3 sm:gap-4">
               {penalties.map((penalty, index) => (
                 <div
                   key={index}
-                  className={`flex justify-between items-center p-6 rounded-xl border-2 transition-all duration-300 hover:scale-[1.02] ${
+                  className={`flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 hover:scale-[1.02] gap-3 sm:gap-0 ${
                     penalty.severity === "low"
                       ? "bg-yellow-50 border-yellow-200"
                       : penalty.severity === "medium"
@@ -306,11 +308,11 @@ export function Info() {
                       : "bg-red-50 border-red-200"
                   }`}
                 >
-                  <span className="font-bold text-xl text-foreground">
+                  <span className="font-bold text-lg sm:text-xl text-foreground text-center sm:text-left">
                     {penalty.range}
                   </span>
                   <span
-                    className={`font-bold text-xl ${
+                    className={`font-bold text-lg sm:text-xl text-center sm:text-right ${
                       penalty.severity === "low"
                         ? "text-yellow-700"
                         : penalty.severity === "medium"
@@ -322,7 +324,7 @@ export function Info() {
                   </span>
                 </div>
               ))}
-              <div className="flex justify-between items-center p-6 rounded-xl  h-auto">
+              <div className="flex justify-center items-center p-4 sm:p-6 rounded-xl h-auto">
                 <Sova imageName="DrTuzni.png" />
               </div>
             </div>

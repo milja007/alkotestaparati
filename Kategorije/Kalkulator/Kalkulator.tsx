@@ -387,10 +387,11 @@ export default function AlchotestKalkulator() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
+                      gridTemplateColumns: "1fr",
                       gap: "1rem",
                       textAlign: "center",
                     }}
+                    className="sm:grid-cols-2"
                   >
                     <div>
                       <div
@@ -456,9 +457,10 @@ export default function AlchotestKalkulator() {
                     <div
                       style={{
                         display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
+                        gridTemplateColumns: "1fr",
                         gap: "1rem",
                       }}
+                      className="sm:grid-cols-2"
                     >
                       <div className={styles.inputWrapper}>
                         <input
@@ -752,7 +754,8 @@ function VolumePercentRow({
     >
       <h4 style={{ fontWeight: "600", fontSize: "1.125rem" }}>{label}</h4>
       <div
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}
+        style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1rem" }}
+        className="sm:grid-cols-2"
       >
         <div>
           <label

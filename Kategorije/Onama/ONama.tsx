@@ -22,14 +22,21 @@ export default function ONamaPage() {
           {/* Content Column */}
           <div className="space-y-8">
             {/* Title */}
-            <div className="flex items-center gap-20">
-              <div className="space-y-4 ">
+            <div className="flex flex-col xl:flex-row items-center gap-8 xl:gap-20">
+              <div className="space-y-4 text-center xl:text-left">
                 <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
                   O meni
                 </h1>
 
-                <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto xl:mx-0"></div>
               </div>
+              <div className="hidden xl:block">
+                <Sova imageName="DrOmeni.png" />
+              </div>
+            </div>
+
+            {/* Sova for smaller screens - shown below title */}
+            <div className="flex justify-center xl:hidden">
               <Sova imageName="DrOmeni.png" />
             </div>
 
