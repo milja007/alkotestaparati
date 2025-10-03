@@ -98,7 +98,7 @@ export default function ONamaPage() {
               {/* Main image container */}
               <div className="relative bg-white rounded-2xl p-6 shadow-lg">
                 <Image
-                  src="/assets/drunkyet.svg"
+                  src="/assets/BunkerAparat.png"
                   alt="Aparat za mjerenje alkohola"
                   width={400}
                   height={400}

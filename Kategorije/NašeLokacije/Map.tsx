@@ -27,40 +27,31 @@ export default function Map() {
     () => [
       {
         id: 0,
-        name: "Harat's Pub",
-        coordinates: [15.9776849, 45.8148249] as [number, number],
-        description: "Harat's Irish Pub kod trznice Dolac uz veliki izbor piva",
-        businessType: "Irish Pub",
-        avgSpending: "11-16 €",
-        photos: [
-          "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=250&fit=crop",
-          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop",
-          "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=250&fit=crop",
-        ],
-        address: "Dolac 2, 10000 Zagreb",
-        phone: "+385 1 4814 899",
-        googleMapsUrl:
-          "https://www.google.com/maps/place/Harat's+Pub/@45.8148286,15.9751046,17z/data=!4m14!1m7!3m6!1s0x4765d70271927e99:0x8cd74ff66755eca3!2sHarat's+Pub!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_!3m5!1s0x4765d70271927e99:0x8cd74ff66755eca3!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
-        apparatusImage: "/assets/HaratsAparat.jpeg",
-      },
-      {
-        id: 1,
         name: "OUT Bunker Nightclub",
         coordinates: [15.9710048, 45.8133541] as [number, number],
         description:
           "OUT Bunker Nightclub na Ilici - mjesto za mladu populaciju",
         businessType: "Nightclub",
         avgSpending: "13-20 €",
-        photos: [
-          "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=250&fit=crop",
-          "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=250&fit=crop",
-          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop",
-        ],
+        photo: "/assets/Bunker.jpg",
         address: "Ilica 242, 10000 Zagreb",
-        phone: "+385 1 4833 444",
         googleMapsUrl:
           "https://www.google.com/maps/place/OUT+Bunker+Nightclub/@45.8133639,15.9551473,15z/data=!3m1!4b1!4m6!3m5!1s0x4765d7c25fd45d5f:0x2f8a716d8e37bd76!8m2!3d45.8133504!4d15.9735797!16s%2Fg%2F11j7btnp1b?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
         apparatusImage: "/assets/BunkerAparat.png",
+      },
+
+      {
+        id: 1,
+        name: "Harat's Pub",
+        coordinates: [15.9776849, 45.8148249] as [number, number],
+        description: "Harat's Irish Pub kod trznice Dolac uz veliki izbor piva",
+        businessType: "Irish Pub",
+        avgSpending: "11-16 €",
+        photo: "/assets/Harats.jpg",
+        address: "Dolac 2, 10000 Zagreb",
+        googleMapsUrl:
+          "https://www.google.com/maps/place/Harat's+Pub/@45.8148286,15.9751046,17z/data=!4m14!1m7!3m6!1s0x4765d70271927e99:0x8cd74ff66755eca3!2sHarat's+Pub!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_!3m5!1s0x4765d70271927e99:0x8cd74ff66755eca3!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
+        apparatusImage: "/assets/HaratsAparat.jpeg",
       },
       {
         id: 2,
@@ -69,13 +60,8 @@ export default function Map() {
         description: "The Old Pharmacy Pub - mjesto za odmor, rad i zabavu",
         businessType: "Cocktail Bar",
         avgSpending: "12-17 €",
-        photos: [
-          "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=250&fit=crop",
-          "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=250&fit=crop",
-          "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=250&fit=crop",
-        ],
+        photo: "/assets/Pharmacy.jpg",
         address: "Tkalčićeva 58, 10000 Zagreb",
-        phone: "+385 1 4811 300",
         googleMapsUrl:
           "https://www.google.com/maps/place/The+Old+Pharmacy/@45.808983,15.9723891,17z/data=!3m1!4b1!4m6!3m5!1s0x4765d6fbeedc063b:0x3f9e8c4eee9c5cd7!8m2!3d45.8089793!4d15.9749694!16s%2Fg%2F1tg4k56r?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
         apparatusImage: "/assets/PharmacyAparat.jpeg",
@@ -87,13 +73,8 @@ export default function Map() {
         description: "cONLee BAR - mjesto za rad dobro pivo i zabavu",
         businessType: "Bar",
         avgSpending: "5-10 €",
-        photos: [
-          "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=250&fit=crop",
-          "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=250&fit=crop",
-          "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=250&fit=crop",
-        ],
+        photo: "/assets/Conlee.jpg",
         address: "Ul. Antuna Mihanovića 14, 10450, Jastrebarsko",
-        phone: "09123003400",
         googleMapsUrl:
           "https://www.google.com/maps/place/cONLee+BAR/@45.6740471,15.6553774,19.4z/data=!4m6!3m5!1s0x4764338e1ebff2f9:0xf22b7db73d6def56!8m2!3d45.6740313!4d15.6555191!16s%2Fg%2F11xk_lcqf9?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D",
         apparatusImage: "/assets/ConleeAparat.png",
@@ -134,7 +115,7 @@ export default function Map() {
         locations.forEach((location) => {
           const markerEl = document.createElement("div");
           markerEl.className = "custom-marker";
-          markerEl.innerHTML = `<img src="/assets/location-pin.png" alt="Location" class="location-pin-image" />`;
+          markerEl.innerHTML = `<img src="/assets/DrPin.svg" alt="Location" class="location-pin-image" />`;
 
           const marker = new M.Marker(markerEl)
             .setLngLat(location.coordinates)
@@ -154,7 +135,7 @@ export default function Map() {
                 </svg>
               </button>
               <div class="popup-image-container">
-                <img src="${location.photos[0]}" alt="${location.name}" class="main-image" style="width: 100%; height: 100%; object-fit: cover;" />
+                <img src="${location.photo}" alt="${location.name}" class="main-image" style="width: 100%; height: 100%; object-fit: cover;" />
               </div>
               <div class="popup-body">
                 <div class="popup-main">
@@ -276,7 +257,7 @@ export default function Map() {
             >
               <div className="card-image-container">
                 <Image
-                  src={location.photos[0] || "/placeholder.svg"}
+                  src={location.photo || "/placeholder.svg"}
                   alt={location.name}
                   className="card-image"
                   fill
@@ -553,6 +534,19 @@ export default function Map() {
           display: block;
         }
 
+        /* Specifični stilovi za Conlee slike */
+        .card-image[src*="Conlee"] {
+          object-fit: contain;
+          object-position: center center;
+          background: #f8f9fa;
+        }
+
+        .card-image[src*="ConleeAparat"] {
+          object-fit: contain;
+          object-position: center center;
+          background: #f8f9fa;
+        }
+
         .modern-location-card:hover .card-image {
           transform: scale(1.1);
         }
@@ -670,8 +664,8 @@ export default function Map() {
           cursor: pointer;
         }
         :global(.location-pin-image) {
-          width: 40px;
-          height: 40px;
+          width: 50px;
+          height: 50px;
           object-fit: contain;
           filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
           transition: transform 0.2s ease;
@@ -721,6 +715,13 @@ export default function Map() {
           height: 100%;
           object-fit: cover;
           transition: transform 0.3s ease;
+        }
+
+        /* Specifični stilovi za Conlee slike u popup-u */
+        :global(.main-image[src*="Conlee"]) {
+          object-fit: contain;
+          object-position: center center;
+          background: #f8f9fa;
         }
         :global(.popup-body) {
           padding: 1rem;
