@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import Image from "next/image";
 import { useEffect, useRef, useMemo, useState } from "react";
 import type mapboxgl from "mapbox-gl"; // samo tipovi, runtime ide kroz dynamic import
@@ -19,7 +20,7 @@ export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
 
-  const [showAllLocations, setShowAllLocations] = useState(false);
+  const [showApparatusInfo, setShowApparatusInfo] = useState(false);
   const [mapStyle, setMapStyle] = useState<keyof typeof STYLES>("streets");
 
   const locations = useMemo(
@@ -40,8 +41,7 @@ export default function Map() {
         phone: "+385 1 4814 899",
         googleMapsUrl:
           "https://www.google.com/maps/place/Harat's+Pub/@45.8148286,15.9751046,17z/data=!4m14!1m7!3m6!1s0x4765d70271927e99:0x8cd74ff66755eca3!2sHarat's+Pub!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_!3m5!1s0x4765d70271927e99:0x8cd74ff66755eca3!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
-        tripAdvisorUrl:
-          "https://www.tripadvisor.com/Attraction_Review-g294454-d10449134-Reviews-Harat_s_Irish_Pub-Zagreb_Central_Croatia.html",
+        apparatusImage: "/assets/HaratsAparat.jpeg",
       },
       {
         id: 1,
@@ -60,8 +60,7 @@ export default function Map() {
         phone: "+385 1 4833 444",
         googleMapsUrl:
           "https://www.google.com/maps/place/OUT+Bunker+Nightclub/@45.8133639,15.9551473,15z/data=!3m1!4b1!4m6!3m5!1s0x4765d7c25fd45d5f:0x2f8a716d8e37bd76!8m2!3d45.8133504!4d15.9735797!16s%2Fg%2F11j7btnp1b?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
-        tripAdvisorUrl:
-          "https://www.tripadvisor.com/Attraction_Review-g294454-d25788815-Reviews-OUT_Bunker-Zagreb_Central_Croatia.html",
+        apparatusImage: "/assets/BunkerAparat.png",
       },
       {
         id: 2,
@@ -79,8 +78,7 @@ export default function Map() {
         phone: "+385 1 4811 300",
         googleMapsUrl:
           "https://www.google.com/maps/place/The+Old+Pharmacy/@45.808983,15.9723891,17z/data=!3m1!4b1!4m6!3m5!1s0x4765d6fbeedc063b:0x3f9e8c4eee9c5cd7!8m2!3d45.8089793!4d15.9749694!16s%2Fg%2F1tg4k56r?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
-        tripAdvisorUrl:
-          "https://www.tripadvisor.com/Restaurant_Review-g294454-d2645920-Reviews-Old_Pharmacy_Pub-Zagreb_Central_Croatia.html",
+        apparatusImage: "/assets/PharmacyAparat.jpeg",
       },
       {
         id: 3,
@@ -98,8 +96,7 @@ export default function Map() {
         phone: "09123003400",
         googleMapsUrl:
           "https://www.google.com/maps/place/cONLee+BAR/@45.6740471,15.6553774,19.4z/data=!4m6!3m5!1s0x4764338e1ebff2f9:0xf22b7db73d6def56!8m2!3d45.6740313!4d15.6555191!16s%2Fg%2F11xk_lcqf9?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D",
-        tripAdvisorUrl:
-          "https://www.facebook.com/people/cONLee-BAR/61577259976283/#",
+        apparatusImage: "/assets/ConleeAparat.png",
       },
     ],
     []
@@ -269,13 +266,12 @@ export default function Map() {
 
       {/* Grid s karticama lokacija */}
       <div className="modern-locations-grid">
-        {(showAllLocations ? locations : locations.slice(0, 2)).map(
-          (location, index) => (
+        {/* Lokacije i aparati u parovima */}
+        {locations.map((location, index) => (
+          <React.Fragment key={location.id}>
+            {/* Lokacija card */}
             <div
-              key={location.id}
-              className={`modern-location-card card-${index % 4} ${
-                showAllLocations && index >= 2 ? "animate-in" : ""
-              }`}
+              className={`modern-location-card card-${index % 4}`}
               onClick={() => window.open(location.googleMapsUrl, "_blank")}
             >
               <div className="card-image-container">
@@ -311,20 +307,54 @@ export default function Map() {
                 </div>
               </div>
             </div>
-          )
-        )}
 
-        {!showAllLocations && locations.length > 2 && (
-          <div className="show-more-container">
-            <button
-              type="button"
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-              onClick={() => setShowAllLocations(true)}
-            >
-              Pogledaj sve lokacije
-            </button>
-          </div>
-        )}
+            {/* Aparat card - prikazuje se tek nakon klika na gumb */}
+            {showApparatusInfo && (
+              <div
+                className={`modern-location-card apparatus-card card-${
+                  index % 4
+                } animate-in`}
+                onClick={() => window.open(location.googleMapsUrl, "_blank")}
+              >
+                <div className="card-image-container">
+                  <Image
+                    src={location.apparatusImage || "/assets/HaratsAparat.jpeg"}
+                    alt="Alkotest aparat u objektu"
+                    className="card-image"
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                  />
+                  <div className="card-overlay">
+                    <div className="card-hover-content">
+                      <p className="card-description">Unutar objekta</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card-content">
+                  <p className="apparatus-instructions">
+                    Aparat se nalazi unutar objekta. Pitajte osoblje za upute do
+                    aparata.
+                  </p>
+                </div>
+              </div>
+            )}
+          </React.Fragment>
+        ))}
+
+        {/* Gumb za aparate u objektu */}
+        <div className="show-more-container">
+          <button
+            type="button"
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+            onClick={() => setShowApparatusInfo(!showApparatusInfo)}
+          >
+            {showApparatusInfo ? "Sakrij aparate" : "Aparati u objektu"}
+          </button>
+        </div>
       </div>
 
       <style jsx>{`
@@ -408,6 +438,12 @@ export default function Map() {
           }
         }
 
+        @media (min-width: 1280px) {
+          .modern-locations-grid {
+            grid-template-columns: repeat(8, 1fr);
+          }
+        }
+
         .modern-location-card {
           background: white;
           border-radius: 1.5rem;
@@ -451,6 +487,37 @@ export default function Map() {
         }
         .card-3 {
           border-top: 4px solid #f59e0b;
+        }
+
+        .apparatus-card {
+          border-top: 4px solid #ef4444;
+          background: linear-gradient(135deg, #fef2f2, #fee2e2);
+        }
+
+        .apparatus-card .card-title {
+          color: #dc2626;
+        }
+
+        .apparatus-card .business-type {
+          background: linear-gradient(135deg, #fecaca, #fca5a5);
+          color: #991b1b;
+        }
+
+        .apparatus-card .avg-spending {
+          background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+          color: #166534;
+        }
+
+        .apparatus-instructions {
+          margin: 0;
+          color: #374151;
+          font-size: 0.875rem;
+          line-height: 1.5;
+          text-align: center;
+          padding: 0.5rem;
+          background: rgba(255, 255, 255, 0.8);
+          border-radius: 0.5rem;
+          border: 1px solid rgba(239, 68, 68, 0.2);
         }
 
         .card-image-container {
