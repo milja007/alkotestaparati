@@ -1,5 +1,4 @@
 import MapComponent from "./Map";
-import Image from "next/image";
 import Sova from "../../components/Sova";
 export default function Mapa() {
   return (

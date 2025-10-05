@@ -38,6 +38,8 @@ export default function Map() {
         googleMapsUrl:
           "https://www.google.com/maps/place/OUT+Bunker+Nightclub/@45.8133639,15.9551473,15z/data=!3m1!4b1!4m6!3m5!1s0x4765d7c25fd45d5f:0x2f8a716d8e37bd76!8m2!3d45.8133504!4d15.9735797!16s%2Fg%2F11j7btnp1b?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
         apparatusImage: "/assets/BunkerAparat.png",
+        upute:
+          "Kada gledate ravno u wc, krenite lijevo i hodajte ravno dok sa desne strane ne vidite ulaz u prostoriju gdje se nalazi aparat sa vase lijeve strane.",
       },
 
       {
@@ -52,6 +54,8 @@ export default function Map() {
         googleMapsUrl:
           "https://www.google.com/maps/place/Harat's+Pub/@45.8148286,15.9751046,17z/data=!4m14!1m7!3m6!1s0x4765d70271927e99:0x8cd74ff66755eca3!2sHarat's+Pub!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_!3m5!1s0x4765d70271927e99:0x8cd74ff66755eca3!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
         apparatusImage: "/assets/HaratsAparat.jpeg",
+        upute:
+          "Nakon šanka desno hodate ravno dok sa desne strane ne vidite game room u kojem se nalazi aparat pored pikada.",
       },
       {
         id: 2,
@@ -65,6 +69,8 @@ export default function Map() {
         googleMapsUrl:
           "https://www.google.com/maps/place/The+Old+Pharmacy/@45.808983,15.9723891,17z/data=!3m1!4b1!4m6!3m5!1s0x4765d6fbeedc063b:0x3f9e8c4eee9c5cd7!8m2!3d45.8089793!4d15.9749694!16s%2Fg%2F1tg4k56r?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
         apparatusImage: "/assets/PharmacyAparat.jpeg",
+        upute:
+          "Kad uočite šank, skrenete desno pa hodajte ravno prema wcu i po putu će biti na zidu sa desne strane.",
       },
       {
         id: 3,
@@ -73,11 +79,13 @@ export default function Map() {
         description: "cONLee BAR - mjesto za rad dobro pivo i zabavu",
         businessType: "Bar",
         avgSpending: "5-10 €",
-        photo: "/assets/Conlee.jpg",
+        photo: "/assets/Conlee.png",
         address: "Ul. Antuna Mihanovića 14, 10450, Jastrebarsko",
         googleMapsUrl:
           "https://www.google.com/maps/place/cONLee+BAR/@45.6740471,15.6553774,19.4z/data=!4m6!3m5!1s0x4764338e1ebff2f9:0xf22b7db73d6def56!8m2!3d45.6740313!4d15.6555191!16s%2Fg%2F11xk_lcqf9?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D",
         apparatusImage: "/assets/ConleeAparat.png",
+        upute:
+          "Kada vidite šank odma ga vidite na zidu lijevo izmedu wc-a i tv-a.",
       },
     ],
     []
@@ -299,7 +307,7 @@ export default function Map() {
               >
                 <div className="card-image-container">
                   <Image
-                    src={location.apparatusImage || "/assets/HaratsAparat.jpeg"}
+                    src={location.apparatusImage}
                     alt="Alkotest aparat u objektu"
                     className="card-image"
                     fill
@@ -310,15 +318,14 @@ export default function Map() {
                   />
                   <div className="card-overlay">
                     <div className="card-hover-content">
-                      <p className="card-description">Unutar objekta</p>
+                      <p className="card-description">{`Unutar ${location.name}a`}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="card-content">
                   <p className="apparatus-instructions">
-                    Aparat se nalazi unutar objekta. Pitajte osoblje za upute do
-                    aparata.
+                    {`${location.upute}`}
                   </p>
                 </div>
               </div>
@@ -534,19 +541,6 @@ export default function Map() {
           display: block;
         }
 
-        /* Specifični stilovi za Conlee slike */
-        .card-image[src*="Conlee"] {
-          object-fit: contain;
-          object-position: center center;
-          background: #f8f9fa;
-        }
-
-        .card-image[src*="ConleeAparat"] {
-          object-fit: contain;
-          object-position: center center;
-          background: #f8f9fa;
-        }
-
         .modern-location-card:hover .card-image {
           transform: scale(1.1);
         }
@@ -664,8 +658,8 @@ export default function Map() {
           cursor: pointer;
         }
         :global(.location-pin-image) {
-          width: 50px;
-          height: 50px;
+          width: 60px;
+          height: 60px;
           object-fit: contain;
           filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
           transition: transform 0.2s ease;
@@ -715,13 +709,6 @@ export default function Map() {
           height: 100%;
           object-fit: cover;
           transition: transform 0.3s ease;
-        }
-
-        /* Specifični stilovi za Conlee slike u popup-u */
-        :global(.main-image[src*="Conlee"]) {
-          object-fit: contain;
-          object-position: center center;
-          background: #f8f9fa;
         }
         :global(.popup-body) {
           padding: 1rem;
