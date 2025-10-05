@@ -318,7 +318,7 @@ export default function Map() {
                   />
                   <div className="card-overlay">
                     <div className="card-hover-content">
-                      <p className="card-description">{`Unutar ${location.name}a`}</p>
+                      <p className="card-description">{`Aparat unutar ${location.name}a`}</p>
                     </div>
                   </div>
                 </div>
@@ -425,12 +425,6 @@ export default function Map() {
         @media (min-width: 1024px) {
           .modern-locations-grid {
             grid-template-columns: repeat(4, 1fr);
-          }
-        }
-
-        @media (min-width: 1280px) {
-          .modern-locations-grid {
-            grid-template-columns: repeat(8, 1fr);
           }
         }
 
