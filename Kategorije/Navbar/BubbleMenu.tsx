@@ -69,9 +69,9 @@ const DEFAULT_ITEMS: MenuItem[] = [
     hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
   },
   {
-    label: "Postanite moj partner",
+    label: "Postani partner",
     href: "#PostaniPartner",
-    ariaLabel: "Postanite moj partner",
+    ariaLabel: "Postani partner",
     rotation: -8,
     hoverStyles: { bgColor: "#06b6d4", textColor: "#ffffff" },
   },

@@ -158,12 +158,18 @@
   box-sizing: border-box;
 }
 
+/* Za 6 elemenata u 3x2 gridu */
 .bubble-menu-items .pill-list .pill-col:nth-child(4):nth-last-child(2) {
   margin-left: calc(100% / 6);
 }
 
 .bubble-menu-items .pill-list .pill-col:nth-child(4):last-child {
   margin-left: calc(100% / 3);
+}
+
+/* Element 6 (Postani partner) treba biti pored elementa 5 (Online kalkulator) */
+.bubble-menu-items .pill-list .pill-col:nth-child(6) {
+  margin-left: 0;
 }
 
 .bubble-menu-items .pill-link {
