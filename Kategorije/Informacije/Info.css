@@ -40,7 +40,14 @@
 }
 
 .floating-icon {
-  animation: float 3s ease-in-out infinite;
+  /* Bez animacije na mobile */
+}
+
+/* Uključi float animaciju tek od 768px+ */
+@media (min-width: 768px) {
+  .floating-icon {
+    animation: float 3s ease-in-out infinite;
+  }
 }
 
 @keyframes float {

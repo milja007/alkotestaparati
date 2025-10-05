@@ -178,3 +178,23 @@
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
+
+/* Reduced motion support - potpuno ugasi animacije kad korisnik to traži */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Ugasiti animacije ispod 640px za bolje performanse na mobile */
+@media (max-width: 639px) {
+  .anim,
+  [data-anim],
+  .animate-slide-up,
+  .animate-fade-scale,
+  .animate-shimmer {
+    animation: none !important;
+    transition: none !important;
+  }
+}

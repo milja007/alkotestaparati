@@ -9,9 +9,15 @@
     #15803d 100%
   );
   background-size: 400% 400%;
-  animation: gradientShift 25s ease infinite;
   position: relative;
   overflow: hidden;
+}
+
+/* Uključi animacije tek od 768px+ */
+@media (min-width: 768px) {
+  .hero {
+    animation: gradientShift 25s ease infinite;
+  }
 }
 
 .hero::before {
@@ -36,8 +42,14 @@
       rgba(22, 163, 74, 0.2) 0%,
       transparent 50%
     );
-  animation: floatingOrbs 30s ease-in-out infinite;
   z-index: -1;
+}
+
+/* Uključi floating orbs animaciju tek od 1024px+ (desktop) */
+@media (min-width: 1024px) {
+  .hero::before {
+    animation: floatingOrbs 30s ease-in-out infinite;
+  }
 }
 
 @keyframes gradientShift {
@@ -111,9 +123,15 @@
 .sovaContainer img {
   max-width: 100%;
   height: auto;
-  transition: transform 0.3s ease;
   filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
-  animation: float 3s ease-in-out infinite;
+}
+
+/* Uključi float animaciju od 400px+ */
+@media (min-width: 400px) {
+  .sovaContainer img {
+    transition: transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+  }
 }
 
 @keyframes float {
@@ -126,8 +144,11 @@
   }
 }
 
-.sovaContainer img:hover {
-  transform: scale(1.05);
+/* Hover efekat od 400px+ */
+@media (min-width: 400px) {
+  .sovaContainer img:hover {
+    transform: scale(1.05);
+  }
 }
 
 /* Responzivni stilovi za glavni logo */
