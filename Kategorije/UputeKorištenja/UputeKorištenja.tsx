@@ -60,7 +60,7 @@ export function UsageInstructions({}: UsageInstructionsProps) {
           >
             <div className="w-full max-w-sm">
               <Sova
-                imageName="DrUpute.png"
+                imageName="DrUpute.webp"
                 className="w-full h-auto drop-shadow-xl rounded-2xl"
               />
             </div>
@@ -82,7 +82,7 @@ export function UsageInstructions({}: UsageInstructionsProps) {
                   <div className="step-default responsive-medium">
                     <div className="step-image-container">
                       <Image
-                        src="/assets/CompleteKorak.png"
+                        src="/assets/completeKorak.webp"
                         alt="Finalni korak"
                         className="step-image stepper-image"
                         width={780}

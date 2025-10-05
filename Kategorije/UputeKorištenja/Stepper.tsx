@@ -62,7 +62,7 @@ function useScreenSize() {
 function getResponsiveImage(stepNumber: number): string {
   const baseImageName = `${stepNumber}.korak`;
   // Koristi samo originalne slike za sve veličine ekrana
-  return `/assets/${baseImageName}.png`;
+  return `/assets/${baseImageName}.webp`;
 }
 
 interface RenderStepIndicatorProps {

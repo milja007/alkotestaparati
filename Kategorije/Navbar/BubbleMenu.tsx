@@ -78,7 +78,7 @@ const DEFAULT_ITEMS: MenuItem[] = [
 ];
 
 export default function BubbleMenu({
-  logo = "/assets/DrPromilLogoWithTitle.png",
+  logo = "/assets/DrPromilLogoWithTitle.webp",
   onMenuClick,
   className,
   style,

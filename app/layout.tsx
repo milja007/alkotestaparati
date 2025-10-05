@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   title: "Dr Promil",
   description: "Aplikacija za upravljanje alkotest aparatima",
   icons: {
-    icon: "/assets/DrPromilSvg.png",
-    shortcut: "/assets/DrPromilSvg.png",
-    apple: "/assets/DrPromilSvg.png",
+    icon: "/assets/DrPromilLogoWithTitle.webp",
+    shortcut: "/assets/DrPromilLogoWithTitle.webp",
+    apple: "/assets/DrPromilLogoWithTitle.webp",
   },
 };
 
