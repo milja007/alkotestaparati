@@ -4,7 +4,7 @@
   top: 2em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
   padding: 0 2em;
   pointer-events: none;
@@ -32,48 +32,10 @@
   pointer-events: auto;
 }
 
-.bubble-menu .logo-bubble,
 .bubble-menu .toggle-bubble {
   will-change: transform;
-}
-
-.bubble-menu .logo-bubble {
-  width: auto;
-  min-height: calc(var(--bubble-size) * 2.2);
-  height: calc(var(--bubble-size) * 2.2);
-  padding: 0 30px;
-  border-radius: calc(var(--bubble-size) * 2.2 / 2);
-  gap: 8px;
-}
-
-.bubble-menu .toggle-bubble {
   width: var(--bubble-size);
   height: var(--bubble-size);
-}
-
-.bubble-menu .bubble-logo {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  height: auto;
-}
-
-.bubble-menu .logo-content {
-  --logo-max-height: 100%;
-  --logo-max-width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 180px;
-  height: 100%;
-}
-
-.bubble-menu .logo-content > .bubble-logo,
-.bubble-menu .logo-content > img,
-.bubble-menu .logo-content > svg {
-  max-height: var(--logo-max-height);
-  max-width: var(--logo-max-width);
 }
 
 .bubble-menu .menu-btn {

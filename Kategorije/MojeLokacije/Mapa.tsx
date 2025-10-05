@@ -23,10 +23,10 @@ export default function Mapa() {
         <div className="relative max-w-7xl mx-auto">
           {/* Section Header */}
           <div className=" mb-16 flex flex-col items-center justify-center">
-            <div className="inline-flex items-center justify-center p-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6">
+            <div className="inline-flex items-center justify-center p-2 bg-gradient-to-r from-primary to-secondary rounded-full mb-6">
               <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full">
                 <svg
-                  className="w-6 h-6 text-blue-600"
+                  className="w-6 h-6 text-primary"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ export default function Mapa() {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-6 text-balance">
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent mb-6 text-balance">
               Moje Lokacije
             </h1>
 

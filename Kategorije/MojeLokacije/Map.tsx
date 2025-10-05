@@ -337,7 +337,7 @@ export default function Map() {
         <div className="show-more-container">
           <button
             type="button"
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full hover:from-primary/90 hover:to-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
             onClick={() => setShowApparatusInfo(!showApparatusInfo)}
           >
             {showApparatusInfo ? "Sakrij aparate" : "Aparati u objektu"}

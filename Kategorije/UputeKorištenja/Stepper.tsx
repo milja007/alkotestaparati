@@ -397,8 +397,16 @@ function StepIndicator({
         initial={{ scale: 1, backgroundColor: "#222", color: "#a3a3a3" }}
         variants={{
           inactive: { scale: 1, backgroundColor: "#222", color: "#a3a3a3" },
-          active: { scale: 1, backgroundColor: "#ff781f", color: "#ffffff" },
-          complete: { scale: 1, backgroundColor: "#ff781f", color: "#ffffff" },
+          active: {
+            scale: 1,
+            backgroundColor: "var(--primary)",
+            color: "#ffffff",
+          },
+          complete: {
+            scale: 1,
+            backgroundColor: "var(--primary)",
+            color: "#ffffff",
+          },
         }}
         transition={{ duration: 0.3 }}
         className="step-indicator-inner"
@@ -422,7 +430,7 @@ interface StepConnectorProps {
 function StepConnector({ isComplete }: StepConnectorProps) {
   const lineVariants: Variants = {
     incomplete: { width: 0, backgroundColor: "rgba(0, 0, 0, 0)" },
-    complete: { width: "100%", backgroundColor: "#ff781f" },
+    complete: { width: "100%", backgroundColor: "var(--primary)" },
   };
 
   return (

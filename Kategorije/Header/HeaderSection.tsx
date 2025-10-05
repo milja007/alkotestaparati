@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Calculator, Euro, Clock, Shield } from "lucide-react";
 import { ThemeToggleCompact } from "../../components/ThemeToggle";
 import styles from "./HeaderSection.module.css";
+import Sova from "@/components/Sova";
 
 export default function HomePage() {
   const scrollToSection = (sectionId: string) => {
@@ -23,7 +24,10 @@ export default function HomePage() {
           <div className={styles.titleContainer}>
             <h1 className={styles.titleFirst}>Testiraj,</h1>
             <h1 className={styles.titleSecond}>nauči i odluči!</h1>
-            <div className={styles.glowEffect}></div>
+          </div>
+
+          <div className={styles.sovaContainer}>
+            <Sova imageName="DrLogoNew.webp" />
           </div>
 
           <p className={styles.subtitle}>

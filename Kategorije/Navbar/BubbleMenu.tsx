@@ -214,28 +214,6 @@ export default function BubbleMenu({
         style={style}
         aria-label="Main navigation"
       >
-        <div
-          className="bubble logo-bubble"
-          aria-label="Logo"
-          style={{ background: menuBg }}
-        >
-          <span className="logo-content">
-            {typeof logo === "string" ? (
-              <Image
-                src={logo}
-                alt="Logo"
-                className="bubble-logo"
-                width={160}
-                height={90}
-                style={{ width: "auto", height: "auto" }}
-                priority
-              />
-            ) : (
-              logo
-            )}
-          </span>
-        </div>
-
         <button
           type="button"
           className={`bubble toggle-bubble menu-btn ${

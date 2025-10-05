@@ -90,7 +90,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  background-color: #ff781f;
+  background-color: var(--primary);
   color: #ffffff;
   font-weight: 500;
   letter-spacing: -0.025em;
@@ -99,11 +99,12 @@
 }
 
 .next-button:hover {
-  background-color: #e66a1a;
+  background-color: var(--secondary);
 }
 
 .next-button:active {
-  background-color: #cc5a15;
+  background-color: var(--primary);
+  opacity: 0.8;
 }
 
 .step-indicator {
