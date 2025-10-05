@@ -34,16 +34,16 @@ export type BubbleMenuProps = {
 
 const DEFAULT_ITEMS: MenuItem[] = [
   {
-    label: "O nama",
-    href: "#ONama",
-    ariaLabel: "O nama",
+    label: "O meni",
+    href: "#OOmeni",
+    ariaLabel: "O meni",
     rotation: -8,
     hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
   },
   {
-    label: "Naše lokacije",
-    href: "#NašeLokacije",
-    ariaLabel: "Naše lokacije",
+    label: "Moje lokacije",
+    href: "#MojeLokacije",
+    ariaLabel: "Moje lokacije",
     rotation: 8,
     hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
   },
@@ -69,16 +69,16 @@ const DEFAULT_ITEMS: MenuItem[] = [
     hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
   },
   {
-    label: "Postani partner",
+    label: "Postanite moj partner",
     href: "#PostaniPartner",
-    ariaLabel: "Postani partner",
+    ariaLabel: "Postanite moj partner",
     rotation: -8,
     hoverStyles: { bgColor: "#06b6d4", textColor: "#ffffff" },
   },
 ];
 
 export default function BubbleMenu({
-  logo = "/assets/DrPromilLogoWithTitle.webp",
+  logo = "/assets/DrLogoNew.webp",
   onMenuClick,
   className,
   style,

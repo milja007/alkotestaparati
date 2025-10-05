@@ -3,7 +3,7 @@ import Sova from "../../components/Sova";
 export default function Mapa() {
   return (
     <main
-      id="NašeLokacije"
+      id="MojeLokacije"
       className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50"
     >
       {/* Hero Section with Locations */}

@@ -45,10 +45,10 @@ export default function HomePage() {
               size="lg"
               variant="outline"
               className="px-8 py-4 text-lg font-semibold border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
-              onClick={() => scrollToSection("NašeLokacije")}
+              onClick={() => scrollToSection("MojeLokacije")}
             >
               <MapPin className="w-5 h-5 mr-2" />
-              Naše lokacije
+              Moje lokacije
             </Button>
           </div>
 

@@ -14,7 +14,7 @@ export default function ONamaPage() {
   };
   return (
     <div
-      id="ONama"
+      id="OOmeni"
       className="min-h-screen bg-gradient-to-br from-background via-card to-muted"
     >
       <section className="container mx-auto px-4 py-16 lg:py-24">
@@ -52,7 +52,7 @@ export default function ONamaPage() {
                 <Button
                   size="sm"
                   className="ml-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                  onClick={() => scrollToSection("NašeLokacije")}
+                  onClick={() => scrollToSection("MojeLokacije")}
                 >
                   Moje lokacije
                 </Button>

@@ -5,8 +5,8 @@ import { Info } from "../Kategorije/Informacije/Info";
 import PartnerFooter from "../Kategorije/PostaniPartner/PartnerFooter";
 import HeaderSection from "../Kategorije/Header/HeaderSection";
 import BubbleMenu from "../Kategorije/Navbar/BubbleMenu";
-import ONama from "../Kategorije/Onama/ONama";
-import Mapa from "../Kategorije/NašeLokacije/Mapa";
+import OOmeni from "../Kategorije/Omeni/OOmeni";
+import Mapa from "../Kategorije/MojeLokacije/Mapa";
 import { UsageInstructions } from "../Kategorije/UputeKorištenja/UputeKorištenja";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
     <div>
       <BubbleMenu />
       <HeaderSection />
-      <ONama />
+      <OOmeni />
       <Mapa />
       <UsageInstructions />
       <Info />
