@@ -63,7 +63,7 @@ export default function Mapa() {
                 <Sova imageName="DrKarta.webp" />
               </div>
               <div className="text-center mt-18">
-                <div className="text-3xl font-bold text-blue-600">4+</div>
+                <div className="text-3xl font-bold text-secondary">4+</div>
                 <div className="text-sm text-gray-500 uppercase tracking-wide">
                   Lokacije
                 </div>

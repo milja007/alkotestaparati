@@ -16,9 +16,9 @@ export function UsageInstructions({}: UsageInstructionsProps) {
       // min-h: definira visinu sekcije (skalirano)
       // py: vertikalni ritam prema susjednim sekcijama
       className="
-        relative isolate scroll-mt-24
-        py-24 md:py-28 lg:py-36
-        min-h-[65svh] md:min-h-[70svh] lg:min-h-[clamp(720px,80svh,1100px)]
+        relative isolate scroll-mt-24 bg-green-50
+        py-24 md:py-28 lg:py-28
+        min-h-[65svh] md:min-h-[70svh] 
         bg-gradient-to-br from-background via-card to-muted/50
       "
     >

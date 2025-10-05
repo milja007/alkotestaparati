@@ -334,15 +334,17 @@ export default function Map() {
         ))}
 
         {/* Gumb za aparate u objektu */}
-        <div className="show-more-container">
-          <button
-            type="button"
-            className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full hover:from-primary/90 hover:to-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-            onClick={() => setShowApparatusInfo(!showApparatusInfo)}
-          >
-            {showApparatusInfo ? "Sakrij aparate" : "Aparati u objektu"}
-          </button>
-        </div>
+        {!showApparatusInfo && (
+          <div className="show-more-container">
+            <button
+              type="button"
+              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full hover:from-primary/90 hover:to-secondary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+              onClick={() => setShowApparatusInfo(true)}
+            >
+              Pronađi u objektu
+            </button>
+          </div>
+        )}
       </div>
 
       <style jsx>{`
