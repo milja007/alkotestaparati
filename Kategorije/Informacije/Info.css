@@ -40,12 +40,14 @@
 }
 
 .floating-icon {
-  /* Bez animacije na mobile */
+  /* Vidljive uvijek, bez animacije na manjim ekranima */
+  display: inline-block;
 }
 
-/* Uključi float animaciju tek od 768px+ */
-@media (min-width: 768px) {
+/* Uključi float animaciju od 400px+ (kao u HeaderSection) */
+@media (min-width: 400px) {
   .floating-icon {
+    transition: transform 0.3s ease;
     animation: float 3s ease-in-out infinite;
   }
 }

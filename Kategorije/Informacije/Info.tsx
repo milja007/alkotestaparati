@@ -20,6 +20,7 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { TajniKomponent } from "../../components/TajniKomponent";
+import "./Info.css";
 
 export function Info() {
   const [showTajniKomponent, setShowTajniKomponent] = useState(false);
@@ -78,13 +79,9 @@ export function Info() {
         >
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="relative z-10">
-            <motion.div
-              className="inline-block mb-4"
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div className="inline-block mb-4 floating-icon">
               <Scale className="w-16 h-16 text-white/90" />
-            </motion.div>
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white text-balance mb-4">
               Informacije o promilima,
               <br />
@@ -414,13 +411,9 @@ export function Info() {
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary via-secondary to-accent p-12 text-center space-y-6 shadow-2xl">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10">
-            <motion.div
-              className="inline-block mb-4"
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div className="inline-block mb-4 floating-icon">
               <Shield className="w-12 h-12 text-white" />
-            </motion.div>
+            </div>
             <h2 className="text-3xl font-bold text-white mb-4">
               Sigurnost je prioritet
             </h2>
