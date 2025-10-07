@@ -24,7 +24,7 @@ export function UsageInstructions({}: UsageInstructionsProps) {
     >
       <div className="max-w-6xl mx-auto">
         {/* Naslov */}
-        <div className="text-center mb-12 md:mb-20 lg:mb-0">
+        <div className="text-center mb-12 md:mb-20 lg:mb-12">
           <div className="inline-block">
             <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent mb-4">
               Upute Korištenja
@@ -36,7 +36,7 @@ export function UsageInstructions({}: UsageInstructionsProps) {
         {/* Hard spacer na desktopu: garantira zračni prostor ispod naslova bez obzira što Stepper radi */}
         <div
           aria-hidden="true"
-          className="hidden lg:block h-16 xl:h-20 2xl:h-24"
+          className="hidden lg:block h-24 xl:h-28 2xl:h-32"
         />
 
         {/* Layout: maskota (lijevo) + stepper (desno) */}

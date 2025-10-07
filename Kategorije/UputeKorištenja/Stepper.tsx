@@ -394,9 +394,17 @@ function StepIndicator({
       initial={false}
     >
       <motion.div
-        initial={{ scale: 1, backgroundColor: "#222", color: "#a3a3a3" }}
+        initial={{
+          scale: 1,
+          backgroundColor: "rgb(21, 128, 61)",
+          color: "#ffffff",
+        }}
         variants={{
-          inactive: { scale: 1, backgroundColor: "#222", color: "#a3a3a3" },
+          inactive: {
+            scale: 1,
+            backgroundColor: "rgb(21, 128, 61)",
+            color: "#ffffff",
+          },
           active: {
             scale: 1,
             backgroundColor: "var(--primary)",
