@@ -75,6 +75,13 @@ const DEFAULT_ITEMS: MenuItem[] = [
     rotation: -8,
     hoverStyles: { bgColor: "#06b6d4", textColor: "#ffffff" },
   },
+  {
+    label: "Zapratite me",
+    href: "#ZapratiteMe",
+    ariaLabel: "Zapratite me",
+    rotation: 8,
+    hoverStyles: { bgColor: "#ec4899", textColor: "#ffffff" },
+  },
 ];
 
 export default function BubbleMenu({
@@ -271,7 +278,7 @@ export default function BubbleMenu({
           className={`bubble-menu-items ${
             useFixedPosition ? "fixed" : "absolute"
           }`}
-          inert={!isMenuOpen ? ("" as any) : undefined}
+          inert={!isMenuOpen ? true : undefined}
           onClick={handleBackdropClick}
         >
           <ul className="pill-list" role="menu" aria-label="Menu links">

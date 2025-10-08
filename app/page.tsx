@@ -8,10 +8,11 @@ import BubbleMenu from "../Kategorije/Navbar/BubbleMenu";
 import OOmeni from "../Kategorije/Omeni/OOmeni";
 import Mapa from "../Kategorije/MojeLokacije/Mapa";
 import { UsageInstructions } from "../Kategorije/UputeKorištenja/UputeKorištenja";
+import ZapratiteMe from "@/Kategorije/ZapratiteMe/ZapratiteMe";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <BubbleMenu />
       <HeaderSection />
       <OOmeni />
@@ -20,6 +21,7 @@ export default function Home() {
       <Info />
       <AlchotestKalkulator />
       <PartnerFooter />
-    </div>
+      <ZapratiteMe />
+    </>
   );
 }

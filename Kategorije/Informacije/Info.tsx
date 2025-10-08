@@ -17,7 +17,6 @@ import {
   Heart,
   Brain,
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { TajniKomponent } from "../../components/TajniKomponent";
 import "./Info.css";
@@ -65,33 +64,28 @@ export function Info() {
   ];
 
   return (
-    <div
-      id="Informacije"
-      className="min-h-screen py-24 px-4 bg-gradient-to-br from-muted/30 via-card to-background"
-    >
+    <div className="min-h-screen py-24 px-4 bg-gradient-to-br from-muted/30 via-card to-background">
       <div className="max-w-7xl mx-auto px-4 py-12 space-y-12">
         <div
+          id="Informacije"
           className="relative overflow-hidden rounded-3xl p-12 text-center space-y-6"
           style={{
             background:
-              "linear-gradient(135deg, #1e40af 0%, #3b82f6 25%, #06b6d4 50%, #10b981 75%, #8b5cf6 100%)",
+              "linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #0e7490 50%, #047857 75%, #5b21b6 100%)",
           }}
         >
-          <div className="absolute inset-0 bg-black/20"></div>
-          <div className="relative z-10">
-            <div className="inline-block mb-4 floating-icon">
-              <Scale className="w-16 h-16 text-white/90" />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white text-balance mb-4">
-              Informacije o promilima,
-              <br />
-              alkoholu i kaznama
-            </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto text-pretty leading-relaxed">
-              Razumijevanje razine alkohola u krvi ključno je za sigurnu vožnju.
-              Saznajte što znače promili i kako utječu na vaše sposobnosti.
-            </p>
+          <div className="inline-block mb-4 floating-icon">
+            <Scale className="w-16 h-16 text-white/90" />
           </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white text-balance mb-4">
+            Informacije o promilima,
+            <br />
+            alkoholu i kaznama
+          </h1>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto text-pretty leading-relaxed">
+            Razumijevanje razine alkohola u krvi ključno je za sigurnu vožnju.
+            Saznajte što znače promili i kako utječu na vaše sposobnosti.
+          </p>
         </div>
 
         <Card className="border-2 border-primary/20 bg-card shadow-xl">
