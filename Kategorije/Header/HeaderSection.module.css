@@ -144,8 +144,8 @@
   }
 }
 
-/* Hover efekat od 400px+ */
-@media (min-width: 400px) {
+/* Hover efekat od 640px+ */
+@media (min-width: 640px) {
   .sovaContainer img:hover {
     transform: scale(1.05);
   }

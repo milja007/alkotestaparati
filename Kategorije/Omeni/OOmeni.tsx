@@ -51,7 +51,7 @@ export default function ONamaPage() {
                 Hrvatske — pogledajte
                 <Button
                   size="sm"
-                  className="ml-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="ml-2 bg-gradient-to-r from-primary to-primary/80 sm:hover:from-primary/90 sm:hover:to-primary text-primary-foreground shadow-lg sm:hover:shadow-xl transition-all duration-300 transform sm:hover:scale-105"
                   onClick={() => scrollToSection("MojeLokacije")}
                 >
                   Moje lokacije
@@ -78,7 +78,7 @@ export default function ONamaPage() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="ml-2 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 bg-transparent"
+                  className="ml-2 border-2 border-secondary text-secondary sm:hover:bg-secondary sm:hover:text-secondary-foreground shadow-lg sm:hover:shadow-xl transition-all duration-300 transform sm:hover:scale-105 bg-transparent"
                   onClick={() => scrollToSection("PostaniPartner")}
                 >
                   Postanite moj partner

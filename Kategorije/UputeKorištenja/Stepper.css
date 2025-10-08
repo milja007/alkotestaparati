@@ -81,8 +81,10 @@
   }
 }
 
-.back-button:hover {
-  color: #78350f;
+@media (min-width: 640px) {
+  .back-button:hover {
+    color: #78350f;
+  }
 }
 
 .back-button.inactive {
@@ -111,8 +113,10 @@
   }
 }
 
-.next-button:hover {
-  background-color: #78350f;
+@media (min-width: 640px) {
+  .next-button:hover {
+    background-color: #78350f;
+  }
 }
 
 .next-button:active {

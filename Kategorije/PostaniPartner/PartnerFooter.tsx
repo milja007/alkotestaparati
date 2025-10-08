@@ -80,12 +80,12 @@ export default function PartnerFooter() {
           ].map((benefit, index) => (
             <Card
               key={index}
-              className="group bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-scale"
+              className="group bg-white/80 backdrop-blur-sm border-0 shadow-lg sm:hover:shadow-2xl transition-all duration-500 sm:hover:-translate-y-2 animate-fade-scale"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <CardContent className="p-8 text-center">
                 <div
-                  className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${benefit.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                  className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${benefit.gradient} flex items-center justify-center sm:group-hover:scale-110 transition-transform duration-300`}
                 >
                   <benefit.icon className="w-8 h-8 text-white" />
                 </div>

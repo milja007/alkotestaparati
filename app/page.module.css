@@ -92,10 +92,12 @@
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
 }
 
-.heroButton:hover {
-  background: #cc0000;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+@media (min-width: 640px) {
+  .heroButton:hover {
+    background: #cc0000;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+  }
 }
 
 /* Stepper specifični stilovi */
@@ -152,9 +154,11 @@
   flex-direction: column;
 }
 
-.stepCard:hover {
-  border-color: rgba(255, 0, 0, 0.6);
-  box-shadow: 0 12px 40px rgba(255, 0, 0, 0.2);
+@media (min-width: 640px) {
+  .stepCard:hover {
+    border-color: rgba(255, 0, 0, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 0, 0, 0.2);
+  }
 }
 
 .stepContent {
@@ -206,14 +210,16 @@
   transition: all 0.3s ease;
 }
 
-.placeholderImage:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.08)
-  );
-  border-color: rgba(255, 255, 255, 0.5);
-  color: rgba(255, 255, 255, 0.9);
+@media (min-width: 640px) {
+  .placeholderImage:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.08)
+    );
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.9);
+  }
 }
 
 /* Carousel specifični stilovi */
@@ -241,8 +247,10 @@
   transition: transform 0.3s ease;
 }
 
-.carousel-image:hover {
-  transform: scale(1.02);
+@media (min-width: 640px) {
+  .carousel-image:hover {
+    transform: scale(1.02);
+  }
 }
 
 .carousel-item-header {
