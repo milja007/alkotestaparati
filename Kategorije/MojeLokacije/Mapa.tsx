@@ -1,5 +1,7 @@
 import MapComponent from "./Map";
 import Sova from "../../components/Sova";
+import { locationsData } from "@/klijenti/data/Klijenti";
+
 export default function Mapa() {
   return (
     <main
@@ -48,13 +50,11 @@ export default function Mapa() {
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent mb-6 text-balance">
-              Moje Lokacije
+              {locationsData.hero.title}
             </h1>
 
             <p className="text-xl text-gray-600 max-w-3xl mx-auto text-pretty leading-relaxed">
-              Otkrijte moje partnere u Zagrebu i okolici. Svaka lokacija nudi
-              jedinstveno iskustvo s odličnim pićem, zabavom i naravno mojim
-              alkotest aparatom.
+              {locationsData.hero.subtitle}
             </p>
 
             {/* Stats */}
@@ -63,9 +63,11 @@ export default function Mapa() {
                 <Sova imageName="DrKarta.webp" />
               </div>
               <div className="text-center mt-18">
-                <div className="text-3xl font-bold text-secondary">4+</div>
+                <div className="text-3xl font-bold text-secondary">
+                  {locationsData.hero.stats.count}
+                </div>
                 <div className="text-sm text-gray-500 uppercase tracking-wide">
-                  Lokacije
+                  {locationsData.hero.stats.label}
                 </div>
               </div>
             </div>
