@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Sova from "./Sova";
 
 interface TajniKomponentProps {
   onClose?: () => void;
@@ -31,12 +32,7 @@ export function TajniKomponent({ onClose }: TajniKomponentProps) {
           ×
         </button>
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-2">
-            <span className="text-2xl">😎</span>
-          </div>
-          <h2 className="text-xl font-bold text-white">
-            Kako Nadmudriti Aparat??
-          </h2>
+          <Sova imageName="DrZarulja.webp" className="mx-auto" />
           <div className="space-y-3">
             <p className="text-sm text-green-100 leading-relaxed">
               Osim što se nakon konzumacije alkohola preporučuje dobar obrok i
@@ -55,7 +51,7 @@ export function TajniKomponent({ onClose }: TajniKomponentProps) {
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded border border-white/20">
               <p className="text-sm text-green-100 font-medium">
                 💡 Za pravo snižavanje promila u krvi i glavi, ključni su hrana,
-                voda i, najvažnije od svega – vrijeme.
+                voda i najvažnije od svega – vrijeme.
               </p>
             </div>
           </div>
