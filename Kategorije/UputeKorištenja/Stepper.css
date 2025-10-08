@@ -69,8 +69,9 @@
 .back-button {
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
-  color: #52525b;
+  color: #422006;
   cursor: pointer;
+  font-weight: 500;
 }
 
 /* Uključi transition tek od 768px+ */
@@ -81,7 +82,7 @@
 }
 
 .back-button:hover {
-  color: #a3a3a3;
+  color: #78350f;
 }
 
 .back-button.inactive {
@@ -95,7 +96,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  background-color: var(--primary);
+  background-color: #422006;
   color: #ffffff;
   font-weight: 500;
   letter-spacing: -0.025em;
@@ -111,11 +112,11 @@
 }
 
 .next-button:hover {
-  background-color: var(--secondary);
+  background-color: #78350f;
 }
 
 .next-button:active {
-  background-color: var(--primary);
+  background-color: #422006;
   opacity: 0.8;
 }
 
@@ -154,7 +155,7 @@
   flex: 1;
   overflow: hidden;
   border-radius: 0.25rem;
-  background-color: rgba(34, 197, 94, 0.3);
+  background-color: rgba(66, 32, 6, 0.3);
 }
 
 .step-connector-inner {

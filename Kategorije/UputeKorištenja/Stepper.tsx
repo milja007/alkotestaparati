@@ -396,23 +396,23 @@ function StepIndicator({
       <motion.div
         initial={{
           scale: 1,
-          backgroundColor: "rgb(21, 128, 61)",
+          backgroundColor: "#422006",
           color: "#ffffff",
         }}
         variants={{
           inactive: {
             scale: 1,
-            backgroundColor: "rgb(21, 128, 61)",
+            backgroundColor: "#422006",
             color: "#ffffff",
           },
           active: {
             scale: 1,
-            backgroundColor: "var(--primary)",
+            backgroundColor: "#78350f",
             color: "#ffffff",
           },
           complete: {
             scale: 1,
-            backgroundColor: "var(--primary)",
+            backgroundColor: "#78350f",
             color: "#ffffff",
           },
         }}
@@ -438,7 +438,7 @@ interface StepConnectorProps {
 function StepConnector({ isComplete }: StepConnectorProps) {
   const lineVariants: Variants = {
     incomplete: { width: 0, backgroundColor: "rgba(0, 0, 0, 0)" },
-    complete: { width: "100%", backgroundColor: "var(--primary)" },
+    complete: { width: "100%", backgroundColor: "#78350f" },
   };
 
   return (

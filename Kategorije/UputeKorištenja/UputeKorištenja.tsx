@@ -11,7 +11,6 @@ interface UsageInstructionsProps {
 export function UsageInstructions({}: UsageInstructionsProps) {
   return (
     <section
-      id="UputeKorištenja"
       // scroll-mt: da anchor ne zapne ispod sticky headera
       // min-h: definira visinu sekcije (skalirano)
       // py: vertikalni ritam prema susjednim sekcijama
@@ -22,7 +21,7 @@ export function UsageInstructions({}: UsageInstructionsProps) {
         bg-gradient-to-br from-background via-card to-muted/50
       "
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto" id="UputeKorištenja">
         {/* Naslov */}
         <div className="text-center mb-12 md:mb-20 lg:mb-12">
           <div className="inline-block">
@@ -53,7 +52,6 @@ export function UsageInstructions({}: UsageInstructionsProps) {
             className="
               order-1 lg:order-1
               lg:col-span-4
-              lg:sticky lg:top-24
               flex justify-center lg:justify-start
             "
             aria-label="Maskota sekcije"

@@ -114,10 +114,14 @@ export default function BubbleMenu({
     onMenuClick?.(nextState);
   };
 
-  const handleMenuItemClick = (href: string) => {
-    // Zatvori menu
+  const handleClose = () => {
     setIsMenuOpen(false);
     onMenuClick?.(false);
+  };
+
+  const handleMenuItemClick = (href: string) => {
+    // Zatvori menu
+    handleClose();
 
     // Smooth scroll do sekcije
     if (href.startsWith("#")) {
@@ -132,6 +136,13 @@ export default function BubbleMenu({
     }
   };
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Zatvori meni samo ako je klik bio direktno na backdrop, ne na njegove child elemente
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
+
   useEffect(() => {
     const overlay = overlayRef.current;
     const bubbles = bubblesRef.current.filter(Boolean);
@@ -139,51 +150,71 @@ export default function BubbleMenu({
 
     if (!overlay || !bubbles.length) return;
 
+    const isSmallScreen = window.innerWidth <= 350;
+
     if (isMenuOpen) {
       gsap.set(overlay, { display: "flex" });
       gsap.killTweensOf([...bubbles, ...labels]);
-      gsap.set(bubbles, { scale: 0, transformOrigin: "50% 50%" });
-      gsap.set(labels, { y: 24, autoAlpha: 0 });
 
-      bubbles.forEach((bubble, i) => {
-        const delay = i * staggerDelay + gsap.utils.random(-0.05, 0.05);
-        const tl = gsap.timeline({ delay });
+      if (isSmallScreen) {
+        // Na malim ekranima (≤350px) odmah prikaži bez animacije
+        gsap.set(bubbles, { scale: 1, transformOrigin: "50% 50%" });
+        gsap.set(labels, { y: 0, autoAlpha: 1 });
+      } else {
+        // Na većim ekranima koristi animaciju
+        gsap.set(bubbles, { scale: 0, transformOrigin: "50% 50%" });
+        gsap.set(labels, { y: 24, autoAlpha: 0 });
 
-        tl.to(bubble, {
-          scale: 1,
-          duration: animationDuration,
-          ease: animationEase,
+        bubbles.forEach((bubble, i) => {
+          const delay = i * staggerDelay + gsap.utils.random(-0.05, 0.05);
+          const tl = gsap.timeline({ delay });
+
+          tl.to(bubble, {
+            scale: 1,
+            duration: animationDuration,
+            ease: animationEase,
+          });
+          if (labels[i]) {
+            tl.to(
+              labels[i],
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: animationDuration,
+                ease: "power3.out",
+              },
+              `-=${animationDuration * 0.9}`
+            );
+          }
         });
-        if (labels[i]) {
-          tl.to(
-            labels[i],
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: animationDuration,
-              ease: "power3.out",
-            },
-            `-=${animationDuration * 0.9}`
-          );
-        }
-      });
+      }
     } else if (showOverlay) {
       gsap.killTweensOf([...bubbles, ...labels]);
-      gsap.to(labels, {
-        y: 24,
-        autoAlpha: 0,
-        duration: 0.2,
-        ease: "power3.in",
-      });
-      gsap.to(bubbles, {
-        scale: 0,
-        duration: 0.2,
-        ease: "power3.in",
-        onComplete: () => {
-          gsap.set(overlay, { display: "none" });
-          setShowOverlay(false);
-        },
-      });
+
+      if (isSmallScreen) {
+        // Na malim ekranima (≤350px) odmah sakrij bez animacije
+        gsap.set(bubbles, { scale: 0 });
+        gsap.set(labels, { y: 24, autoAlpha: 0 });
+        gsap.set(overlay, { display: "none" });
+        setShowOverlay(false);
+      } else {
+        // Na većim ekranima koristi animaciju
+        gsap.to(labels, {
+          y: 24,
+          autoAlpha: 0,
+          duration: 0.2,
+          ease: "power3.in",
+        });
+        gsap.to(bubbles, {
+          scale: 0,
+          duration: 0.2,
+          ease: "power3.in",
+          onComplete: () => {
+            gsap.set(overlay, { display: "none" });
+            setShowOverlay(false);
+          },
+        });
+      }
     }
   }, [isMenuOpen, showOverlay, animationEase, animationDuration, staggerDelay]);
 
@@ -240,7 +271,8 @@ export default function BubbleMenu({
           className={`bubble-menu-items ${
             useFixedPosition ? "fixed" : "absolute"
           }`}
-          aria-hidden={!isMenuOpen}
+          inert={!isMenuOpen ? ("" as any) : undefined}
+          onClick={handleBackdropClick}
         >
           <ul className="pill-list" role="menu" aria-label="Menu links">
             {menuItems.map((item, idx) => (

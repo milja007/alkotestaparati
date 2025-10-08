@@ -4,12 +4,14 @@ interface SovaProps {
   imageName: string;
   alt?: string;
   className?: string;
+  priority?: boolean;
 }
 
 export default function Sova({
   imageName,
   alt = "Dr. Promil",
   className = "",
+  priority = false,
 }: SovaProps) {
   return (
     <Image
@@ -18,6 +20,7 @@ export default function Sova({
       width={250}
       height={250}
       className={className}
+      priority={priority}
     />
   );
 }

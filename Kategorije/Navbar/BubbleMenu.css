@@ -57,28 +57,20 @@
   display: block;
   margin: 0 auto;
   transform-origin: center;
-}
-
-/* Uključi transition tek od 768px+ */
-@media (min-width: 768px) {
-  .bubble-menu .menu-line {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .bubble-menu .menu-line + .menu-line {
   margin-top: 6px;
 }
 
-/* Transform efekti tek od 768px+ */
-@media (min-width: 768px) {
-  .bubble-menu .menu-btn.open .menu-line:first-child {
-    transform: translateY(4px) rotate(45deg);
-  }
+/* Transform efekti za X dugme */
+.bubble-menu .menu-btn.open .menu-line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
 
-  .bubble-menu .menu-btn.open .menu-line:last-child {
-    transform: translateY(-4px) rotate(-45deg);
-  }
+.bubble-menu .menu-btn.open .menu-line:last-child {
+  transform: translateY(-4px) rotate(-45deg);
 }
 
 .bubble-menu-items {
@@ -87,7 +79,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 98;
 }
 
