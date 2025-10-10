@@ -10,7 +10,12 @@ import { locationsData } from "@/klijenti/data/Klijenti";
 const MAPBOX_ACCESS_TOKEN = locationsData.mapConfig.mapboxAccessToken;
 
 // Stilovi
-const STYLES = locationsData.mapConfig.styles as const;
+const STYLES = {
+  streets: "mapbox://styles/mapbox/streets-v12",
+  satellite: "mapbox://styles/mapbox/satellite-streets-v12",
+  light: "mapbox://styles/mapbox/light-v11",
+  dark: "mapbox://styles/mapbox/dark-v11",
+} as const;
 
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
