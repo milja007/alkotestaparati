@@ -1,5 +1,4 @@
 "use client";
-
 import AlchotestKalkulator from "../Kategorije/Kalkulator/Kalkulator";
 import { Info } from "../Kategorije/Informacije/Info";
 import PartnerFooter from "../Kategorije/PostaniPartner/PartnerFooter";
