@@ -1,7 +1,6 @@
-"use client";
 import AlchotestKalkulator from "../Kategorije/Kalkulator/Kalkulator";
 import { Info } from "../Kategorije/Informacije/Info";
-import PartnerFooter from "../Kategorije/PostaniPartner/PartnerFooter";
+import PostaniPartner from "../Kategorije/PostaniPartner/PostaniPartner";
 import HeaderSection from "../Kategorije/Header/HeaderSection";
 import BubbleMenu from "../Kategorije/Navbar/BubbleMenu";
 import OOmeni from "../Kategorije/Omeni/OOmeni";
@@ -19,7 +18,7 @@ export default function Home() {
       <UsageInstructions />
       <Info />
       <AlchotestKalkulator />
-      <PartnerFooter />
+      <PostaniPartner />
       <ZapratiteMe />
     </>
   );

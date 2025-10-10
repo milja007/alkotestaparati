@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { MapPin, Calculator, Euro, Clock, Shield } from "lucide-react";
 import styles from "./HeaderSection.module.css";

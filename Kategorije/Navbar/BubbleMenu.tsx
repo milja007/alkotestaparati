@@ -1,8 +1,7 @@
 "use client";
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties } from "react";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import Image from "next/image";
 
 import "./BubbleMenu.css";
 
@@ -18,7 +17,6 @@ type MenuItem = {
 };
 
 export type BubbleMenuProps = {
-  logo?: ReactNode | string;
   onMenuClick?: (open: boolean) => void;
   className?: string;
   style?: CSSProperties;
@@ -85,7 +83,6 @@ const DEFAULT_ITEMS: MenuItem[] = [
 ];
 
 export default function BubbleMenu({
-  logo = "/assets/DrLogoNew.webp",
   onMenuClick,
   className,
   style,

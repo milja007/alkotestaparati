@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Building2,
   Handshake,
@@ -8,12 +6,11 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
-
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Sova from "@/components/Sova";
 
-export default function PartnerFooter() {
+export default function PostaniPartner() {
   return (
     <section
       id="PostaniPartner"

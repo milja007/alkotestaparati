@@ -1,5 +1,3 @@
-"use client";
-
 import Stepper, { Step } from "./Stepper";
 import Image from "next/image";
 import Sova from "../../components/Sova";
