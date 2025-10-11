@@ -99,9 +99,92 @@
     overflow-x: hidden;
   }
 
+  /* Skip link - sakriven dok ne dobije focus (accessibility) */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+    font-size: 16px;
+    z-index: 9999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
+    outline: 4px solid #10b981;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  }
+
   /* Optimizacije za slike */
   img {
     content-visibility: auto;
+  }
+
+  /* 
+   * Poboljšan focus indicator za maksimalnu vidljivost (WCAG AAA)
+   * - 4px debljina za bolju vidljivost
+   * - Dual-ring efekat (outline + box-shadow)
+   * - Contrast ratio > 3:1 (WCAG AAA standard za non-text)
+   * - Smooth animacija za bolji UX
+   */
+  *:focus {
+    outline: none;
+  }
+
+  *:focus-visible {
+    outline: 4px solid #10b981;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    transition: outline 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* Jači focus za interaktivne elemente */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 4px solid #10b981;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.25);
+  }
+
+  /* Poseban focus za buttone - koristiti primary boju */
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 4px solid #164e63;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(22, 78, 99, 0.25);
+  }
+
+  /* Focus za linkove - koristiti accent boju */
+  a:focus-visible {
+    outline: 4px solid #10b981;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.25);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+  }
+
+  /* Focus za input polja - viši contrast */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid #10b981;
+    outline-offset: 0px;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
   }
 
   /* Optimizacije za animacije - koristiti samo za elemente koji se animiraju */

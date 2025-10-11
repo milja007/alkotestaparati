@@ -27,6 +27,7 @@ interface DrinkSelectorProps {
   totalGrams: number;
   totalKcal: number;
   gramsOfAlcohol: (volumeMl: number, percent: number) => number;
+  showError?: boolean;
 }
 
 export default function DrinkSelector({
@@ -51,6 +52,7 @@ export default function DrinkSelector({
   totalGrams,
   totalKcal,
   gramsOfAlcohol,
+  showError = false,
 }: DrinkSelectorProps) {
   const [advancedOpen, setAdvancedOpen] = useState(false);
 
@@ -93,6 +95,20 @@ export default function DrinkSelector({
           setCount={setSpiritCount}
         />
       </div>
+
+      {showError && (
+        <p
+          role="alert"
+          aria-live="polite"
+          style={{
+            color: "#dc2626",
+            fontSize: "0.875rem",
+            marginTop: "1rem",
+          }}
+        >
+          ⚠️ Molimo odaberite barem jedno piće
+        </p>
+      )}
 
       {/* Napredne postavke */}
       <div style={{ marginTop: "2rem" }}>

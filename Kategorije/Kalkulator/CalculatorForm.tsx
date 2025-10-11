@@ -66,6 +66,19 @@ export default function CalculatorForm() {
   const [spiritPercent, setSpiritPercent] = useState(DEFAULTS.spiritPercent);
 
   const [submitted, setSubmitted] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
+
+  // Validacije
+  const errors = {
+    gender: !gender,
+    weight: typeof weightKg !== "number" || weightKg <= 0,
+    drinks: beerCount + wineCount + spiritCount === 0,
+    time:
+      (typeof timeSinceFirstDrinkHours !== "number" ||
+        timeSinceFirstDrinkHours < 0) &&
+      (typeof timeSinceFirstDrinkMinutes !== "number" ||
+        timeSinceFirstDrinkMinutes < 0),
+  };
 
   // Izračuni
   const totalGrams = useMemo(() => {
@@ -137,6 +150,15 @@ export default function CalculatorForm() {
       (typeof timeSinceFirstDrinkMinutes === "number" &&
         timeSinceFirstDrinkMinutes >= 0));
 
+  const handleSubmit = () => {
+    if (formValid) {
+      setSubmitted(true);
+      setShowErrors(false);
+    } else {
+      setShowErrors(true);
+    }
+  };
+
   const handleReset = () => {
     setGender(null);
     setWeightKg("");
@@ -146,6 +168,7 @@ export default function CalculatorForm() {
     setTimeSinceFirstDrinkHours("");
     setTimeSinceFirstDrinkMinutes("");
     setSubmitted(false);
+    setShowErrors(false);
     setBeerMl(DEFAULTS.beerMl);
     setBeerPercent(DEFAULTS.beerPercent);
     setWineMl(DEFAULTS.wineMl);
@@ -198,6 +221,20 @@ export default function CalculatorForm() {
               </div>
             </button>
           </div>
+          {showErrors && errors.gender && (
+            <p
+              className={styles.errorMessage}
+              role="alert"
+              aria-live="polite"
+              style={{
+                color: "#dc2626",
+                fontSize: "0.875rem",
+                marginTop: "0.5rem",
+              }}
+            >
+              ⚠️ Molimo odaberite spol
+            </p>
+          )}
         </section>
 
         {/* Weight Input */}
@@ -228,6 +265,20 @@ export default function CalculatorForm() {
               />
               <span className={styles.inputUnit}>kg</span>
             </div>
+            {showErrors && errors.weight && (
+              <p
+                className={styles.errorMessage}
+                role="alert"
+                aria-live="polite"
+                style={{
+                  color: "#dc2626",
+                  fontSize: "0.875rem",
+                  marginTop: "0.5rem",
+                }}
+              >
+                ⚠️ Molimo unesite važeću tjelesnu težinu (veću od 0 kg)
+              </p>
+            )}
           </div>
         </section>
 
@@ -253,6 +304,7 @@ export default function CalculatorForm() {
           totalGrams={totalGrams}
           totalKcal={totalKcal}
           gramsOfAlcohol={gramsOfAlcohol}
+          showError={showErrors && errors.drinks}
         />
 
         <TimeInput
@@ -260,14 +312,14 @@ export default function CalculatorForm() {
           setTimeSinceFirstDrinkHours={setTimeSinceFirstDrinkHours}
           timeSinceFirstDrinkMinutes={timeSinceFirstDrinkMinutes}
           setTimeSinceFirstDrinkMinutes={setTimeSinceFirstDrinkMinutes}
+          showError={showErrors && errors.time}
         />
 
         {/* Submit i Reset Buttons */}
         <section className={styles.buttonGroup}>
           <button
             type="button"
-            onClick={() => setSubmitted(true)}
-            disabled={!formValid}
+            onClick={handleSubmit}
             className={styles.primaryButton}
           >
             🧮 Izračunaj promile

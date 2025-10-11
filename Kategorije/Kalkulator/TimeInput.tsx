@@ -7,6 +7,7 @@ interface TimeInputProps {
   setTimeSinceFirstDrinkHours: (time: number | "") => void;
   timeSinceFirstDrinkMinutes: number | "";
   setTimeSinceFirstDrinkMinutes: (time: number | "") => void;
+  showError?: boolean;
 }
 
 export default function TimeInput({
@@ -14,6 +15,7 @@ export default function TimeInput({
   setTimeSinceFirstDrinkHours,
   timeSinceFirstDrinkMinutes,
   setTimeSinceFirstDrinkMinutes,
+  showError = false,
 }: TimeInputProps) {
   return (
     <section className={styles.glassCard}>
@@ -21,64 +23,77 @@ export default function TimeInput({
         <span className={styles.stepNumber}>4</span>
         Vremenski okvir
       </h2>
+      <p className={styles.inputLabel}>
+        Unesite vrijeme koje je prošlo od kada ste popili prvo piće
+      </p>
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "1fr",
-          gap: "1.5rem",
+          gap: "1rem",
         }}
+        className="sm:grid-cols-2"
       >
         <div className={styles.inputGroup}>
-          <fieldset>
-            <legend className={styles.inputLabel}>Vrijeme od prvog pića</legend>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr",
-                gap: "1rem",
-              }}
-              className="sm:grid-cols-2"
-            >
-              <div className={styles.inputWrapper}>
-                <input
-                  id="timeHours"
-                  name="timeHours"
-                  type="text"
-                  inputMode="numeric"
-                  className={styles.input}
-                  placeholder="2"
-                  value={timeSinceFirstDrinkHours}
-                  onChange={(e) =>
-                    setTimeSinceFirstDrinkHours(
-                      e.target.value === "" ? "" : Number(e.target.value)
-                    )
-                  }
-                  autoComplete="off"
-                />
-                <span className={styles.inputUnit}>h</span>
-              </div>
-              <div className={styles.inputWrapper}>
-                <input
-                  id="timeMinutes"
-                  name="timeMinutes"
-                  type="text"
-                  inputMode="numeric"
-                  className={styles.input}
-                  placeholder="30"
-                  value={timeSinceFirstDrinkMinutes}
-                  onChange={(e) =>
-                    setTimeSinceFirstDrinkMinutes(
-                      e.target.value === "" ? "" : Number(e.target.value)
-                    )
-                  }
-                  autoComplete="off"
-                />
-                <span className={styles.inputUnit}>min</span>
-              </div>
-            </div>
-          </fieldset>
+          <label className={styles.inputLabel} htmlFor="timeHours">
+            Sati
+          </label>
+          <div className={styles.inputWrapper}>
+            <input
+              id="timeHours"
+              name="timeHours"
+              type="text"
+              inputMode="numeric"
+              className={styles.input}
+              placeholder="2"
+              value={timeSinceFirstDrinkHours}
+              onChange={(e) =>
+                setTimeSinceFirstDrinkHours(
+                  e.target.value === "" ? "" : Number(e.target.value)
+                )
+              }
+              autoComplete="off"
+            />
+            <span className={styles.inputUnit}>h</span>
+          </div>
+        </div>
+        <div className={styles.inputGroup}>
+          <label className={styles.inputLabel} htmlFor="timeMinutes">
+            Minute
+          </label>
+          <div className={styles.inputWrapper}>
+            <input
+              id="timeMinutes"
+              name="timeMinutes"
+              type="text"
+              inputMode="numeric"
+              className={styles.input}
+              placeholder="30"
+              value={timeSinceFirstDrinkMinutes}
+              onChange={(e) =>
+                setTimeSinceFirstDrinkMinutes(
+                  e.target.value === "" ? "" : Number(e.target.value)
+                )
+              }
+              autoComplete="off"
+            />
+            <span className={styles.inputUnit}>min</span>
+          </div>
         </div>
       </div>
+      {showError && (
+        <p
+          role="alert"
+          aria-live="polite"
+          style={{
+            color: "#dc2626",
+            fontSize: "0.875rem",
+            marginTop: "0.5rem",
+          }}
+        >
+          ⚠️ Molimo unesite važeće vrijeme (barem sati ili minute)
+        </p>
+      )}
       <div
         style={{
           marginTop: "1rem",

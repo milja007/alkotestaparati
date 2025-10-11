@@ -52,28 +52,11 @@ const nextConfig: NextConfig = {
         ],
       },
       // Security headers za sve stranice
+      // Napomena: CSP (Content-Security-Policy) se sada upravlja kroz middleware.ts
+      // sa nonce-based pristupom za bolju sigurnost
       {
         source: "/:path*",
         headers: [
-          // Content Security Policy - štiti od XSS i injection napada
-          {
-            key: "Content-Security-Policy",
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://api.mapbox.com",
-              "style-src 'self' 'unsafe-inline' https://api.mapbox.com",
-              "img-src 'self' data: blob: https://api.mapbox.com https://*.mapbox.com https://images.unsplash.com https://via.placeholder.com",
-              "font-src 'self' data:",
-              "connect-src 'self' https://api.mapbox.com https://*.mapbox.com https://events.mapbox.com",
-              "worker-src 'self' blob:",
-              "child-src 'self' blob:",
-              "frame-ancestors 'none'",
-              "base-uri 'self'",
-              "form-action 'self'",
-              "object-src 'none'",
-              "upgrade-insecure-requests",
-            ].join("; "),
-          },
           // Sprječava clickjacking napade
           {
             key: "X-Frame-Options",

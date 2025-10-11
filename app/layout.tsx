@@ -91,6 +91,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.mapbox.com" />
       </head>
       <body>
+        {/* Skip link - vidljiv samo na keyboard focus za accessibility */}
+        <a href="#main-content" className="skip-link">
+          Preskoči na glavni sadržaj
+        </a>
         <StructuredData />
         <ErrorBoundary>{children}</ErrorBoundary>
       </body>
