@@ -84,7 +84,7 @@ export function UsageInstructions({}: UsageInstructionsProps) {
                         width={780}
                         height={780}
                         sizes="(max-width: 640px) 200px, (max-width: 1024px) 300px, 780px"
-                        priority
+                        loading="lazy"
                         style={{
                           width: "100%",
                           height: "auto",
