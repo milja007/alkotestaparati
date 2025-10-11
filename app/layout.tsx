@@ -86,13 +86,6 @@ export default function RootLayout({
   return (
     <html lang="hr">
       <head>
-        {/* Preload kritične LCP slike za brže učitavanje */}
-        <link
-          rel="preload"
-          as="image"
-          href="/assets/DrLogoNew.avif"
-          type="image/avif"
-        />
         {/* Preconnect za eksterne resurse */}
         <link rel="preconnect" href="https://api.mapbox.com" />
         <link rel="dns-prefetch" href="https://api.mapbox.com" />
