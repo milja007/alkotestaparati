@@ -5,6 +5,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./komponente/**/*.{js,ts,jsx,tsx,mdx}",
+    "./Kategorije/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: "class",
   theme: {
@@ -45,6 +46,10 @@ module.exports = {
         },
       },
     },
+  },
+  // Optimizacija za produkciju
+  future: {
+    hoverOnlyWhenSupported: true,
   },
   plugins: [],
 };

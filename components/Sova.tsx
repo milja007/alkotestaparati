@@ -17,13 +17,14 @@ export default function Sova({
     <Image
       src={`/assets/${imageName}`}
       alt={alt}
-      width={250}
-      height={250}
+      width={320}
+      height={320}
       className={className}
       priority={priority}
       loading={priority ? "eager" : "lazy"}
-      fetchPriority={priority ? "high" : "low"}
-      sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 250px"
+      fetchPriority={priority ? "high" : "auto"}
+      sizes="(max-width: 480px) 200px, (max-width: 768px) 280px, (max-width: 1024px) 280px, 320px"
+      quality={priority ? 90 : 75}
     />
   );
 }

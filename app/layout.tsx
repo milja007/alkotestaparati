@@ -86,8 +86,57 @@ export default function RootLayout({
   return (
     <html lang="hr">
       <head>
+        {/* Critical inline CSS za brži LCP */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          :root {
+            --background: #ecfeff;
+            --foreground: #475569;
+            --primary: #164e63;
+            --secondary: #10b981;
+            --muted-foreground: #475569;
+            --border: #cbd5e1;
+          }
+          html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+          }
+          body {
+            background: #ecfeff;
+            color: #475569;
+            overflow-x: hidden;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+          }
+          .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #164e63;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 0 0 8px 8px;
+            font-weight: 600;
+            font-size: 16px;
+            z-index: 9999;
+          }
+          .skip-link:focus {
+            top: 0;
+            outline: 4px solid #10b981;
+          }
+          img {
+            content-visibility: auto;
+          }
+        `,
+          }}
+        />
         {/* Preconnect za eksterne resurse */}
-        <link rel="preconnect" href="https://api.mapbox.com" />
+        <link rel="preconnect" href="https://api.mapbox.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://api.mapbox.com" />
       </head>
       <body>
