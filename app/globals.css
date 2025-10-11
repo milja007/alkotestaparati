@@ -39,8 +39,11 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -85,9 +88,35 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Font rendering optimizacije */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body {
     @apply bg-background text-foreground;
+    /* Performance optimizacije */
+    overflow-x: hidden;
+  }
+
+  /* Optimizacije za slike */
+  img {
+    content-visibility: auto;
+  }
+
+  /* Optimizacije za animacije - koristiti samo za elemente koji se animiraju */
+  .animate-slide-up,
+  .animate-fade-scale,
+  .animate-shimmer {
+    will-change: transform, opacity;
+    contain: layout style paint;
+  }
+
+  /* Ukloniti will-change nakon animacije */
+  .animate-slide-up:not(:hover),
+  .animate-fade-scale:not(:hover),
+  .animate-shimmer:not(:hover) {
+    animation-play-state: running;
   }
 }
 

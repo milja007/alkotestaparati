@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -84,9 +85,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hr">
+      <head>
+        {/* Preconnect za eksterne resurse */}
+        <link rel="preconnect" href="https://api.mapbox.com" />
+        <link rel="dns-prefetch" href="https://api.mapbox.com" />
+      </head>
       <body>
         <StructuredData />
-        {children}
+        <ErrorBoundary>{children}</ErrorBoundary>
       </body>
     </html>
   );

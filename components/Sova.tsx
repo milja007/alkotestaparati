@@ -21,6 +21,9 @@ export default function Sova({
       height={250}
       className={className}
       priority={priority}
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "low"}
+      sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 250px"
     />
   );
 }

@@ -46,10 +46,12 @@ export default function ONamaPage() {
               <div className="relative bg-white rounded-2xl p-6 shadow-lg">
                 <Image
                   src="/assets/BunkerAparat.webp"
-                  alt="Aparat za mjerenje alkohola"
+                  alt="Aparat za mjerenje alkohola u Bunker klubu"
                   width={400}
                   height={400}
                   className="w-full h-auto rounded-xl"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                 />
 
                 <div className="absolute -top-3 -right-3 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg">

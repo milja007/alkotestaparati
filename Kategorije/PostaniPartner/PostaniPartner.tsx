@@ -161,10 +161,12 @@ export default function PostaniPartner() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl"></div>
                 <Image
                   src="/assets/dimenzije.webp"
-                  alt="Alkotest aparat dimenzije"
+                  alt="Tehnički nacrt i dimenzije alkotest aparata"
                   width={300}
                   height={300}
                   className="relative object-contain bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 300px"
                 />
               </div>
             </div>
