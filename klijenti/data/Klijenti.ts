@@ -1,8 +1,126 @@
 // ==========================================
 // PODACI O LOKACIJAMA - KLIJENTI
+// TypeScript verzija sa potpunim tipovima
 // ==========================================
 
-export const locationsData = {
+/**
+ * Tip za business kategorije
+ */
+export type BusinessType =
+  | "Nightclub"
+  | "Irish Pub"
+  | "Cocktail Bar"
+  | "Bar"
+  | "Pub"
+  | "Club";
+
+/**
+ * Tip za Mapbox stilove
+ */
+export type MapboxStyle =
+  | "mapbox://styles/mapbox/streets-v12"
+  | "mapbox://styles/mapbox/satellite-streets-v12"
+  | "mapbox://styles/mapbox/light-v11"
+  | "mapbox://styles/mapbox/dark-v11";
+
+/**
+ * Koordinate u formatu [longitude, latitude]
+ */
+export type Coordinates = [number, number];
+
+/**
+ * Pojedinačna lokacija alkotest aparata
+ */
+export interface Location {
+  /** Jedinstveni ID lokacije */
+  id: number;
+  /** Naziv lokacije */
+  name: string;
+  /** GPS koordinate [longitude, latitude] */
+  coordinates: Coordinates;
+  /** Opis lokacije */
+  description: string;
+  /** Tip biznisa */
+  businessType: BusinessType;
+  /** Prosječna potrošnja */
+  avgSpending: string;
+  /** WebP fotografija lokacije */
+  photo: string;
+  /** AVIF fotografija lokacije (optimizirana) */
+  photoAvif: string;
+  /** Adresa lokacije */
+  address: string;
+  /** Google Maps URL */
+  googleMapsUrl: string;
+  /** Slika aparata na lokaciji */
+  apparatusImage: string;
+  /** Upute kako pronaći aparat */
+  upute: string;
+}
+
+/**
+ * Hero sekcija za stranicu lokacija
+ */
+export interface HeroData {
+  /** Glavni naslov */
+  title: string;
+  /** Podnaslov/opis */
+  subtitle: string;
+  /** Statistika za prikaz */
+  stats: {
+    /** Broj lokacija */
+    count: string;
+    /** Label za broj */
+    label: string;
+  };
+}
+
+/**
+ * Mapbox konfiguracija
+ */
+export interface MapConfig {
+  /** Mapbox Access Token (iz environment varijable) */
+  mapboxAccessToken: string | undefined;
+  /** Početne koordinate karte [longitude, latitude] */
+  defaultCenter: Coordinates;
+  /** Početni zoom level */
+  defaultZoom: number;
+  /** Dostupni stilovi karte */
+  styles: {
+    streets: MapboxStyle;
+    satellite: MapboxStyle;
+    light: MapboxStyle;
+    dark: MapboxStyle;
+  };
+}
+
+/**
+ * Button konfiguracija za mapu
+ */
+export interface MapButton {
+  /** Text na buttonu za prikazivanje detalja */
+  showMore: string;
+}
+
+/**
+ * Glavni tip za sve podatke o lokacijama
+ */
+export interface LocationsData {
+  /** Hero sekcija */
+  hero: HeroData;
+  /** Mapbox konfiguracija */
+  mapConfig: MapConfig;
+  /** Lista svih lokacija */
+  locations: Location[];
+  /** Button tekstovi */
+  mapButton: MapButton;
+}
+
+// ==========================================
+// PODACI
+// ==========================================
+
+export const locationsData: LocationsData = {
   hero: {
     title: "Moje Lokacije",
     subtitle:

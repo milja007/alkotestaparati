@@ -12,14 +12,16 @@ export default function Home() {
   return (
     <>
       <BubbleMenu useFixedPosition={true} />
-      <HeaderSection />
-      <OOmeni />
-      <Mapa />
-      <UsageInstructions />
-      <Info />
-      <AlchotestKalkulator />
-      <PostaniPartner />
-      <ZapratiteMe />
+      <main id="main-content">
+        <HeaderSection />
+        <OOmeni />
+        <Mapa />
+        <UsageInstructions />
+        <Info />
+        <AlchotestKalkulator />
+        <PostaniPartner />
+        <ZapratiteMe />
+      </main>
     </>
   );
 }

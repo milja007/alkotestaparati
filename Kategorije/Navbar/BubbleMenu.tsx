@@ -1,7 +1,7 @@
 "use client";
 import type { CSSProperties } from "react";
-import { useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useState, useRef, useEffect, useCallback } from "react";
+import type { gsap as GSAPType } from "gsap";
 
 import "./BubbleMenu.css";
 
@@ -97,10 +97,12 @@ export default function BubbleMenu({
 }: BubbleMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [gsap, setGsap] = useState<typeof GSAPType | null>(null);
 
   const overlayRef = useRef<HTMLDivElement>(null);
   const bubblesRef = useRef<HTMLAnchorElement[]>([]);
   const labelRefs = useRef<HTMLSpanElement[]>([]);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
   const menuItems = items?.length ? items : DEFAULT_ITEMS;
   const containerClassName = [
@@ -118,10 +120,14 @@ export default function BubbleMenu({
     onMenuClick?.(nextState);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsMenuOpen(false);
     onMenuClick?.(false);
-  };
+    // Vrati focus na toggle button nakon zatvaranja menija
+    setTimeout(() => {
+      toggleButtonRef.current?.focus();
+    }, 100);
+  }, [onMenuClick]);
 
   const handleMenuItemClick = (href: string) => {
     // Zatvori menu
@@ -147,7 +153,32 @@ export default function BubbleMenu({
     }
   };
 
+  // Lazy load GSAP samo kada je potreban
   useEffect(() => {
+    let mounted = true;
+
+    const loadGsap = async () => {
+      try {
+        const gsapModule = await import("gsap");
+        if (mounted) {
+          setGsap(gsapModule.gsap);
+        }
+      } catch (error) {
+        console.error("Failed to load GSAP:", error);
+      }
+    };
+
+    loadGsap();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    // Ne pokreći animacije dok se GSAP ne učita
+    if (!gsap) return;
+
     const overlay = overlayRef.current;
     const bubbles = bubblesRef.current.filter(Boolean);
     const labels = labelRefs.current.filter(Boolean);
@@ -220,9 +251,40 @@ export default function BubbleMenu({
         });
       }
     }
-  }, [isMenuOpen, showOverlay, animationEase, animationDuration, staggerDelay]);
+  }, [
+    gsap,
+    isMenuOpen,
+    showOverlay,
+    animationEase,
+    animationDuration,
+    staggerDelay,
+  ]);
+
+  // ESC key handler za zatvaranje menija
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isMenuOpen) {
+        handleClose();
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener("keydown", handleEscKey);
+      // Trap focus unutar menija kada je otvoren
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen, handleClose]);
 
   useEffect(() => {
+    if (!gsap) return;
+
     const handleResize = () => {
       if (isMenuOpen) {
         const bubbles = bubblesRef.current.filter(Boolean);
@@ -240,7 +302,7 @@ export default function BubbleMenu({
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isMenuOpen, menuItems]);
+  }, [gsap, isMenuOpen, menuItems]);
 
   return (
     <>
@@ -250,6 +312,7 @@ export default function BubbleMenu({
         aria-label="Main navigation"
       >
         <button
+          ref={toggleButtonRef}
           type="button"
           className={`bubble toggle-bubble menu-btn ${
             isMenuOpen ? "open" : ""
@@ -257,6 +320,7 @@ export default function BubbleMenu({
           onClick={handleToggle}
           aria-label={menuAriaLabel}
           aria-pressed={isMenuOpen}
+          aria-expanded={isMenuOpen}
           style={{ background: menuBg }}
         >
           <span

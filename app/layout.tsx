@@ -72,9 +72,9 @@ export const metadata: Metadata = {
     canonical: baseUrl,
   },
   verification: {
-    // Dodaj kada dobiješ verification kodove
-    // google: "tvoj-google-site-verification-kod",
-    // yandex: "tvoj-yandex-verification-kod",
+    // Dodaj svoj Google Search Console verification kod ovdje
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
+    // yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || "",
   },
 };
 
