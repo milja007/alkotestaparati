@@ -10,7 +10,7 @@ export default function StructuredData() {
     "@type": "Organization",
     name: "Dr. Promil",
     url: baseUrl,
-    logo: `${baseUrl}/assets/DrLogoNew.webp`,
+    logo: `${baseUrl}/assets/DrLogoNew.avif`,
     description:
       "Alkotest aparati u pubovima, klubovima i kafićima u Hrvatskoj s besplatnim online kalkulatorom promila.",
     address: {

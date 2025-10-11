@@ -14,7 +14,7 @@ export default function HomePage() {
           </div>
 
           <div className={styles.sovaContainer}>
-            <Sova imageName="DrLogoNew.webp" priority={true} />
+            <Sova imageName="DrLogoNew.avif" priority={true} />
           </div>
 
           <p className={styles.subtitle}>

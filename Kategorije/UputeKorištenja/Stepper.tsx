@@ -61,8 +61,8 @@ function useScreenSize() {
 // Funkcija za odabir originalne slike
 function getResponsiveImage(stepNumber: number): string {
   const baseImageName = `${stepNumber}.korak`;
-  // Koristi samo originalne slike za sve veličine ekrana
-  return `/assets/${baseImageName}.webp`;
+  // Koristi AVIF format za najbolju optimizaciju (Next.js automatski dodaje fallback)
+  return `/assets/${baseImageName}.avif`;
 }
 
 interface RenderStepIndicatorProps {

@@ -32,10 +32,11 @@ export const locationsData = {
       businessType: "Nightclub",
       avgSpending: "13-20 €",
       photo: "/assets/Bunker.webp",
+      photoAvif: "/assets/Bunker.avif",
       address: "Ilica 242, 10000 Zagreb",
       googleMapsUrl:
         "https://www.google.com/maps/place/OUT+Bunker+Nightclub/@45.8133639,15.9551473,15z/data=!3m1!4b1!4m6!3m5!1s0x4765d7c25fd45d5f:0x2f8a716d8e37bd76!8m2!3d45.8133504!4d15.9735797!16s%2Fg%2F11j7btnp1b?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
-      apparatusImage: "/assets/BunkerAparat.webp",
+      apparatusImage: "/assets/BunkerAparat.avif",
       upute:
         "Kada gledate ravno u wc, krenite lijevo i hodajte ravno dok sa desne strane ne vidite ulaz u prostoriju gdje se nalazi aparat sa vase lijeve strane.",
     },
@@ -47,10 +48,11 @@ export const locationsData = {
       businessType: "Irish Pub",
       avgSpending: "11-16 €",
       photo: "/assets/Harats.webp",
+      photoAvif: "/assets/Harats.avif",
       address: "Dolac 2, 10000 Zagreb",
       googleMapsUrl:
         "https://www.google.com/maps/place/Harat's+Pub/@45.8148286,15.9751046,17z/data=!4m14!1m7!3m6!1s0x4765d70271927e99:0x8cd74ff66755eca3!2sHarat's+Pub!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_!3m5!1s0x4765d70271927e99:0x8cd74ff66755eca3!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
-      apparatusImage: "/assets/HaratsAparat.webp",
+      apparatusImage: "/assets/HaratsAparat.avif",
       upute:
         "Nakon šanka desno hodate ravno dok sa desne strane ne vidite game room u kojem se nalazi aparat pored pikada.",
     },
@@ -62,10 +64,11 @@ export const locationsData = {
       businessType: "Cocktail Bar",
       avgSpending: "12-17 €",
       photo: "/assets/Pharmacy.webp",
+      photoAvif: "/assets/Pharmacy.avif",
       address: "Tkalčićeva 58, 10000 Zagreb",
       googleMapsUrl:
         "https://www.google.com/maps/place/The+Old+Pharmacy/@45.808983,15.9723891,17z/data=!3m1!4b1!4m6!3m5!1s0x4765d6fbeedc063b:0x3f9e8c4eee9c5cd7!8m2!3d45.8089793!4d15.9749694!16s%2Fg%2F1tg4k56r?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
-      apparatusImage: "/assets/PharmacyAparat.webp",
+      apparatusImage: "/assets/PharmacyAparat.avif",
       upute:
         "Kad uočite šank, skrenete desno pa hodajte ravno prema wcu i po putu će biti na zidu sa desne strane.",
     },
@@ -77,10 +80,11 @@ export const locationsData = {
       businessType: "Bar",
       avgSpending: "5-10 €",
       photo: "/assets/Conlee.webp",
+      photoAvif: "/assets/Conlee.avif",
       address: "Ul. Antuna Mihanovića 14, 10450, Jastrebarsko",
       googleMapsUrl:
         "https://www.google.com/maps/place/cONLee+BAR/@45.6740471,15.6553774,19.4z/data=!4m6!3m5!1s0x4764338e1ebff2f9:0xf22b7db73d6def56!8m2!3d45.6740313!4d15.6555191!16s%2Fg%2F11xk_lcqf9?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D",
-      apparatusImage: "/assets/ConleeAparat.webp",
+      apparatusImage: "/assets/ConleeAparat.avif",
       upute:
         "Kada vidite šank odma ga vidite na zidu lijevo izmedu wc-a i tv-a.",
     },

@@ -100,7 +100,7 @@ export default function PostaniPartner() {
         <div className="space-y-16 mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <Sova imageName="DrUgovor.webp" className="mx-auto" />
+              <Sova imageName="DrUgovor.avif" className="mx-auto" />
               <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-xl">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
@@ -160,7 +160,7 @@ export default function PostaniPartner() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl"></div>
                 <Image
-                  src="/assets/dimenzije.webp"
+                  src="/assets/dimenzije.avif"
                   alt="Tehnički nacrt i dimenzije alkotest aparata"
                   width={300}
                   height={300}

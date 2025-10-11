@@ -25,7 +25,7 @@ export default function AlchotestKalkulator() {
           <h1 className={styles.heroTitle}>
             Dr. Promil Online Alkotest Kalkulator
           </h1>
-          <Sova imageName="DrKalkulator.webp" className="mx-auto" />
+          <Sova imageName="DrKalkulator.avif" className="mx-auto" />
           <p className={styles.heroSubtitle}>
             Moderna procjena razine alkohola u krvi pomoću Widmarkove jednadžbe
             za usporedbu sa mojim aparatom.

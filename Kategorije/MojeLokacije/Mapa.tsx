@@ -60,7 +60,7 @@ export default function Mapa() {
             {/* Stats */}
             <div className="flex flex-wrap justify-center gap-8 mt-12">
               <div className="text-center">
-                <Sova imageName="DrKarta.webp" />
+                <Sova imageName="DrKarta.avif" />
               </div>
               <div className="text-center mt-18">
                 <div className="text-3xl font-bold text-secondary">

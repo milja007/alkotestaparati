@@ -103,7 +103,7 @@ const ZapratiteMe = () => {
               </p>
             </div>
             <div className="text-center mb-6">
-              <Sova imageName="DrSocials.webp" className="mx-auto" />
+              <Sova imageName="DrSocials.avif" className="mx-auto" />
             </div>
 
             {/* Social media buttons with custom icons */}

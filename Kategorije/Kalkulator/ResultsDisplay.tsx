@@ -42,7 +42,7 @@ export default function ResultsDisplay({
           }}
         >
           <div className={styles.mainResult}>
-            <Sova imageName="DrSurprised.webp" className="mx-auto" />
+            <Sova imageName="DrSurprised.avif" className="mx-auto" />
             <div className={styles.mainResultValue}>
               {afterElimPermille.toFixed(2)}
             </div>

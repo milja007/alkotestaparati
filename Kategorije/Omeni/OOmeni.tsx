@@ -22,13 +22,13 @@ export default function ONamaPage() {
                 <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto xl:mx-0"></div>
               </div>
               <div className="hidden xl:block">
-                <Sova imageName="DrOmeni.webp" />
+                <Sova imageName="DrOmeni.avif" />
               </div>
             </div>
 
             {/* Sova for smaller screens - shown below title */}
             <div className="flex justify-center xl:hidden">
-              <Sova imageName="DrOmeni.webp" />
+              <Sova imageName="DrOmeni.avif" />
             </div>
 
             {/* Main Content */}
@@ -45,7 +45,7 @@ export default function ONamaPage() {
               {/* Main image container */}
               <div className="relative bg-white rounded-2xl p-6 shadow-lg">
                 <Image
-                  src="/assets/BunkerAparat.webp"
+                  src="/assets/BunkerAparat.avif"
                   alt="Aparat za mjerenje alkohola u Bunker klubu"
                   width={400}
                   height={400}

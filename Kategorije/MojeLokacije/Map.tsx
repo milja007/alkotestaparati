@@ -9,20 +9,14 @@ import { locationsData } from "@/klijenti/data/Klijenti";
 // Mapbox access token
 const MAPBOX_ACCESS_TOKEN = locationsData.mapConfig.mapboxAccessToken;
 
-// Stilovi
-const STYLES = {
-  streets: "mapbox://styles/mapbox/streets-v12",
-  satellite: "mapbox://styles/mapbox/satellite-streets-v12",
-  light: "mapbox://styles/mapbox/light-v11",
-  dark: "mapbox://styles/mapbox/dark-v11",
-} as const;
+// Default stil mape
+const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
 
   const [showApparatusInfo, setShowApparatusInfo] = useState(false);
-  const [mapStyle, setMapStyle] = useState<keyof typeof STYLES>("streets");
 
   const locations = useMemo(
     () =>
@@ -47,7 +41,7 @@ export default function Map() {
 
         map.current = new M.Map({
           container: mapContainer.current,
-          style: STYLES[mapStyle], // default streets
+          style: MAP_STYLE,
           center: locationsData.mapConfig.defaultCenter as [number, number],
           zoom: locationsData.mapConfig.defaultZoom,
         });
@@ -65,7 +59,13 @@ export default function Map() {
         locations.forEach((location) => {
           const markerEl = document.createElement("div");
           markerEl.className = "custom-marker";
-          markerEl.innerHTML = `<img src="/assets/DrPin.webp" alt="Location" class="location-pin-image" />`;
+          markerEl.innerHTML = `
+            <picture>
+              <source srcset="/assets/DrPin.avif" type="image/avif" />
+              <source srcset="/assets/DrPin.webp" type="image/webp" />
+              <img src="/assets/DrPin.webp" alt="Location" class="location-pin-image" />
+            </picture>
+          `;
 
           const marker = new M.Marker(markerEl)
             .setLngLat(location.coordinates)
@@ -76,6 +76,7 @@ export default function Map() {
             maxWidth: "200px",
             className: "modern-popup",
             closeButton: false,
+            closeOnClick: true,
           }).setHTML(`
             <div class="modern-popup-content" data-location-id="${location.id}" data-google-maps-url="${location.googleMapsUrl}" style="cursor: pointer;">
               <button class="custom-close-btn" onclick="event.stopPropagation(); this.closest('.mapboxgl-popup').remove();" title="Zatvori">
@@ -85,7 +86,11 @@ export default function Map() {
                 </svg>
               </button>
               <div class="popup-image-container">
-                <img src="${location.photo}" alt="${location.name}" class="main-image" style="width: 100%; height: 100%; object-fit: cover;" />
+                <picture>
+                  <source srcset="${location.photoAvif}" type="image/avif" />
+                  <source srcset="${location.photo}" type="image/webp" />
+                  <img src="${location.photo}" alt="${location.name}" class="main-image" style="width: 100%; height: 100%; object-fit: cover;" />
+                </picture>
               </div>
               <div class="popup-body">
                 <div class="popup-main">
@@ -143,55 +148,11 @@ export default function Map() {
       map.current?.remove();
       map.current = null;
     };
-  }, [locations, mapStyle]);
-
-  // Sigurna promjena stila – rješava "bijeli ekran"
-  const switchStyle = (styleKey: keyof typeof STYLES) => {
-    const m = map.current;
-    if (!m) return;
-
-    // spremi kameru
-    const center = m.getCenter();
-    const zoom = m.getZoom();
-    const bearing = m.getBearing();
-    const pitch = m.getPitch();
-
-    // promijeni stil i nakon load vrati kameru + resize
-    m.setStyle(STYLES[styleKey]);
-    m.once("style.load", () => {
-      m.jumpTo({ center, zoom, bearing, pitch });
-      m.resize();
-    });
-
-    setMapStyle(styleKey);
-  };
+  }, [locations]);
 
   return (
     <div className="modern-map-container">
       <div className="map-wrapper">
-        {/* Style switcher */}
-        <div className="style-switcher">
-          {(
-            [
-              ["streets", "Streets"],
-              ["satellite", "Satellite"],
-              ["light", "Light"],
-              ["dark", "Dark"],
-            ] as Array<[keyof typeof STYLES, string]>
-          ).map(([key, label]) => (
-            <button
-              type="button"
-              key={key}
-              className={`style-btn ${mapStyle === key ? "active" : ""}`}
-              onClick={() => switchStyle(key)}
-              aria-pressed={mapStyle === key}
-              title={`Promijeni na ${label}`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-
         <div ref={mapContainer} className="map" />
       </div>
 
@@ -313,43 +274,6 @@ export default function Map() {
           width: 100%;
           height: 600px;
           background: #f3f4f6; /* suptilna pozadina dok se style loada */
-        }
-
-        /* STYLE SWITCHER */
-        .style-switcher {
-          position: absolute;
-          top: 12px;
-          left: 12px;
-          display: flex;
-          gap: 8px;
-          z-index: 10;
-          background: rgba(255, 255, 255, 0.7);
-          border-radius: 9999px;
-          padding: 6px;
-          backdrop-filter: blur(6px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-          border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-        .style-btn {
-          border: 0;
-          padding: 6px 12px;
-          font-size: 12px;
-          font-weight: 600;
-          border-radius: 9999px;
-          background: white;
-          color: #374151;
-          cursor: pointer;
-          transition: transform 0.15s ease, background 0.2s, color 0.2s;
-        }
-        @media (min-width: 640px) {
-          .style-btn:hover {
-            transform: translateY(-1px);
-            background: #f3f4f6;
-          }
-        }
-        .style-btn.active {
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-          color: white;
         }
 
         /* Grid ispod mape */

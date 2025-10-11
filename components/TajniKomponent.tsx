@@ -32,7 +32,7 @@ export function TajniKomponent({ onClose }: TajniKomponentProps) {
           ×
         </button>
         <div className="text-center space-y-4">
-          <Sova imageName="DrZarulja.webp" className="mx-auto" />
+          <Sova imageName="DrZarulja.avif" className="mx-auto" />
           <div className="space-y-3">
             <p className="text-sm text-green-100 leading-relaxed">
               Osim što se nakon konzumacije alkohola preporučuje dobar obrok i

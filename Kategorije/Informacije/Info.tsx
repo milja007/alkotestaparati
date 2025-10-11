@@ -166,7 +166,7 @@ export function Info() {
               </div>
               <div className="  p-4 rounded-xl">
                 <div className="flex items-start gap-3">
-                  <Sova imageName="DrPijani.webp" />
+                  <Sova imageName="DrPijani.avif" />
                 </div>
               </div>
               <div className="bg-gradient-to-r from-destructive/10 to-destructive/5 border border-destructive/20 p-4 rounded-xl">
@@ -311,7 +311,7 @@ export function Info() {
                 </div>
               ))}
               <div className="flex justify-center items-center p-4 sm:p-6 rounded-xl h-auto">
-                <Sova imageName="DrTuzni.webp" />
+                <Sova imageName="DrTuzni.avif" />
               </div>
             </div>
             <div className="mt-6 p-4 bg-muted/50 rounded-xl border border-border">
