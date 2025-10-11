@@ -2,8 +2,6 @@
 
 import { useMemo, useState } from "react";
 import styles from "./Kalkulator.module.css";
-import GenderSelector from "./GenderSelector";
-import WeightInput from "./WeightInput";
 import DrinkSelector from "./DrinkSelector";
 import TimeInput from "./TimeInput";
 import ResultsDisplay from "./ResultsDisplay";
@@ -160,9 +158,78 @@ export default function CalculatorForm() {
     <div className={styles.mainGrid}>
       {/* Main Form */}
       <div className={styles.formSection}>
-        <GenderSelector gender={gender} setGender={setGender} />
+        {/* Gender Selector */}
+        <section className={styles.glassCard}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.stepNumber}>1</span>
+            Spol
+          </h2>
+          <div className={styles.genderGrid}>
+            <button
+              type="button"
+              onClick={() => setGender("male")}
+              className={`${styles.genderButton} ${
+                gender === "male" ? styles.selected : ""
+              }`}
+              aria-pressed={gender === "male"}
+            >
+              <div className={styles.genderContent}>
+                <span className={styles.genderEmoji}>👨</span>
+                <div className={styles.genderText}>
+                  <div className={styles.genderTitle}>Muškarac</div>
+                  <div className={styles.genderSubtitle}>Faktor: 0.68</div>
+                </div>
+              </div>
+            </button>
+            <button
+              type="button"
+              onClick={() => setGender("female")}
+              className={`${styles.genderButton} ${
+                gender === "female" ? styles.selected : ""
+              }`}
+              aria-pressed={gender === "female"}
+            >
+              <div className={styles.genderContent}>
+                <span className={styles.genderEmoji}>👩</span>
+                <div className={styles.genderText}>
+                  <div className={styles.genderTitle}>Žena</div>
+                  <div className={styles.genderSubtitle}>Faktor: 0.55</div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </section>
 
-        <WeightInput weightKg={weightKg} setWeightKg={setWeightKg} />
+        {/* Weight Input */}
+        <section className={styles.glassCard}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.stepNumber}>2</span>
+            Težina
+          </h2>
+          <div className={styles.inputGroup}>
+            <label className={styles.inputLabel} htmlFor="weightKg">
+              Tjelesna težina
+            </label>
+            <div className={styles.inputWrapper}>
+              <input
+                id="weightKg"
+                name="weightKg"
+                type="text"
+                inputMode="decimal"
+                className={styles.input}
+                placeholder="75"
+                value={weightKg}
+                onChange={(e) =>
+                  setWeightKg(
+                    e.target.value === "" ? "" : Number(e.target.value)
+                  )
+                }
+                autoComplete="off"
+              />
+              <span className={styles.inputUnit}>kg</span>
+            </div>
+          </div>
+        </section>
 
         <DrinkSelector
           beerCount={beerCount}

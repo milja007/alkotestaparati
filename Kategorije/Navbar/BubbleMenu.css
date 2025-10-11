@@ -8,7 +8,7 @@
   gap: 16px;
   padding: 0 2em;
   pointer-events: none;
-  z-index: 99;
+  z-index: 999;
 }
 
 .bubble-menu.fixed {
@@ -80,7 +80,7 @@
   align-items: center;
   justify-content: center;
   pointer-events: auto;
-  z-index: 98;
+  z-index: 998;
 }
 
 .bubble-menu-items.fixed {
@@ -193,11 +193,11 @@
   .bubble-menu-items {
     padding-top: 0px;
     align-items: flex-start;
-    padding-top: 120px;
+    padding-top: 100px;
   }
 
   .bubble-menu-items .pill-list {
-    row-gap: 16px;
+    row-gap: 8px;
   }
 
   .bubble-menu-items .pill-list .pill-col {
@@ -207,9 +207,9 @@
   }
 
   .bubble-menu-items .pill-link {
-    font-size: clamp(1.2rem, 3vw, 4rem);
-    padding: clamp(1rem, 2vw, 2rem) 0;
-    min-height: 80px;
+    font-size: clamp(1rem, 2.5vw, 3rem);
+    padding: clamp(0.75rem, 1.5vw, 1.5rem) 0;
+    min-height: 50px;
   }
 
   .bubble-menu-items .pill-link {

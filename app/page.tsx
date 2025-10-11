@@ -11,7 +11,7 @@ import ZapratiteMe from "@/Kategorije/ZapratiteMe/ZapratiteMe";
 export default function Home() {
   return (
     <>
-      <BubbleMenu />
+      <BubbleMenu useFixedPosition={true} />
       <HeaderSection />
       <OOmeni />
       <Mapa />

@@ -10,9 +10,9 @@ const baseUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Dr. Promil - Alkotest Aparati i Besplatni Online Kalkulator Promila",
+  title: "Dr. Promil -Alkotest Aparati",
   description:
-    "Testirajte razinu alkohola u krvi sa našim alkotest aparatima u pubovima, klubovima i kafićima u Hrvatskoj. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
+    "Testirajte razinu alkohola sa našim alkotest aparatima u pubovima, klubovima i kafićima diljem Hrvatskoj. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
   keywords: [
     "alkotest",
     "alkotest aparat",
@@ -47,8 +47,7 @@ export const metadata: Metadata = {
     locale: "hr_HR",
     url: baseUrl,
     siteName: "Dr. Promil",
-    title:
-      "Dr. Promil - Alkotest Aparati i Besplatni Online Kalkulator Promila",
+    title: "Dr. Promil -Alkotest Aparati",
     description:
       "Testirajte razinu alkohola u krvi sa našim alkotest aparatima u pubovima, klubovima i kafićima u Hrvatskoj. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
     images: [

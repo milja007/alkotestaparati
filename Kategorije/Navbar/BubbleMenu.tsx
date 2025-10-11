@@ -154,14 +154,14 @@ export default function BubbleMenu({
 
     if (!overlay || !bubbles.length) return;
 
-    const isSmallScreen = window.innerWidth <= 350;
+    const isSmallScreen = window.innerWidth <= 480;
 
     if (isMenuOpen) {
       gsap.set(overlay, { display: "flex" });
       gsap.killTweensOf([...bubbles, ...labels]);
 
       if (isSmallScreen) {
-        // Na malim ekranima (≤350px) odmah prikaži bez animacije
+        // Na malim ekranima (≤480px) odmah prikaži bez animacije
         gsap.set(bubbles, { scale: 1, transformOrigin: "50% 50%" });
         gsap.set(labels, { y: 0, autoAlpha: 1 });
       } else {
@@ -196,7 +196,7 @@ export default function BubbleMenu({
       gsap.killTweensOf([...bubbles, ...labels]);
 
       if (isSmallScreen) {
-        // Na malim ekranima (≤350px) odmah sakrij bez animacije
+        // Na malim ekranima (≤480px) odmah sakrij bez animacije
         gsap.set(bubbles, { scale: 0 });
         gsap.set(labels, { y: 24, autoAlpha: 0 });
         gsap.set(overlay, { display: "none" });
