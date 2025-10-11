@@ -14,7 +14,7 @@ const MainContentClient = () => {
   };
   return (
     <div className="space-y-6">
-      <p className="text-lg lg:text-xl text-foreground leading-relaxed">
+      <div className="text-lg lg:text-xl text-foreground leading-relaxed">
         <span className="font-semibold text-primary">
           Ja sam dr. Promil i sova sam koja čini noćni život odgovornijim.
         </span>{" "}
@@ -22,12 +22,12 @@ const MainContentClient = () => {
         Hrvatske — pogledajte
         <Button
           size="sm"
-          className="ml-2 bg-gradient-to-r from-primary to-primary/80 sm:hover:from-primary/90 sm:hover:to-primary text-primary-foreground shadow-lg sm:hover:shadow-xl transition-all duration-300 transform sm:hover:scale-105"
+          className="ml-2 bg-gradient-to-r from-primary to-primary/80 lg:hover:from-primary/90 lg:hover:to-primary text-primary-foreground shadow-lg lg:hover:shadow-xl transition-all duration-300 transform lg:hover:scale-105"
           onClick={() => scrollToSection("MojeLokacije")}
         >
           Moje lokacije
         </Button>
-      </p>
+      </div>
 
       <p className="text-lg text-muted-foreground leading-relaxed">
         Dovoljan je jedan aparat u vašem lokalu da gosti u trenu donesu pravu
@@ -40,7 +40,7 @@ const MainContentClient = () => {
         podjelu zarade — besplatno i bez brige oko održavanja.
       </p>
 
-      <p className="text-lg text-foreground leading-relaxed">
+      <div className="text-lg text-foreground leading-relaxed">
         <span className="font-semibold text-secondary">
           Imate kafić, pub ili restoran?
         </span>{" "}
@@ -48,13 +48,13 @@ const MainContentClient = () => {
         <Button
           size="sm"
           variant="outline"
-          className="ml-2 border-2 border-secondary text-secondary sm:hover:bg-secondary sm:hover:text-secondary-foreground shadow-lg sm:hover:shadow-xl transition-all duration-300 transform sm:hover:scale-105 bg-transparent"
+          className="ml-2 border-2 border-secondary text-secondary lg:hover:bg-secondary lg:hover:text-secondary-foreground shadow-lg lg:hover:shadow-xl transition-all duration-300 transform lg:hover:scale-105 bg-transparent"
           onClick={() => scrollToSection("PostaniPartner")}
         >
           Postanite moj partner
         </Button>{" "}
         i kontaktirajte me.
-      </p>
+      </div>
     </div>
   );
 };
