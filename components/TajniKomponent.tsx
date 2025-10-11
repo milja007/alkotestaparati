@@ -27,7 +27,7 @@ export function TajniKomponent({ onClose }: TajniKomponentProps) {
       >
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-white/70 sm:hover:text-white text-xl font-bold"
+          className="absolute top-2 right-2 text-white/70 lg:hover:text-white text-xl font-bold"
         >
           ×
         </button>

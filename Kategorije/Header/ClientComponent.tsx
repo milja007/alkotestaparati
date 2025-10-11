@@ -18,7 +18,7 @@ const ClientComponent = () => {
     <div className={styles.ctaContainer}>
       <Button
         size="lg"
-        className="bg-secondary sm:hover:bg-secondary/90 text-secondary-foreground px-8 py-4 text-lg font-semibold"
+        className="bg-secondary lg:hover:bg-secondary/90 text-secondary-foreground px-8 py-4 text-lg font-semibold"
         onClick={() => scrollToSection("OnlineKalkulator")}
       >
         <Calculator className="w-5 h-5 mr-2" />
@@ -27,7 +27,7 @@ const ClientComponent = () => {
       <Button
         size="lg"
         variant="outline"
-        className="px-8 py-4 text-lg font-semibold border-primary text-primary sm:hover:bg-primary sm:hover:text-primary-foreground bg-transparent"
+        className="px-8 py-4 text-lg font-semibold border-primary text-primary lg:hover:bg-primary lg:hover:text-primary-foreground bg-transparent"
         onClick={() => scrollToSection("MojeLokacije")}
       >
         <MapPin className="w-5 h-5 mr-2" />

@@ -203,7 +203,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .genderButton:hover {
     transform: scale(1.05);
   }
@@ -227,7 +227,7 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .genderButton:not(.selected):hover {
     /* Reverted to original green hover border */
     border-color: rgba(5, 150, 105, 0.3);
@@ -326,7 +326,7 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .drinkRow:hover {
     transform: scale(1.02);
   }
@@ -395,7 +395,7 @@
   background: rgba(15, 23, 42, 0.3);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .drinkButton:hover {
     /* Reverted to original green hover border */
     border-color: rgba(5, 150, 105, 0.3);
@@ -500,7 +500,7 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .statCard:hover {
     transform: scale(1.05);
   }
@@ -605,7 +605,7 @@
   font-size: 1.125rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .primaryButton:hover:not(:disabled) {
     transform: scale(1.05);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -632,7 +632,7 @@
   background: rgba(15, 23, 42, 0.3);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .secondaryButton:hover {
     /* Reverted to original green hover border */
     border-color: rgba(5, 150, 105, 0.3);

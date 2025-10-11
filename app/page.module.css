@@ -358,11 +358,24 @@
 }
 
 .floating-icon {
-  animation: float 3s ease-in-out infinite;
+  display: inline-block;
 }
 
 .float {
-  animation: float 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Uključi float animaciju od 640px+ */
+@media (min-width: 640px) {
+  .floating-icon {
+    transition: transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .float {
+    transition: transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+  }
 }
 
 @keyframes float {

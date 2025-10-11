@@ -81,7 +81,7 @@
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .back-button:hover {
     color: #78350f;
   }
@@ -113,7 +113,7 @@
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .next-button:hover {
     background-color: #78350f;
   }

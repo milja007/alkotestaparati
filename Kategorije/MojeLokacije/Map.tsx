@@ -286,7 +286,7 @@ export default function Map() {
           <div className="show-more-container">
             <button
               type="button"
-              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full sm:hover:from-primary/90 sm:hover:to-secondary/90 transform sm:hover:scale-105 transition-all duration-200 shadow-lg sm:hover:shadow-xl"
+              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full lg:hover:from-primary/90 lg:hover:to-secondary/90 transform lg:hover:scale-105 transition-all duration-200 shadow-lg lg:hover:shadow-xl"
               onClick={() => setShowApparatusInfo(true)}
             >
               {locationsData.mapButton.showMore}
@@ -419,7 +419,7 @@ export default function Map() {
           }
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           .modern-location-card:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -503,7 +503,7 @@ export default function Map() {
           display: block;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           .modern-location-card:hover .card-image {
             transform: scale(1.1);
           }
@@ -527,7 +527,7 @@ export default function Map() {
           padding: 1rem;
           height: 60%;
         }
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           .modern-location-card:hover .card-overlay {
             opacity: 1;
           }
@@ -539,7 +539,7 @@ export default function Map() {
           transition: transform 0.3s ease;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           .modern-location-card:hover .card-hover-content {
             transform: translateY(0);
           }
@@ -610,7 +610,7 @@ export default function Map() {
           color: #3b82f6;
           transition: transform 0.2s ease;
         }
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           .modern-location-card:hover .directions-icon {
             transform: translateX(4px);
           }
@@ -634,7 +634,7 @@ export default function Map() {
           filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
           transition: transform 0.2s ease;
         }
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           :global(.location-pin-image:hover) {
             transform: scale(1.1);
           }
@@ -651,7 +651,7 @@ export default function Map() {
           color: #374151 !important;
           transition: all 0.2s ease !important;
         }
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           :global(.mapboxgl-ctrl-group > button:hover) {
             background: #f3f4f6 !important;
             color: #1f2937 !important;
@@ -747,7 +747,7 @@ export default function Map() {
           backdrop-filter: blur(10px);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           :global(.custom-close-btn:hover) {
             background: white;
             color: #1f2937;
@@ -761,7 +761,7 @@ export default function Map() {
         :global(.custom-close-btn svg) {
           transition: transform 0.2s ease;
         }
-        @media (min-width: 640px) {
+        @media (min-width: 1024px) {
           :global(.custom-close-btn:hover svg) {
             transform: rotate(90deg);
           }

@@ -244,7 +244,7 @@ export function Info() {
               {alcoholLevels.map((level, index) => (
                 <div
                   key={index}
-                  className={`level-indicator flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 sm:p-6 rounded-xl border-2 ${level.color} transition-all duration-300 sm:hover:scale-[1.02] sm:hover:shadow-lg gap-3 sm:gap-4`}
+                  className={`level-indicator flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 sm:p-6 rounded-xl border-2 ${level.color} transition-all duration-300 lg:hover:scale-[1.02] lg:hover:shadow-lg gap-3 sm:gap-4`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                     <Badge
@@ -286,7 +286,7 @@ export function Info() {
               {penalties.map((penalty, index) => (
                 <div
                   key={index}
-                  className={`flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 sm:hover:scale-[1.02] gap-3 sm:gap-0 ${
+                  className={`flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 lg:hover:scale-[1.02] gap-3 sm:gap-0 ${
                     penalty.severity === "low"
                       ? "bg-yellow-50 border-yellow-200"
                       : penalty.severity === "medium"

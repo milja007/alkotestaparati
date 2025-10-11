@@ -69,7 +69,7 @@ export function FactorsGridClient() {
             {factors.map((factor, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border sm:hover:shadow-lg transition-all duration-300 cursor-pointer"
+                className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-background to-muted/30 rounded-xl border border-border lg:hover:shadow-lg transition-all duration-300 cursor-pointer"
                 onClick={() => {
                   if (factor.title === "Hrana i tempo") {
                     setShowTajniKomponent(!showTajniKomponent);

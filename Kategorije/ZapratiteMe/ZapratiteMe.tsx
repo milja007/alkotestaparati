@@ -27,9 +27,9 @@ const ZapratiteMe = () => {
             <div className="space-y-4 sm:space-y-6 mb-6 lg:mb-8">
               <a
                 href="mailto:alkotestaparat@gmail.com"
-                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/80 rounded-2xl sm:hover:bg-white transition-colors group cursor-pointer"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/80 rounded-2xl lg:hover:bg-white transition-colors group cursor-pointer"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center sm:group-hover:scale-110 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center lg:group-hover:scale-110 transition-transform flex-shrink-0">
                   <Mail
                     className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                     aria-hidden="true"
@@ -39,7 +39,7 @@ const ZapratiteMe = () => {
                   <p className="text-xs sm:text-sm text-muted-foreground font-medium">
                     Email
                   </p>
-                  <p className="text-sm sm:text-base lg:text-lg font-bold text-primary sm:group-hover:text-accent transition-colors break-all">
+                  <p className="text-sm sm:text-base lg:text-lg font-bold text-primary lg:group-hover:text-accent transition-colors break-all">
                     alkotestaparat@gmail.com
                   </p>
                 </div>
@@ -47,9 +47,9 @@ const ZapratiteMe = () => {
 
               <a
                 href="tel:+385994171467"
-                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/80 rounded-2xl sm:hover:bg-white transition-colors group cursor-pointer"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/80 rounded-2xl lg:hover:bg-white transition-colors group cursor-pointer"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center sm:group-hover:scale-110 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center lg:group-hover:scale-110 transition-transform flex-shrink-0">
                   <Phone
                     className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                     aria-hidden="true"
@@ -59,7 +59,7 @@ const ZapratiteMe = () => {
                   <p className="text-xs sm:text-sm text-muted-foreground font-medium">
                     Telefon
                   </p>
-                  <p className="text-sm sm:text-base lg:text-lg font-bold text-primary sm:group-hover:text-accent transition-colors">
+                  <p className="text-sm sm:text-base lg:text-lg font-bold text-primary lg:group-hover:text-accent transition-colors">
                     +385 99 4171 467
                   </p>
                 </div>
@@ -68,7 +68,7 @@ const ZapratiteMe = () => {
 
             <Button
               size="lg"
-              className="w-full bg-gradient-to-r from-primary to-accent sm:hover:from-accent sm:hover:to-primary text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl shadow-lg sm:hover:shadow-xl transform sm:hover:scale-105 transition-all duration-300 text-sm sm:text-base"
+              className="w-full bg-gradient-to-r from-primary to-accent lg:hover:from-accent lg:hover:to-primary text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl shadow-lg lg:hover:shadow-xl transform lg:hover:scale-105 transition-all duration-300 text-sm sm:text-base"
               asChild
             >
               <a href="tel:+385994171467">
@@ -112,7 +112,7 @@ const ZapratiteMe = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 border-0 sm:hover:from-blue-600 sm:hover:to-blue-700 text-white sm:hover:text-white group sm:hover:scale-110 transition-all duration-300 shadow-lg sm:hover:shadow-xl rounded-2xl"
+                  className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 border-0 lg:hover:from-blue-600 lg:hover:to-blue-700 text-white lg:hover:text-white group lg:hover:scale-110 transition-all duration-300 shadow-lg lg:hover:shadow-xl rounded-2xl"
                   asChild
                 >
                   <a
@@ -122,7 +122,7 @@ const ZapratiteMe = () => {
                     aria-label="Facebook"
                   >
                     <svg
-                      className="w-12 h-12 sm:group-hover:scale-110 transition-transform"
+                      className="w-12 h-12 lg:group-hover:scale-110 transition-transform"
                       fill="white"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -137,7 +137,7 @@ const ZapratiteMe = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 border-0 sm:hover:from-purple-500 sm:hover:to-pink-500 text-white sm:hover:text-white group sm:hover:scale-110 transition-all duration-300 shadow-lg sm:hover:shadow-xl rounded-2xl"
+                  className="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 border-0 lg:hover:from-purple-500 lg:hover:to-pink-500 text-white lg:hover:text-white group lg:hover:scale-110 transition-all duration-300 shadow-lg lg:hover:shadow-xl rounded-2xl"
                   asChild
                 >
                   <a
@@ -147,7 +147,7 @@ const ZapratiteMe = () => {
                     aria-label="Instagram"
                   >
                     <svg
-                      className="w-12 h-12 sm:group-hover:scale-110 transition-transform"
+                      className="w-12 h-12 lg:group-hover:scale-110 transition-transform"
                       fill="white"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -162,7 +162,7 @@ const ZapratiteMe = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-20 h-20 bg-gradient-to-br from-gray-800 to-black border-0 sm:hover:from-black sm:hover:to-gray-800 text-white sm:hover:text-white group sm:hover:scale-110 transition-all duration-300 shadow-lg sm:hover:shadow-xl rounded-2xl"
+                  className="w-20 h-20 bg-gradient-to-br from-gray-800 to-black border-0 lg:hover:from-black lg:hover:to-gray-800 text-white lg:hover:text-white group lg:hover:scale-110 transition-all duration-300 shadow-lg lg:hover:shadow-xl rounded-2xl"
                   asChild
                 >
                   <a
@@ -172,7 +172,7 @@ const ZapratiteMe = () => {
                     aria-label="TikTok"
                   >
                     <svg
-                      className="w-12 h-12 sm:group-hover:scale-110 transition-transform"
+                      className="w-12 h-12 lg:group-hover:scale-110 transition-transform"
                       fill="white"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -187,7 +187,7 @@ const ZapratiteMe = () => {
             <Button
               variant="outline"
               size="lg"
-              className="w-full border-2 border-accent text-accent sm:hover:bg-accent sm:hover:text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl sm:hover:scale-105 transition-all duration-300 bg-white/80 text-sm sm:text-base"
+              className="w-full border-2 border-accent text-accent lg:hover:bg-accent lg:hover:text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-2xl lg:hover:scale-105 transition-all duration-300 bg-white/80 text-sm sm:text-base"
               asChild
             >
               <a

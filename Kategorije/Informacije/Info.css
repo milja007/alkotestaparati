@@ -44,8 +44,8 @@
   display: inline-block;
 }
 
-/* Uključi float animaciju od 400px+ (kao u HeaderSection) */
-@media (min-width: 400px) {
+/* Uključi float animaciju od 640px+ (kao u HeaderSection) */
+@media (min-width: 640px) {
   .floating-icon {
     transition: transform 0.3s ease;
     animation: float 3s ease-in-out infinite;
