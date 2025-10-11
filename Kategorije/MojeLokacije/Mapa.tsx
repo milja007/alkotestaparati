@@ -1,7 +1,68 @@
 "use client";
-import MapComponent from "./Map";
+import dynamic from "next/dynamic";
 import Sova from "../../components/Sova";
 import { locationsData } from "@/klijenti/data/Klijenti";
+
+// Lazy load Map komponente - učitava se samo kad je potrebna
+const MapComponent = dynamic(() => import("./Map"), {
+  ssr: false, // Mapa se ne renderira na serveru
+  loading: () => (
+    <div
+      style={{
+        width: "100%",
+        height: "600px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background:
+          "linear-gradient(135deg, rgba(16, 185, 129, 0.95) 0%, rgba(5, 150, 105, 0.95) 100%)",
+        borderRadius: "1.5rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1.5rem",
+        }}
+      >
+        <span
+          style={{
+            width: "48px",
+            height: "48px",
+            border: "5px solid #fff",
+            borderBottomColor: "transparent",
+            borderRadius: "50%",
+            display: "inline-block",
+            boxSizing: "border-box",
+            animation: "rotation 1s linear infinite",
+          }}
+        ></span>
+        <p
+          style={{
+            color: "white",
+            fontSize: "1.125rem",
+            fontWeight: "600",
+            margin: 0,
+          }}
+        >
+          Učitavam mapu...
+        </p>
+      </div>
+      <style jsx>{`
+        @keyframes rotation {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+    </div>
+  ),
+});
 
 export default function Mapa() {
   return (

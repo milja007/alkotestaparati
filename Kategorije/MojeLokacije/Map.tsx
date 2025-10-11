@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { useEffect, useRef, useMemo, useState } from "react";
 import type mapboxgl from "mapbox-gl"; // samo tipovi, runtime ide kroz dynamic import
+import "mapbox-gl/dist/mapbox-gl.css"; // Dinamički učitavanje CSS-a samo za ovu komponentu
 import { locationsData } from "@/klijenti/data/Klijenti";
 
 // Mapbox access token
@@ -332,8 +333,8 @@ export default function Map() {
           justify-content: center;
           background: linear-gradient(
             135deg,
-            rgba(102, 126, 234, 0.95) 0%,
-            rgba(118, 75, 162, 0.95) 100%
+            rgba(16, 185, 129, 0.95) 0%,
+            rgba(5, 150, 105, 0.95) 100%
           );
           z-index: 10;
           border-radius: 1.5rem;
