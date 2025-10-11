@@ -89,6 +89,11 @@ export default function RootLayout({
         {/* Preconnect za eksterne resurse */}
         <link rel="preconnect" href="https://api.mapbox.com" />
         <link rel="dns-prefetch" href="https://api.mapbox.com" />
+        {/* Mapbox CSS */}
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <StructuredData />

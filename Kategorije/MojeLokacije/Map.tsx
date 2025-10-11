@@ -3,7 +3,6 @@ import React from "react";
 import Image from "next/image";
 import { useEffect, useRef, useMemo, useState } from "react";
 import type mapboxgl from "mapbox-gl"; // samo tipovi, runtime ide kroz dynamic import
-import "mapbox-gl/dist/mapbox-gl.css";
 import { locationsData } from "@/klijenti/data/Klijenti";
 
 // Mapbox access token
@@ -15,8 +14,11 @@ const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   const [showApparatusInfo, setShowApparatusInfo] = useState(false);
+  const [isMapLoading, setIsMapLoading] = useState(false);
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
 
   const locations = useMemo(
     () =>
@@ -27,12 +29,43 @@ export default function Map() {
     []
   );
 
+  // Intersection Observer za lazy loading
   useEffect(() => {
-    if (map.current) return; // init samo jednom
+    if (!mapContainer.current || shouldLoadMap) return;
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Počni loadirati kad je komponenta 200px od viewporta
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            setShouldLoadMap(true);
+            observerRef.current?.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "200px", // započni loadiranje malo prije nego što korisnik stigne
+        threshold: 0,
+      }
+    );
+
+    observerRef.current.observe(mapContainer.current);
+
+    return () => {
+      observerRef.current?.disconnect();
+    };
+  }, [shouldLoadMap]);
+
+  // Inicijalizacija mape tek kad shouldLoadMap postane true
+  useEffect(() => {
+    if (!shouldLoadMap || map.current) return;
 
     const initializeMap = async () => {
       if (!mapContainer.current || !MAPBOX_ACCESS_TOKEN) return;
       try {
+        setIsMapLoading(true);
+
+        // Dinamički uvezi samo Mapbox modul (CSS je već statički importan na vrhu)
         const mapboxModule = await import("mapbox-gl");
         const M = mapboxModule.default as typeof mapboxgl;
 
@@ -44,6 +77,10 @@ export default function Map() {
           style: MAP_STYLE,
           center: locationsData.mapConfig.defaultCenter as [number, number],
           zoom: locationsData.mapConfig.defaultZoom,
+        });
+
+        map.current.on("load", () => {
+          setIsMapLoading(false);
         });
 
         map.current.addControl(new M.NavigationControl(), "top-right");
@@ -130,15 +167,7 @@ export default function Map() {
         });
       } catch (error) {
         console.error("Failed to load Mapbox GL:", error);
-        if (mapContainer.current) {
-          mapContainer.current.innerHTML = `
-            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center;padding:2rem;">
-              <div style="font-size:3rem;margin-bottom:1rem;">🗺️</div>
-              <h3 style="margin:0 0 1rem 0;font-size:1.5rem;">Interaktivna mapa</h3>
-              <p style="margin:0;opacity:.9;">Mapa se učitava... Molimo pričekajte.</p>
-            </div>
-          `;
-        }
+        setIsMapLoading(false);
       }
     };
 
@@ -148,12 +177,22 @@ export default function Map() {
       map.current?.remove();
       map.current = null;
     };
-  }, [locations]);
+  }, [shouldLoadMap, locations]);
 
   return (
     <div className="modern-map-container">
       <div className="map-wrapper">
+        {/* Map container mora biti potpuno prazan */}
         <div ref={mapContainer} className="map" />
+        {/* Loader overlay - potpuno odvojen od map containera */}
+        {isMapLoading && (
+          <div className="map-loader-overlay">
+            <div className="loader-content">
+              <span className="loader"></span>
+              <p className="loader-text">Učitavam mapu...</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Grid s karticama lokacija */}
@@ -166,7 +205,10 @@ export default function Map() {
               className={`modern-location-card card-${index % 4}`}
               onClick={() => window.open(location.googleMapsUrl, "_blank")}
             >
-              <div className="card-image-container">
+              <div
+                className="card-image-container"
+                style={{ position: "relative" }}
+              >
                 <Image
                   src={location.photo || "/placeholder.svg"}
                   alt={location.name}
@@ -208,7 +250,10 @@ export default function Map() {
                 } animate-in`}
                 onClick={() => window.open(location.googleMapsUrl, "_blank")}
               >
-                <div className="card-image-container">
+                <div
+                  className="card-image-container"
+                  style={{ position: "relative" }}
+                >
                   <Image
                     src={location.apparatusImage}
                     alt="Alkotest aparat u objektu"
@@ -274,6 +319,57 @@ export default function Map() {
           width: 100%;
           height: 600px;
           background: #f3f4f6; /* suptilna pozadina dok se style loada */
+        }
+
+        /* Loader overlay */
+        .map-loader-overlay {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(
+            135deg,
+            rgba(102, 126, 234, 0.95) 0%,
+            rgba(118, 75, 162, 0.95) 100%
+          );
+          z-index: 10;
+          border-radius: 1.5rem;
+        }
+
+        .loader-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.5rem;
+        }
+
+        .loader {
+          width: 48px;
+          height: 48px;
+          border: 5px solid #fff;
+          border-bottom-color: transparent;
+          border-radius: 50%;
+          display: inline-block;
+          box-sizing: border-box;
+          animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        .loader-text {
+          color: white;
+          font-size: 1.125rem;
+          font-weight: 600;
+          margin: 0;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         /* Grid ispod mape */

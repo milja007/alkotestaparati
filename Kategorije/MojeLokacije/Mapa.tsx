@@ -1,3 +1,4 @@
+"use client";
 import MapComponent from "./Map";
 import Sova from "../../components/Sova";
 import { locationsData } from "@/klijenti/data/Klijenti";
