@@ -17,8 +17,20 @@ export default function DrinkRow({
   count,
   setCount,
 }: DrinkRowProps) {
+  const handleRowClick = () => {
+    setCount(count + 1);
+  };
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div className={styles.drinkRow}>
+    <div
+      className={styles.drinkRow}
+      onClick={handleRowClick}
+      style={{ cursor: "pointer" }}
+    >
       <div className={styles.drinkContent}>
         <div className={styles.drinkInfo}>
           <span className={styles.drinkEmoji}>{emoji}</span>
@@ -32,7 +44,10 @@ export default function DrinkRow({
         <div className={styles.drinkControls}>
           <button
             type="button"
-            onClick={() => setCount(Math.max(0, count - 1))}
+            onClick={(e) => {
+              handleButtonClick(e);
+              setCount(Math.max(0, count - 1));
+            }}
             className={styles.drinkButton}
             aria-label="Smanji"
           >
@@ -41,7 +56,10 @@ export default function DrinkRow({
           <div className={styles.drinkCount}>{count}</div>
           <button
             type="button"
-            onClick={() => setCount(count + 1)}
+            onClick={(e) => {
+              handleButtonClick(e);
+              setCount(count + 1);
+            }}
             className={styles.drinkButton}
             aria-label="Povećaj"
           >
