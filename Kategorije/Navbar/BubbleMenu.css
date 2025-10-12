@@ -163,18 +163,17 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  transition: background 0.3s ease, color 0.3s ease;
+  will-change: transform;
   box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
   height: 10px;
-  contain: layout style paint;
 }
 
-@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+@media (min-width: 900px) {
   .bubble-menu-items .pill-link {
     transform: rotate(var(--item-rot));
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    will-change: transform;
   }
 
   .bubble-menu-items .pill-link:hover {
@@ -190,6 +189,7 @@
 
 .bubble-menu-items .pill-link .pill-label {
   display: inline-block;
+  will-change: transform, opacity;
   height: 1.2em;
   line-height: 1.2;
 }
@@ -218,11 +218,7 @@
   }
 }
 
-@media (max-width: 899px) and (prefers-reduced-motion: no-preference) {
-  .bubble-menu-items .pill-link {
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  }
-
+@media (max-width: 899px) {
   .bubble-menu-items .pill-link:hover {
     transform: scale(1.06);
     background: var(--hover-bg);
