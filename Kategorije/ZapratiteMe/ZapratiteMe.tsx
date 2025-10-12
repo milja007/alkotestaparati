@@ -116,7 +116,7 @@ const ZapratiteMe = () => {
                   asChild
                 >
                   <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/drpromil"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"
@@ -141,7 +141,7 @@ const ZapratiteMe = () => {
                   asChild
                 >
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/drpromil.hr/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
@@ -166,7 +166,7 @@ const ZapratiteMe = () => {
                   asChild
                 >
                   <a
-                    href="https://tiktok.com"
+                    href="https://www.tiktok.com/@drpromil.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="TikTok"
@@ -191,7 +191,7 @@ const ZapratiteMe = () => {
               asChild
             >
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/drpromil.hr/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

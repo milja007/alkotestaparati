@@ -21,9 +21,9 @@ export default function StructuredData() {
       addressLocality: "Zagreb",
     },
     sameAs: [
-      // "https://www.facebook.com/drpromil",
-      // "https://www.instagram.com/drpromil",
-      // "https://www.tiktok.com/@drpromil",
+      "https://www.facebook.com/drpromil",
+      "https://www.instagram.com/drpromil.hr/",
+      "https://www.tiktok.com/@drpromil.com",
     ],
   };
 
