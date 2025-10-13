@@ -35,7 +35,7 @@
 - 📚 **Edukativni Sadržaj** - Informacije o alkoholu, kaznama i sigurnosti
 - 📍 **Lokacije** - Detalji o klubovima, pubovima i barovima sa aparatima
 - 🎨 **Moderna UI** - Responsive dizajn sa GSAP animacijama
-- 🔒 **Sigurnost** - Potpuni security headers (CSP, HSTS, itd.)
+- 🔒 **Sigurnost** - Potpuni security headers (HSTS, X-Frame-Options, itd.)
 - ⚡ **Performance** - AVIF slike, Image optimizacija, Turbopack
 - 🔍 **SEO Optimiziran** - Schema.org, Open Graph, Sitemap, Robots.txt
 
@@ -134,9 +134,8 @@ NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.tvoj_mapbox_token
 
 ## 🔒 Sigurnost
 
-Projekt implementira enterprise-level security headers:
+Projekt implementira security headers:
 
-✅ **Content Security Policy (CSP)**  
 ✅ **X-Frame-Options (DENY)**  
 ✅ **X-Content-Type-Options (nosniff)**  
 ✅ **Strict-Transport-Security (HSTS)**  
@@ -278,7 +277,7 @@ alkotestWebp/
 ### Security Headers ne rade na localhost
 
 - HSTS radi samo na HTTPS
-- Testiraj CSP i ostale na deployed verziji
+- Testiraj security headers na deployed verziji
 
 ### Slike se ne učitavaju
 

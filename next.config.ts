@@ -53,8 +53,6 @@ const nextConfig: NextConfig = {
         ],
       },
       // Security headers za sve stranice
-      // Napomena: CSP (Content-Security-Policy) se sada upravlja kroz middleware.ts
-      // sa nonce-based pristupom za bolju sigurnost
       {
         source: "/:path*",
         headers: [

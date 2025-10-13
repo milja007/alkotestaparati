@@ -1,5 +1,3 @@
-// JSON-LD script tagovi ne trebaju nonce jer nisu izvršivi JavaScript
-// type="application/ld+json" je samo strukturirani data format
 export default function StructuredData() {
   const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
