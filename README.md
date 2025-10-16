@@ -131,9 +131,6 @@ NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.tvoj_mapbox_token
 
 ---
 
-
-
-
 ## 🚢 Deployment
 
 ### Vercel (Preporučeno)
@@ -283,7 +280,7 @@ Pull requests su dobrodošli! Za veće izmjene, molimo prvo otvori issue.
 ## 📞 Kontakt
 
 **Web:** [www.drpromil.com](https://www.drpromil.com)  
-**Email:** info@drpromil.com
+**Email:** kontakt@drpromil.com
 
 ---
 

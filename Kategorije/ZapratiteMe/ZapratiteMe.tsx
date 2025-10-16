@@ -26,7 +26,7 @@ const ZapratiteMe = () => {
 
             <div className="space-y-4 sm:space-y-6 mb-6 lg:mb-8">
               <a
-                href="mailto:alkotestaparat@gmail.com"
+                href="mailto:kontakt@drpromil.com"
                 className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/80 rounded-2xl lg:hover:bg-white transition-colors group cursor-pointer"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center lg:group-hover:scale-110 transition-transform flex-shrink-0">
@@ -40,7 +40,7 @@ const ZapratiteMe = () => {
                     Email
                   </p>
                   <p className="text-sm sm:text-base lg:text-lg font-bold text-primary lg:group-hover:text-accent transition-colors break-all">
-                    alkotestaparat@gmail.com
+                    kontakt@drpromil.com
                   </p>
                 </div>
               </a>
