@@ -3,8 +3,8 @@ import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
-const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+const vercelUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
   : null;
 const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || vercelUrl || "https://www.drpromil.com";
@@ -142,7 +142,11 @@ export default function RootLayout({
           content="Testirajte razinu alkohola sa mojim alkotest aparatima u pubovima, klubovima i kafićima diljem Hrvatske. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom."
         />
         {/* Preconnect za eksterne resurse */}
-        <link rel="preconnect" href="https://api.mapbox.com" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://api.mapbox.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://api.mapbox.com" />
       </head>
       <body>
