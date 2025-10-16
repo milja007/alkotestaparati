@@ -21,7 +21,6 @@
 - [Tehnologije](#-tehnologije)
 - [Početak Rada](#-početak-rada)
 - [Environment Varijable](#-environment-varijable)
-- [Sigurnost](#-sigurnost)
 - [Deployment](#-deployment)
 - [SEO Optimizacije](#-seo-optimizacije)
 - [Performance](#-performance)
@@ -132,25 +131,8 @@ NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.tvoj_mapbox_token
 
 ---
 
-## 🔒 Sigurnost
 
-Projekt implementira security headers:
 
-✅ **X-Frame-Options (DENY)**  
-✅ **X-Content-Type-Options (nosniff)**  
-✅ **Strict-Transport-Security (HSTS)**  
-✅ **Referrer-Policy**  
-✅ **Permissions-Policy**
-
-📖 **Detaljnu dokumentaciju vidi u [SECURITY.md](./SECURITY.md)**
-
-### Security Score
-
-- **Security Headers:** A+
-- **Mozilla Observatory:** 95+/100
-- **Lighthouse Security:** 100/100
-
----
 
 ## 🚢 Deployment
 
