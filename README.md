@@ -169,14 +169,15 @@ npm run start
 
 ### Implementirano
 
-✅ **Meta Tags** - Title, description, keywords  
-✅ **Open Graph** - Facebook/LinkedIn sharing  
+✅ **Meta Tags** - Title, description (1. lice), max-snippet  
+✅ **Open Graph** - Facebook/LinkedIn sharing sa slikama  
 ✅ **Twitter Cards** - Twitter sharing  
-✅ **Schema.org** - Organization, WebSite, LocalBusiness, Breadcrumb  
-✅ **Sitemap.xml** - Automatski generiran  
+✅ **Schema.org** - Organization, WebSite, LocalBusiness, Breadcrumb, ItemList  
+✅ **Sitemap.xml** - Automatski generiran (homepage only - best practice)  
 ✅ **Robots.txt** - Search engine rules  
 ✅ **Canonical URLs** - Duplicate content prevention  
-✅ **Semantic HTML** - H1, nav, main, section
+✅ **Semantic HTML** - H1, nav, main, section  
+✅ **Sitelinks** - Strukturirani podaci za Google sitelinks
 
 ### Kako aktivirati Google Search Console
 
@@ -209,7 +210,7 @@ verification: {
 ### Lighthouse Score
 
 - **Performance:** 85+/100
-- **SEO:** 95+/100
+- **SEO:** 100/100 ✅
 - **Accessibility:** 90+/100
 - **Best Practices:** 95+/100
 

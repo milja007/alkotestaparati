@@ -11,6 +11,12 @@ export default function StructuredData() {
     name: "Dr. Promil",
     url: baseUrl,
     logo: `${baseUrl}/assets/DrLogoNew.avif`,
+    image: [
+      `${baseUrl}/opengraph-image.png`,
+      `${baseUrl}/assets/DrLogoNew.avif`,
+      `${baseUrl}/assets/DrKalkulator.avif`,
+      `${baseUrl}/assets/DrKarta.avif`,
+    ],
     description:
       "Alkotest aparati u pubovima, klubovima i kafićima u Hrvatskoj s besplatnim online kalkulatorom promila.",
     address: {
@@ -31,8 +37,9 @@ export default function StructuredData() {
     name: "Dr. Promil",
     url: baseUrl,
     description:
-      "Testirajte razinu alkohola u krvi na našim alkotest aparatima u pubovima, klubovima i kafićima u Hrvatskoj. Besplatni online kalkulator promila.",
+      "Testirajte razinu alkohola u krvi na mojim alkotest aparatima u pubovima, klubovima i kafićima u Hrvatskoj. Besplatni online kalkulator promila.",
     inLanguage: "hr",
+    image: `${baseUrl}/opengraph-image.png`,
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -49,6 +56,14 @@ export default function StructuredData() {
     name: "Dr. Promil - Alkotest Lokacije",
     description: "Alkotest aparati na više lokacija u Hrvatskoj",
     url: baseUrl,
+    image: [
+      `${baseUrl}/opengraph-image.png`,
+      `${baseUrl}/assets/DrKarta.avif`,
+      `${baseUrl}/assets/Bunker.avif`,
+      `${baseUrl}/assets/Harats.avif`,
+      `${baseUrl}/assets/Conlee.avif`,
+      `${baseUrl}/assets/Pharmacy.avif`,
+    ],
     address: {
       "@type": "PostalAddress",
       addressCountry: "HR",
@@ -120,8 +135,60 @@ export default function StructuredData() {
       {
         "@type": "ListItem",
         position: 5,
+        name: "Postani Partner",
+        item: `${baseUrl}/#PostaniPartner`,
+      },
+      {
+        "@type": "ListItem",
+        position: 6,
         name: "Online Kalkulator",
         item: `${baseUrl}/#OnlineKalkulator`,
+      },
+    ],
+  };
+
+  // ItemList schema za sitelinks - redoslijed kako želiš
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Glavni Sadržaj",
+    description: "Navigacija kroz Dr. Promil usluge",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Moje Lokacije",
+        url: `${baseUrl}/#MojeLokacije`,
+        description:
+          "Pronađite najbliži alkotest aparat u pubovima i klubovima diljem Hrvatske",
+        image: `${baseUrl}/assets/DrKarta.avif`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Upute Korištenja",
+        url: `${baseUrl}/#UputeKorištenja`,
+        description:
+          "Naučite kako koristiti alkotest aparat u 6 jednostavnih koraka",
+        image: `${baseUrl}/assets/DrUpute.avif`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Postani Partner",
+        url: `${baseUrl}/#PostaniPartner`,
+        description:
+          "Postavite moj alkotest aparat u svojem klubu ili kafiću besplatno",
+        image: `${baseUrl}/assets/DrUgovor.avif`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "Online Alkotest Kalkulator",
+        url: `${baseUrl}/#OnlineKalkulator`,
+        description:
+          "Besplatni online kalkulator za izračun razine alkohola u krvi",
+        image: `${baseUrl}/assets/DrKalkulator.avif`,
       },
     ],
   };
@@ -150,6 +217,12 @@ export default function StructuredData() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(itemListSchema),
         }}
       />
     </>

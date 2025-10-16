@@ -11,9 +11,9 @@ const baseUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Dr. Promil -Alkotest Aparati",
+  title: "Dr. Promil - Alkotest Aparati",
   description:
-    "Testirajte razinu alkohola sa našim alkotest aparatima u pubovima, klubovima i kafićima diljem Hrvatskoj. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
+    "Testirajte razinu alkohola sa mojim alkotest aparatima u pubovima, klubovima i kafićima diljem Hrvatske. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
   keywords: [
     "alkotest",
     "alkotest aparat",
@@ -35,6 +35,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
     googleBot: {
       index: true,
       follow: true,
@@ -48,9 +51,9 @@ export const metadata: Metadata = {
     locale: "hr_HR",
     url: baseUrl,
     siteName: "Dr. Promil",
-    title: "Dr. Promil -Alkotest Aparati",
+    title: "Dr. Promil - Alkotest Aparati",
     description:
-      "Testirajte razinu alkohola u krvi sa našim alkotest aparatima u pubovima, klubovima i kafićima u Hrvatskoj. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
+      "Testirajte razinu alkohola u krvi sa mojim alkotest aparatima u pubovima, klubovima i kafićima u Hrvatskoj. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
     images: [
       {
         url: "/opengraph-image.png",
@@ -65,7 +68,7 @@ export const metadata: Metadata = {
     title:
       "Dr. Promil - Alkotest Aparati i Besplatni Online Kalkulator Promila",
     description:
-      "Testirajte razinu alkohola u krvi sa našim alkotest aparatima u pubovima, klubovima i kafićima u Hrvatskoj. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
+      "Testirajte razinu alkohola u krvi sa mojim alkotest aparatima u pubovima, klubovima i kafićima u Hrvatskoj. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom.",
     images: ["/opengraph-image.png"],
   },
   alternates: {
@@ -132,6 +135,11 @@ export default function RootLayout({
           }
         `,
           }}
+        />
+        {/* Meta description - eksplicitno za Lighthouse */}
+        <meta
+          name="description"
+          content="Testirajte razinu alkohola sa mojim alkotest aparatima u pubovima, klubovima i kafićima diljem Hrvatske. Koristite besplatni online kalkulator promila nakon izlaska ili usporedite rezultate s aparatom."
         />
         {/* Preconnect za eksterne resurse */}
         <link rel="preconnect" href="https://api.mapbox.com" crossOrigin="" />
