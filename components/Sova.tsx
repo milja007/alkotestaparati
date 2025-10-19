@@ -15,7 +15,7 @@ export default function Sova({
 }: SovaProps) {
   return (
     <Image
-      src={`/assets/${imageName}`}
+      src={`/${imageName}`}
       alt={alt}
       width={320}
       height={320}

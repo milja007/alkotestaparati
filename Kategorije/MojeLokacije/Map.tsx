@@ -99,9 +99,9 @@ export default function Map() {
           markerEl.className = "custom-marker";
           markerEl.innerHTML = `
             <picture>
-              <source srcset="/assets/DrPin.avif" type="image/avif" />
-              <source srcset="/assets/DrPin.webp" type="image/webp" />
-              <img src="/assets/DrPin.webp" alt="Location" class="location-pin-image" />
+              <source srcset="/DrPin.avif" type="image/avif" />
+              <source srcset="/DrPin.webp" type="image/webp" />
+              <img src="/DrPin.webp" alt="Location" class="location-pin-image" />
             </picture>
           `;
 

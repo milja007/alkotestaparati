@@ -62,7 +62,7 @@ function useScreenSize() {
 function getResponsiveImage(stepNumber: number): string {
   const baseImageName = `${stepNumber}.korak`;
   // Koristi AVIF format za najbolju optimizaciju (Next.js automatski dodaje fallback)
-  return `/assets/${baseImageName}.avif`;
+  return `/${baseImageName}.avif`;
 }
 
 interface RenderStepIndicatorProps {

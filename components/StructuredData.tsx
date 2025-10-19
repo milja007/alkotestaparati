@@ -10,12 +10,12 @@ export default function StructuredData() {
     "@type": "Organization",
     name: "Dr. Promil",
     url: baseUrl,
-    logo: `${baseUrl}/assets/DrLogoNew.avif`,
+    logo: `${baseUrl}/DrLogoNew.avif`,
     image: [
       `${baseUrl}/opengraph-image.png`,
-      `${baseUrl}/assets/DrLogoNew.avif`,
-      `${baseUrl}/assets/DrKalkulator.avif`,
-      `${baseUrl}/assets/DrKarta.avif`,
+      `${baseUrl}/DrLogoNew.avif`,
+      `${baseUrl}/DrKalkulator.avif`,
+      `${baseUrl}/DrKarta.avif`,
     ],
     description:
       "Alkotest aparati u pubovima, klubovima i kafićima u Hrvatskoj s besplatnim online kalkulatorom promila.",
@@ -58,11 +58,11 @@ export default function StructuredData() {
     url: baseUrl,
     image: [
       `${baseUrl}/opengraph-image.png`,
-      `${baseUrl}/assets/DrKarta.avif`,
-      `${baseUrl}/assets/Bunker.avif`,
-      `${baseUrl}/assets/Harats.avif`,
-      `${baseUrl}/assets/Conlee.avif`,
-      `${baseUrl}/assets/Pharmacy.avif`,
+      `${baseUrl}/DrKarta.avif`,
+      `${baseUrl}/Bunker.avif`,
+      `${baseUrl}/Harats.avif`,
+      `${baseUrl}/Conlee.avif`,
+      `${baseUrl}/Pharmacy.avif`,
     ],
     address: {
       "@type": "PostalAddress",
@@ -161,7 +161,7 @@ export default function StructuredData() {
         url: `${baseUrl}/#MojeLokacije`,
         description:
           "Pronađite najbliži alkotest aparat u pubovima i klubovima diljem Hrvatske",
-        image: `${baseUrl}/assets/DrKarta.avif`,
+        image: `${baseUrl}/DrKarta.avif`,
       },
       {
         "@type": "ListItem",
@@ -170,7 +170,7 @@ export default function StructuredData() {
         url: `${baseUrl}/#UputeKorištenja`,
         description:
           "Naučite kako koristiti alkotest aparat u 6 jednostavnih koraka",
-        image: `${baseUrl}/assets/DrUpute.avif`,
+        image: `${baseUrl}/DrUpute.avif`,
       },
       {
         "@type": "ListItem",
@@ -179,7 +179,7 @@ export default function StructuredData() {
         url: `${baseUrl}/#PostaniPartner`,
         description:
           "Postavite moj alkotest aparat u svojem klubu ili kafiću besplatno",
-        image: `${baseUrl}/assets/DrUgovor.avif`,
+        image: `${baseUrl}/DrUgovor.avif`,
       },
       {
         "@type": "ListItem",
@@ -188,7 +188,7 @@ export default function StructuredData() {
         url: `${baseUrl}/#OnlineKalkulator`,
         description:
           "Besplatni online kalkulator za izračun razine alkohola u krvi",
-        image: `${baseUrl}/assets/DrKalkulator.avif`,
+        image: `${baseUrl}/DrKalkulator.avif`,
       },
     ],
   };

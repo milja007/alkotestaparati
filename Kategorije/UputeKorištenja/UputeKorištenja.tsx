@@ -78,7 +78,7 @@ export function UsageInstructions({}: UsageInstructionsProps) {
                   <div className="step-default responsive-medium">
                     <div className="step-image-container">
                       <Image
-                        src="/assets/completeKorak.avif"
+                        src="/completeKorak.avif"
                         alt="Finalni korak"
                         className="step-image stepper-image"
                         width={780}

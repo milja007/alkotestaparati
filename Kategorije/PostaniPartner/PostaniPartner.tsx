@@ -160,7 +160,7 @@ export default function PostaniPartner() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl"></div>
                 <Image
-                  src="/assets/dimenzije.avif"
+                  src="/dimenzije.avif"
                   alt="Tehnički nacrt i dimenzije alkotest aparata"
                   width={300}
                   height={300}

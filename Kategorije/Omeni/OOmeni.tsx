@@ -45,7 +45,7 @@ export default function ONamaPage() {
               {/* Main image container */}
               <div className="relative bg-white rounded-2xl p-6 shadow-lg">
                 <Image
-                  src="/assets/BunkerAparat.avif"
+                  src="/BunkerAparat.avif"
                   alt="Aparat za mjerenje alkohola u Bunker klubu"
                   width={400}
                   height={400}

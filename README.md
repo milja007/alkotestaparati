@@ -1,7 +1,7 @@
 # 🍺 Dr. Promil - Alkotest Aparati
 
 <div align="center">
-  <img src="public/assets/DrLogoNew.avif" alt="Dr. Promil Logo" width="200"/>
+  <img src="public/DrLogoNew.avif" alt="Dr. Promil Logo" width="200"/>
   
   **Testiraj, nauči i odluči!**
   
@@ -237,7 +237,7 @@ alkotestWebp/
 │   ├── Informacije/        # Info o promilima
 │   └── ...
 ├── klijenti/data/          # Podaci o lokacijama
-├── public/assets/          # AVIF slike
+├── public/                 # AVIF slike i statički resursi
 ├── next.config.ts          # Next.js config + Security
 ├── tailwind.config.js      # Tailwind setup
 ├── tsconfig.json           # TypeScript config
