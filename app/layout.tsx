@@ -29,6 +29,16 @@ export const metadata: Metadata = {
     "alkotest aparati Hrvatska",
     "testiranje alkohola Zagreb",
   ],
+
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/favicon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+
   authors: [{ name: "Dr. Promil" }],
   creator: "Dr. Promil",
   publisher: "Dr. Promil",
