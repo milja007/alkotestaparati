@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { Analytics } from "@vercel/analytics/react";
 
 const vercelUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -160,12 +161,12 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.mapbox.com" />
       </head>
       <body>
-        {/* Skip link - vidljiv samo na keyboard focus za accessibility */}
         <a href="#main-content" className="skip-link">
           Preskoči na glavni sadržaj
         </a>
         <StructuredData />
         <ErrorBoundary>{children}</ErrorBoundary>
+        <Analytics />
       </body>
     </html>
   );
