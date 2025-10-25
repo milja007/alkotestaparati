@@ -3,7 +3,7 @@ import "./globals.css";
 import StructuredData from "@/components/StructuredData";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Analytics } from "@vercel/analytics/react";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const vercelUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : null;
@@ -167,6 +167,7 @@ export default function RootLayout({
         <StructuredData />
         <ErrorBoundary>{children}</ErrorBoundary>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
