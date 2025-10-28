@@ -6,13 +6,7 @@
 /**
  * Tip za business kategorije
  */
-export type BusinessType =
-  | "Nightclub"
-  | "Irish Pub"
-  | "Cocktail Bar"
-  | "Bar"
-  | "Pub"
-  | "Club";
+export type BusinessType = "Nightclub" | "Irish Pub" | "Bar" | "Pub" | "Club";
 
 /**
  * Tip za Mapbox stilove
@@ -146,7 +140,8 @@ export const locationsData: LocationsData = {
       id: 0,
       name: "OUT Bunker Nightclub",
       coordinates: [15.9710048, 45.8133541],
-      description: "OUT Bunker Nightclub na Ilici - mjesto za mladu populaciju",
+      description:
+        "OUT Bunker Nightclub na Ilici - mjesto za stranu muziku i zabavu",
       businessType: "Nightclub",
       avgSpending: "13-20 €",
       photo: "/Bunker.webp",
@@ -167,7 +162,7 @@ export const locationsData: LocationsData = {
       avgSpending: "11-16 €",
       photo: "/Harats.webp",
       photoAvif: "/Harats.avif",
-      address: "Dolac 2, 10000 Zagreb",
+      address: " Kaptol 4 Trg Petrice Kerempuha, Opatovina 11, 10000, Zagreb",
       googleMapsUrl:
         "https://www.google.com/maps/place/Harat's+Pub/@45.8148286,15.9751046,17z/data=!4m14!1m7!3m6!1s0x4765d70271927e99:0x8cd74ff66755eca3!2sHarat's+Pub!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_!3m5!1s0x4765d70271927e99:0x8cd74ff66755eca3!8m2!3d45.8148249!4d15.9776849!16s%2Fg%2F11b6v6_ms_?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
       apparatusImage: "/HaratsAparat.avif",
@@ -179,11 +174,11 @@ export const locationsData: LocationsData = {
       name: "The Old Pharmacy",
       coordinates: [15.9724083, 45.8089789],
       description: "The Old Pharmacy Pub - mjesto za odmor, rad i zabavu",
-      businessType: "Cocktail Bar",
+      businessType: "Pub",
       avgSpending: "12-17 €",
       photo: "/Pharmacy.webp",
       photoAvif: "/Pharmacy.avif",
-      address: "Tkalčićeva 58, 10000 Zagreb",
+      address: "Ul. Andrije Hebranga 11, 10000, Zagreb",
       googleMapsUrl:
         "https://www.google.com/maps/place/The+Old+Pharmacy/@45.808983,15.9723891,17z/data=!3m1!4b1!4m6!3m5!1s0x4765d6fbeedc063b:0x3f9e8c4eee9c5cd7!8m2!3d45.8089793!4d15.9749694!16s%2Fg%2F1tg4k56r?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
       apparatusImage: "/PharmacyAparat.avif",
