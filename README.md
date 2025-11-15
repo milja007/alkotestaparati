@@ -14,8 +14,8 @@ Moderna Next.js aplikacija za alkotest aparate u Hrvatskoj sa interaktivnom kart
 
 <h3>Stranica</h3>
 <a href="https://drpromil.com/">drpromil.com</a>
-<h3>Pomocna stranica za voodenje zapisnika pošto je moja firma</h3>
-<a href="https://dr-promil-upravitelj-zarada-89c4b0d0.base44.app/">drpromil.com</a>
+<h3>Pomocna stranica za vodenje zapisnika pošto su moji aparati. Sve localstorage. Napravljeno igranjem besplatnih tokena na base44 i nasuprot svih ostalih najbolje je odradio posao jer mi se na tako nesto jednostavno nije dalo gubiti vrijeme</h3>
+<a href="https://dr-promil-upravitelj-zarada-89c4b0d0.base44.app/">dr-promil-upravitelj-zarada</a>
 
 </div>
 
