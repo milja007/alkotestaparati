@@ -12,10 +12,8 @@ Moderna Next.js aplikacija za alkotest aparate u Hrvatskoj sa interaktivnom kart
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.12-38bdf8?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 
-<h3>Stranica</h3>
+<h3>Posjeti stranicu!</h3>
 <a href="https://drpromil.com/">drpromil.com</a>
-<h3>Pomocna stranica za vodenje zapisnika pošto su moji aparati. Sve localstorage. Napravljeno igranjem besplatnih tokena na base44 i nasuprot svih ostalih najbolje je odradio posao jer mi se na tako nesto jednostavno nije dalo gubiti vrijeme</h3>
-<a href="https://dr-promil-upravitelj-zarada-89c4b0d0.base44.app/">dr-promil-upravitelj-zarada</a>
 
 </div>
 
