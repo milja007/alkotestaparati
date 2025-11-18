@@ -136,25 +136,25 @@ export const locationsData: LocationsData = {
     },
   },
   locations: [
+    // {
+    //   id: 0,
+    //   name: "OUT Bunker Nightclub",
+    //   coordinates: [15.9710048, 45.8133541],
+    //   description:
+    //     "OUT Bunker Nightclub na Ilici - mjesto za stranu muziku i zabavu",
+    //   businessType: "Nightclub",
+    //   avgSpending: "13-20 €",
+    //   photo: "/Bunker.webp",
+    //   photoAvif: "/Bunker.avif",
+    //   address: "Ilica 242, 10000 Zagreb",
+    //   googleMapsUrl:
+    //     "https://www.google.com/maps/place/OUT+Bunker+Nightclub/@45.8133639,15.9551473,15z/data=!3m1!4b1!4m6!3m5!1s0x4765d7c25fd45d5f:0x2f8a716d8e37bd76!8m2!3d45.8133504!4d15.9735797!16s%2Fg%2F11j7btnp1b?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
+    //   apparatusImage: "/BunkerAparat.avif",
+    //   upute:
+    //     "Kada gledate ravno u wc, krenite lijevo i hodajte ravno dok sa desne strane ne vidite ulaz u prostoriju gdje se nalazi aparat sa vase lijeve strane.",
+    // },
     {
       id: 0,
-      name: "OUT Bunker Nightclub",
-      coordinates: [15.9710048, 45.8133541],
-      description:
-        "OUT Bunker Nightclub na Ilici - mjesto za stranu muziku i zabavu",
-      businessType: "Nightclub",
-      avgSpending: "13-20 €",
-      photo: "/Bunker.webp",
-      photoAvif: "/Bunker.avif",
-      address: "Ilica 242, 10000 Zagreb",
-      googleMapsUrl:
-        "https://www.google.com/maps/place/OUT+Bunker+Nightclub/@45.8133639,15.9551473,15z/data=!3m1!4b1!4m6!3m5!1s0x4765d7c25fd45d5f:0x2f8a716d8e37bd76!8m2!3d45.8133504!4d15.9735797!16s%2Fg%2F11j7btnp1b?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D",
-      apparatusImage: "/BunkerAparat.avif",
-      upute:
-        "Kada gledate ravno u wc, krenite lijevo i hodajte ravno dok sa desne strane ne vidite ulaz u prostoriju gdje se nalazi aparat sa vase lijeve strane.",
-    },
-    {
-      id: 1,
       name: "Harat's Pub",
       coordinates: [15.9776849, 45.8148249],
       description: "Harat's Irish Pub kod trznice Dolac uz veliki izbor piva",
@@ -170,7 +170,7 @@ export const locationsData: LocationsData = {
         "Nakon šanka desno hodate ravno dok sa desne strane ne vidite game room u kojem se nalazi aparat pored pikada.",
     },
     {
-      id: 2,
+      id: 1,
       name: "The Old Pharmacy",
       coordinates: [15.9724083, 45.8089789],
       description: "The Old Pharmacy Pub - mjesto za odmor, rad i zabavu",
@@ -186,7 +186,7 @@ export const locationsData: LocationsData = {
         "Kad uočite šank, skrenete desno pa hodajte ravno prema wcu i po putu će biti na zidu sa desne strane.",
     },
     {
-      id: 3,
+      id: 2,
       name: "cONLee BAR",
       coordinates: [15.6553596, 45.6740704],
       description: "cONLee BAR - mjesto za rad dobro pivo i zabavu",
